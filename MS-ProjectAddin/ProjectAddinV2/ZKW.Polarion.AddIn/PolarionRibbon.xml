@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <ribbon>
+        <tabs>
+            <tab idMso="TabAddIns">
+                <group id="group1" label="Polarion">
+                  <button id="btnPolarion" onAction="OnPolarion_Click" label="Synchronisation" size="large"  imageMso="ReplicationSynchronizeNow" />
+                  <button id="btnPlan" onAction="OnPolarionPlan_Click" label="Open Plan" size="large"  imageMso="HyperlinkFlyoutAnchor" />
+                  <button id="btnWorkItem" onAction="OnPolarionWorkitem_Click" label="Open WorkItem" size="large"  imageMso="HyperlinksVerify" />
+                  <button id="btnTest" onAction="OnPlarionTest_Click" getLabel="getlblbtnTest" size ="large"/>
+                  <labelControl id="lblMessage" getLabel="getlblMessage"/>
+                  <labelControl id="lblVersion" label="  Version 2022-05-10"/>
+                </group>
+            </tab>
+        </tabs>
+    </ribbon>
+</customUI>

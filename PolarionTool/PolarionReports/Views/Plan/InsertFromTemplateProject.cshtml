@@ -1,0 +1,125 @@
+﻿@model PolarionReports.Models.PlanViewModel
+
+<h3>Insert Plan in @Model.Project.Name from Template Project</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Plans in Template Project</h4>
+        <div id="tree2" style="overflow-y:scroll; height:500px">
+            <div>
+                @Html.EJS().TreeView("TemplateTree").NodeSelected("OnProjSelected").Fields(Model.TempFields).Render()
+            </div>
+        </div>
+        <p></p>
+        <!-- div d1 für Testausgaben -->
+        <div id="d1"></div>
+        <!-- div d2 Output von Navigation View -->
+        <div id="d2"></div>
+    </div>
+    <div class="col-md-8">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "planForm" }))
+        {
+            <h4>Please Confirm the requested insert:</h4>
+            <h4 id="InsertActionText" style="color:green"></h4>
+            <h4> </h4>
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(m => m.TargetPlanPK)
+                @Html.HiddenFor(m => m.TemplatePlanPK)
+                @Html.HiddenFor(m => m.TemplatePlanId)
+                @Html.HiddenFor(m => m.NewPlanName)
+                @Html.HiddenFor(m => m.ProjectId)
+
+                <input id="TargetPlanPK" type="hidden" name="@Html.NameFor(m => m.TargetPlanPK)" value="@Model.TargetPlanPK" />
+                <input id="InsertAction" type="hidden" name="@Html.NameFor(m => m.InsertAction)" value="@Model.InsertAction" />
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-5">
+                        @Html.EJS().Button("btConfirm2").Content("Insert Plan").CssClass("e-success").Disabled(true).Render()
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="ErrorMsg">
+            <h3 style="color:red">@Model.ErrorMsg</h3>
+        </div>
+        <div id="Message">
+            <h3 style="color:green">@Model.Message</h3>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    var PlanPK;
+    var PlanId;
+    var PlanName;
+    var PlanStatus;
+    var PlanType;
+    var PlanLevel;
+
+    var TempPK;
+    var TempId;
+    var TempName;
+    var TempStatus;
+    var TempType;
+    var TempLevel;
+
+    function OnProjSelected(sender, args) {
+        var tree = document.getElementById("TemplateTree").ej2_instances[0];
+        var test = tree.selectedNodes;
+        var data = tree.treeData;
+        var plan = test[0]
+
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].PK == plan) {
+                PlanPK = data[i].PK;
+                PlanId = data[i].Id;
+                PlanName = data[i].Name;
+                PlanStatus = data[i].Status;
+                PlanType = data[i].Type;
+                PlanLevel = data[i].Level;
+                document.getElementById("TemplatePlanPK").value = PlanPK;
+                document.getElementById("TemplatePlanId").value = PlanId;
+                break;
+            }
+        }
+        console.log(PlanId + " / " + PlanName + " / " + PlanStatus + " / " + PlanPK);
+        CheckInsertButton();
+    }
+
+    function CheckInsertButton() {
+        var mybtConfirm2 = document.getElementById("btConfirm2").ej2_instances[0];
+        if (PlanPK > 0) {
+            mybtConfirm2.content = "Insert " + PlanName;
+            mybtConfirm2.disabled = false;
+            document.getElementById("NewPlanName").value = PlanName;
+            document.getElementById("InsertAction").value = "FromTemplate";
+            document.getElementById("NewPlanName").value = PlanId;
+        }
+        else {
+            mybtConfirm2.disabled = true;
+            $('#InsertActionText').html("Insert Selected Plan in Project");
+        }
+    }
+</script>
+}

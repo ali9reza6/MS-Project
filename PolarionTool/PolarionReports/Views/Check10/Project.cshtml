@@ -1,0 +1,363 @@
+﻿@model PolarionReports.Models.Check10ViewModel
+@using PolarionReports.Custom_Helpers
+
+<h1>10-Check: @Model.Projectname</h1>
+
+@foreach (var doc in Model.Documents)
+{
+    Model.ActualDocument = doc;
+
+    <h2><strong>Doc: @doc.C_id</strong></h2>
+    <h3><span data-toggle="tooltip" title="">1. Coverage Report </span></h3>
+    <h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip10.LinkageTo20ElementRequirements">Linkage to 20 Element Requirements </span></h3>
+
+    if (doc.check10Lists.UnlinkedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.UnlinkedCustomerRequirements.Titel = "Unlinked Customer Requirements";
+        doc.check10Lists.UnlinkedCustomerRequirements.Tooltip = Model.Tooltip10.UnlinkedCustomerRequirements;
+        doc.check10Lists.UnlinkedCustomerRequirements.Color = "red";
+        doc.check10Lists.UnlinkedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.UnlinkedCustomerRequirements.Id = "c10a" + doc.C_pk;
+        doc.check10Lists.UnlinkedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.UnlinkedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.UnlinkedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.UnlinkedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Titel = "incorrectly linked Customer Requirements";
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Tooltip = Model.Tooltip10.IncorrectlyLinkedCustomerRequirements;
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Color = "red";
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Id = "c10b" + doc.C_pk;
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.IncorrectlyLinkedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.IncorrectlyLinkedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequErr", doc.check10Lists.IncorrectlyLinkedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.LinkedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.LinkedCustomerRequirements.Titel = "linked Customer Requirements";
+        doc.check10Lists.LinkedCustomerRequirements.Tooltip = Model.Tooltip10.LinkedCustomerRequirements;
+        doc.check10Lists.LinkedCustomerRequirements.Color = "green";
+        doc.check10Lists.LinkedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.LinkedCustomerRequirements.Id = "c10c" + doc.C_pk;
+        doc.check10Lists.LinkedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.LinkedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.LinkedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.LinkedCustomerRequirements);
+    }
+
+    <h3><span data-toggle="tooltip" title="">2. Status Report </span></h3>
+    <h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip10.ReviewElicitationStatus">Review & Elicitation Status </span></h3>
+
+    if (doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Table.Count > 0)
+    {
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Titel = "partly accepted Customer Requirements without Comment";
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Tooltip = Model.Tooltip10.PartlyAcceptedCustomerRequirementsWithoutComment;
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Color = "red";
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Id = "c10d" + doc.C_pk;
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.PartlyAcceptedCustomerRequirementsWithoutComment);
+    }
+
+    if (doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Table.Count > 0)
+    {
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Id = "c10e" + doc.C_pk;
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Titel = "rejected Customer Requirements without Comment";
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Tooltip = Model.Tooltip10.RejectedCustomerRequirementsWithoutComment;
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Color = "red";
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.RejectedCustomerRequirementsWithoutComment.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.RejectedCustomerRequirementsWithoutComment.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.RejectedCustomerRequirementsWithoutComment);
+    }
+
+    if (doc.check10Lists.CustomerRequirementsWithStatusOpen.Table.Count > 0)
+    {
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.Id = "c10f" + doc.C_pk;
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.Titel = "Customer Requirements with Status = Open";
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.Tooltip = Model.Tooltip10.CustomerRequirementsWithStatusOpen;
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.Color = "orange";
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CustomerRequirementsWithStatusOpen.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CustomerRequirementsWithStatusOpen.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.CustomerRequirementsWithStatusOpen);
+    }
+
+    if (doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Table.Count > 0)
+    {
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Id = "c10f1" + doc.C_pk;
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Titel = "Customer Requirements with Status 'Maybe Accepted'";
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Tooltip = Model.Tooltip10.CustomerRequirementsWithStatusMaybeAccepted;
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Color = "orange";
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.CustomerRequirementsWithStatusMaybeAccepted);
+    }
+
+
+    <!-- WorkItems in Clarification -->
+    <div>
+        @if (doc.Review.WorkitemPerClarificationList.Count > 0)
+        {
+            <h4><a style="color:orange" data-toggle="collapse" href="@("#cl1"+doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsInClarification">@doc.Review.WorkitemInClarification.Count.ToString() WorkItems in Clarification</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(doc.Review.WorkitemInClarification))</h4>
+            <div id="@("cl1"+doc.C_pk)" class="panel-collapse collapse">
+                <h4 style="margin-left:10px"><a style="color:orange" data-toggle="collapse" href="@("#cl2"+ doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsInClarificationAll">All @doc.Review.WorkitemInClarification.Count.ToString() </span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(doc.Review.WorkitemInClarification))</h4>
+                <div style="margin-left:10px" id="@("cl2"+doc.C_pk)" class="panel-collapse collapse">
+                    <table class="table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Internal Comments</th>
+                            <th>Allocation</th>
+                            <th>C-Role</th>
+                            <th>L/F</th>
+                            <th>Status</th>
+                            <th>Link</th>
+                        </tr>
+
+                        @foreach (var item in doc.Review.WorkitemInClarification)
+                        {
+                            <tr>
+                                <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                                <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ClarificationRole)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                <td><a target="_blank" href="@doc.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+                @foreach (var item in doc.Review.WorkitemPerClarificationList.OrderBy(x => x.SortOrder))
+                {
+                    if (item.SortOrder == 0)
+                    {
+                        <h4 style="margin-left:10px"><a style="color:orange" data-toggle="collapse" href="@("#cl3"+ item.Index + doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsInClarificationRole">@Html.DisplayFor(modelItem => item.ClarificationRole): @item.WorkitemPerClarificationRole.Count.ToString() </span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(item.WorkitemPerClarificationRole))</h4>
+                    }
+                    else
+                    {
+                        <h4 style="margin-left:10px"><a style="color:darkgoldenrod" data-toggle="collapse" href="@("#cl3"+ item.Index + doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsInClarificationRole">@Html.DisplayFor(modelItem => item.ClarificationRole): @item.WorkitemPerClarificationRole.Count.ToString() </span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(item.WorkitemPerClarificationRole))</h4>
+                    }
+
+                    <div style="margin-left:10px" id="@("cl3" + item.Index + doc.C_pk)" class="panel-collapse collapse">
+                        <table class="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Internal Comments</th>
+                                <th>Allocation</th>
+                                <th>C-Role</th>
+                                <th>L/F</th>
+                                <th>Status</th>
+                                <th>Link</th>
+                            </tr>
+
+                            @foreach (var item2 in item.WorkitemPerClarificationRole)
+                            {
+                                <tr>
+                                    <td width="105px"><a target="_blank" href="@Model.PolarionLink@item2.Id" ,>@item2.Id</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item2.Title)</td>
+                                    <td><a href="#" data-toggle="tooltip" title="@item2.InternalComments">@Html.DisplayFor(modelItem => item2.InternalComments20)</a></td>
+                                    <td>@Html.DisplayFor(modelItem => item2.Alloc)</td>
+                                    <td>@Html.DisplayFor(modelItem => item2.ClarificationRole)</td>
+                                    <td>@Html.DisplayFor(modelItem => item2.TextLF)</td>
+                                    <td>@Html.DisplayFor(modelItem => item2.Status)</td>
+                                    <td><a target="_blank" href="@doc.PolarionDocumentLink@item2.Id" ,>Open</a></td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+    <!-- WorkItems in Clarification without Clarification Role -->
+    <div>
+        @if (doc.Review.WorkitemInClarificationWithNoRole.Count > 0)
+        {
+            <h4><a style="color:red" data-toggle="collapse" href="@("#cl4"+doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsWithoutClarificationRole">@doc.Review.WorkitemInClarificationWithNoRole.Count.ToString() WorkItems in Clarification without Clarification Role</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(doc.Review.WorkitemInClarificationWithNoRole))</h4>
+            <div id="@("cl4"+doc.C_pk)" class="panel-collapse collapse">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Internal Comments</th>
+                        <th>Allocation</th>
+                        <th>C-Role</th>
+                        <th>L/F</th>
+                        <th>Status</th>
+                        <th>Link</th>
+                    </tr>
+
+                    @foreach (var item in doc.Review.WorkitemInClarificationWithNoRole)
+                    {
+                        <tr>
+                            <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ClarificationRole)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td><a target="_blank" href="@doc.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        }
+    </div>
+
+    <!-- WorkItems with Clarification Role = "Customer" (only)  -->
+    <div>
+        @if (doc.Review.WorkItemsWithClarificationRoleCustomer.Count > 0)
+        {
+            <h4><a style="color:royalblue" data-toggle="collapse" href="@("#rev92" + doc.C_pk)"><span data-toggle="tooltip" title="@Model.TooltipReview.WorkItemsWithClarificationRoleCustomer">@doc.Review.WorkItemsWithClarificationRoleCustomer.Count.ToString()  WorkItems with Clarification Role = "Customer" (only)</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkReviewFromWorkitems(doc.Review.WorkItemsWithClarificationRoleCustomer))</h4>
+            <div id="@("rev92" + doc.C_pk)" class="panel-collapse collapse">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Internal Comments</th>
+                        <th>Allocation</th>
+                        <th>Approval Comments</th>
+                        <th>Status</th>
+                        <th>Link</th>
+                    </tr>
+
+                    @foreach (var item in doc.Review.WorkItemsWithClarificationRoleCustomer)
+                    {
+                        <tr>
+                            <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                            <td><a href="#" data-toggle="tooltip" title="@item.ApprovalComment">@Html.DisplayFor(modelItem => item.ApprovalComment20)</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td><a target="_blank" href="@doc.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>
+
+    if (doc.check10Lists.CustomerRequirementsWithStatusNo.Table.Count > 0)
+    {
+        doc.check10Lists.CustomerRequirementsWithStatusNo.Id = "c10x" + doc.C_pk;
+        doc.check10Lists.CustomerRequirementsWithStatusNo.Titel = "Customer Requirements with Status = No requirement";
+        doc.check10Lists.CustomerRequirementsWithStatusNo.Tooltip = Model.Tooltip10.CustomerRequirementsWithStatusNo;
+        doc.check10Lists.CustomerRequirementsWithStatusNo.Color = "royalblue";
+        doc.check10Lists.CustomerRequirementsWithStatusNo.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CustomerRequirementsWithStatusNo.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CustomerRequirementsWithStatusNo.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CustomerRequirementsWithStatusNo.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.CustomerRequirementsWithStatusNo);
+    }
+
+    if (doc.check10Lists.RejectedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.RejectedCustomerRequirements.Id = "c10y" + doc.C_pk;
+        doc.check10Lists.RejectedCustomerRequirements.Titel = "rejected Customer Requirements ";
+        doc.check10Lists.RejectedCustomerRequirements.Tooltip = Model.Tooltip10.RejectedCustomerRequirements;
+        doc.check10Lists.RejectedCustomerRequirements.Color = "royalblue";
+        doc.check10Lists.RejectedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.RejectedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.RejectedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.RejectedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.RejectedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.DeletedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.DeletedCustomerRequirements.Id = "c10z" + doc.C_pk;
+        doc.check10Lists.DeletedCustomerRequirements.Titel = "Deleted Customer Requirements ";
+        doc.check10Lists.DeletedCustomerRequirements.Tooltip = Model.Tooltip10.DeletedCustomerRequirements;
+        doc.check10Lists.DeletedCustomerRequirements.Color = "royalblue";
+        doc.check10Lists.DeletedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.DeletedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.DeletedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.DeletedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.DeletedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.PartlyAcceptedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.Id = "c10z1" + doc.C_pk;
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.Titel = "partly accepted Customer Requirements";
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.Tooltip = Model.Tooltip10.PartlyAcceptedCustomerRequirements;
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.Color = "green";
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.PartlyAcceptedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.PartlyAcceptedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.PartlyAcceptedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.AcceptedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.AcceptedCustomerRequirements.Id = "c10z2" + doc.C_pk;
+        doc.check10Lists.AcceptedCustomerRequirements.Titel = "accepted Customer Requirements";
+        doc.check10Lists.AcceptedCustomerRequirements.Tooltip = Model.Tooltip10.AcceptedCustomerRequirements;
+        doc.check10Lists.AcceptedCustomerRequirements.Color = "green";
+        doc.check10Lists.AcceptedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.AcceptedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.AcceptedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.AcceptedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustRequ", doc.check10Lists.AcceptedCustomerRequirements);
+    }
+
+    <h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip10.SpecialReports">Special reports </span></h3>
+
+    if (doc.check10Lists.CustomerRequirementsWithCustomerAction.Table.Count > 0)
+    {
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.Id = "c10sr1" + doc.C_pk;
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.Titel = "Customer Requirements with Customer Action";
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.Tooltip = Model.Tooltip10.CustomerRequirementsWithCustomerAction;
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.Color = "orange";
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CustomerRequirementsWithCustomerAction.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CustomerRequirementsWithCustomerAction.Table));
+        Html.RenderPartial("Lists/_CustReqCustAction", doc.check10Lists.CustomerRequirementsWithCustomerAction);
+    }
+
+    if (doc.check10Lists.CustomerRequirementsWithSupplierAction.Table.Count > 0)
+    {
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.Id = "c10sr2" + doc.C_pk;
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.Titel = "Customer Requirements with Supplier Action";
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.Tooltip = Model.Tooltip10.CustomerRequirementsWithSupplierAction;
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.Color = "orange";
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CustomerRequirementsWithSupplierAction.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CustomerRequirementsWithSupplierAction.Table));
+        Html.RenderPartial("Lists/_CustReqSuppAction", doc.check10Lists.CustomerRequirementsWithSupplierAction);
+    }
+
+    if (doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Id = "c10sr3" + doc.C_pk;
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Titel = "cyberSecurity-related Customer Requirements";
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Tooltip = Model.Tooltip10.CyberSecurityRelatedCustomerRequirements;
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Color = "royalblue";
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.CyberSecurityRelatedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.CyberSecurityRelatedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustReqSecSaf", doc.check10Lists.CyberSecurityRelatedCustomerRequirements);
+    }
+
+    if (doc.check10Lists.SafetyRelatedCustomerRequirements.Table.Count > 0)
+    {
+        doc.check10Lists.SafetyRelatedCustomerRequirements.Id = "c10sr4" + doc.C_pk;
+        doc.check10Lists.SafetyRelatedCustomerRequirements.Titel = "Safety related Customer Requirements";
+        doc.check10Lists.SafetyRelatedCustomerRequirements.Tooltip = Model.Tooltip10.SafetyRelatedCustomerRequirements;
+        doc.check10Lists.SafetyRelatedCustomerRequirements.Color = "royalblue";
+        doc.check10Lists.SafetyRelatedCustomerRequirements.PolarionLink = Model.PolarionLink;
+        doc.check10Lists.SafetyRelatedCustomerRequirements.PolarionDocumentLink = doc.PolarionDocumentLink;
+        doc.check10Lists.SafetyRelatedCustomerRequirements.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.check10Lists.SafetyRelatedCustomerRequirements.Table));
+        Html.RenderPartial("Lists/_CustReqSecSaf", doc.check10Lists.SafetyRelatedCustomerRequirements);
+    }
+
+}

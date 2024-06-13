@@ -1,0 +1,229 @@
+﻿@model PolarionReports.Models.Impact.ImpactCR
+@using PolarionReports.Custom_Helpers
+
+<p id="startingpoint" style="display:none">@Model.CR.Id</p>
+
+<h2>Impact Analysis: @Model.ProjectDB.Name</h2>
+<h3 style="color:maroon">@Model.Titel</h3>
+
+<h4 style="color:blue"><span>Change Request</span></h4>
+<div style="border-style:solid; border-width:3px; border-color:maroon">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Assignee(s)</th>
+            <th>Initial</th>
+            <th>Spent</th>
+            <th>Remain</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td width="105px"><a target="_blank" href="@Model.PolarionLink@Model.CR.Id" ,>@Model.CR.Id</a></td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.CR.Title) <br />
+            </td>
+            <td>
+                @foreach (var item in Model.CR.Assignees)
+                {
+                    @Html.DisplayFor(modelItem => item.UserName);
+                }
+            </td>
+            <td>initial</td>
+            <td>spent</td>
+            <td>remain</td>
+            <td>@Html.DisplayFor(modelItem => Model.CR.Status)</td>
+        </tr>
+
+    </table>
+</div>
+
+@if (Model.RequirementsIncorrectlyLinkedToCR.Count > 0)
+{
+    string collapseStatus;
+    if (Model.RequirementsIncorrectlyLinkedToCR.Count < 3)
+    {
+        collapseStatus = "panel-collapse in";
+    }
+    else
+    {
+        collapseStatus = "panel-collapse collapse";
+    }
+    <h4><a style="color:red" data-toggle="collapse" href="@("#a1")"><span data-toggle="tooltip" title="@Model.TooltipRequirementsIncorrectlyLinkedToCR">@Model.RequirementsIncorrectlyLinkedToCR.Count.ToString() Requirements incorrectly linked to CR </span></a></h4>
+    <div id="@("a1")" class="@collapseStatus">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Titel</th>
+                <th>Internal Comments</th>
+                <th>Allocation</th>
+                <th>Error</th>
+                <th>Status</th>
+                <th>Link</th>
+            </tr>
+
+            @foreach (var item in Model.RequirementsIncorrectlyLinkedToCR)
+            {
+                <tr>
+                    <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                    <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TextError)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StatusDisplay)</td>
+                    <td><a target="_blank" href="@item.PolarionDocumentLink" ,>Open</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
+@if (Model.RequirementsAffectedByCR.Count > 0)
+{
+    string collapseStatus;
+    if (Model.RequirementsAffectedByCR.Count < 3)
+    {
+        collapseStatus = "panel-collapse in";
+    }
+    else
+    {
+        collapseStatus = "panel-collapse collapse";
+    }
+    <h4>
+        <a style="color:blue" data-toggle="collapse" href="@("#a2")"><span data-toggle="tooltip" title="@Model.TooltipRequirementsAffectedByCR">@Model.RequirementsAffectedByCR.Count.ToString() Requirements linked to CR </span></a>
+        <a id="SW"><img id="SWimg" style='margin-left:10px; width:50px; height:40px' src="~/Images/FilterSW.png" /></a>
+        <a id="HW"><img id="HWimg" style='margin-left:10px; width:50px; height:40px' src="~/Images/FilterHW.png" /></a>
+        @Custom_Helper_Class.AnalyzeList("/Impact/Analyze/" + Model.ProjectDB.Id, Model.RequirementsAffectedByCR, "", Model.CR.Id, "crlink")
+    </h4>
+    <div id="@("a2")" class="@collapseStatus">
+        <table class="table" id="t1">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Internal Comments</th>
+                <th>Allocation</th>
+                <th>Status</th>
+                <th>Link</th>
+                <th>Analyze</th>
+            </tr>
+
+            @foreach (var item in Model.RequirementsAffectedByCR)
+            {
+                <tr>
+                    <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                    <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.StatusDisplay)</td>
+                    <td><a target="_blank" href="@item.PolarionDocumentLink" ,>Open</a></td>
+                    <td>@Custom_Helper_Class.AnalyzeWorkitem("/Impact/Analyze/" + Model.ProjectDB.Id, item, "", Model.CR.Id)</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+}
+
+@section Scripts {
+    <script>
+        var filterhw = true;
+        var filtersw = true;
+
+        document.getElementById("SW").addEventListener('click', function () {
+            console.log("SW clicked");
+            var img = document.getElementById("SWimg");
+            console.log(img.src);
+            if (img.src.substr(img.src.length - 12) == "FilterSW.png") {
+                img.src = "/Images/FilterSWdis.png";
+                filtersw = false;
+            }
+            else {
+                img.src = "/Images/FilterSW.png";
+                filtersw = true;
+            }
+            // Filter setzen - Tabelle filtern -> Links anpassen
+            hideRows("t1", filterhw, filtersw);
+        });
+
+        document.getElementById("HW").addEventListener('click', function () {
+            console.log("HW clicked");
+            var img = document.getElementById("HWimg");
+            console.log(img.src);
+            if (img.src.substr(img.src.length - 12) == "FilterHW.png") {
+                img.src = "/Images/FilterHWdis.png";
+                filterhw = false;
+            }
+            else {
+                img.src = "/Images/FilterHW.png";
+                filterhw = true;
+            }
+            // Filter setzen - Tabelle filtern -> Links anpassen
+            hideRows("t1", filterhw, filtersw);
+        });
+
+        function hideRows(tableid, hw, sw) {
+            var table = document.getElementById(tableid);
+            var r = 1;
+            var allocation = "";
+            var strlink = "";
+            var strFilter = "";
+            var workitem = "";
+            var intLink = 0;
+            var strStartingpoint = document.getElementById("startingpoint").textContent;
+            var AnalyzeLink = document.getElementById("crlink").href;
+
+            while (row = table.rows[r++]) {
+                cell = row.cells[3];
+                allocation = cell.innerHTML;
+                workitem = row.cells[0].textContent;
+          
+                if (sw) {
+                    if (allocation.indexOf("SW") >= 0) {
+                        row.style.display = 'table-row';
+                    }
+                }
+                else {
+                    if (allocation.indexOf("SW") >= 0) {
+                        row.style.display = 'none';
+                    }
+                }
+
+                if (hw) {
+                    if (allocation.indexOf("HW") >= 0) {
+                        row.style.display = 'table-row';
+                    }
+                }
+                else {
+                    if (allocation.indexOf("HW") >= 0) {
+                        row.style.display = 'none';
+                    }
+                }
+
+                // update analyze Link:
+                if (row.style.display != 'none') {
+                    if (strlink.length > 0) {
+                        strlink = strlink + '|';
+                    }
+                    strlink = strlink + workitem;
+                }
+            }
+
+            if (hw) { strFilter = strFilter + "h"; }
+            if (sw) { strFilter = strFilter + "s"; }
+            if (strFilter.length > 0) {
+                strlink = strlink + "&filter=" + strFilter;
+            }
+            strlink = strlink + "&workitemStartingPoint=" + strStartingpoint;
+            // Link in Lupe modifizieren
+            intLink = AnalyzeLink.indexOf("=") + 1;
+            AnalyzeLink = AnalyzeLink.substr(0, intLink) + strlink;
+            document.getElementById("crlink").href = AnalyzeLink;
+
+            console.log(AnalyzeLink);
+        }
+
+    </script>
+}
+

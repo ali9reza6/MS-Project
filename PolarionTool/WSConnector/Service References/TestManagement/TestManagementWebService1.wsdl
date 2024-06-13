@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns3="http://ws.polarion.com/TestManagementWebService-types" xmlns:intf="http://ws.polarion.com/TestManagementWebService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns4="http://ws.polarion.com/TrackerWebService-types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns5="http://ws.polarion.com/ProjectWebService-types" xmlns:tns1="http://ws.polarion.com/TestManagementWebService-impl" xmlns:tns2="http://ws.polarion.com/types" xmlns:impl="http://ws.polarion.com/TestManagementWebService" targetNamespace="http://ws.polarion.com/TestManagementWebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/TestManagementWebService-impl">
+      <xsd:import namespace="http://ws.polarion.com/TrackerWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/ProjectWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService" />
+      <xsd:element name="addAttachmentToTestRecord">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="fileName" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="data" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addAttachmentToTestRecordResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="addAttachmentToTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="fileName" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="data" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addAttachmentToTestRunResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="addAttachmentToTestStep">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="testStepIndex" type="xsd:int" />
+            <xsd:element name="fileName" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="data" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addAttachmentToTestStepResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="addProjectToProjectSpan">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uri" type="tns2:SubterraURI" />
+            <xsd:element name="projectId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addProjectToProjectSpanResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="addTestRecord">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="testCaseUri" type="tns2:SubterraURI" />
+            <xsd:element name="testResultId" type="xsd:string" />
+            <xsd:element name="testComment" type="tns2:Text" />
+            <xsd:element name="executedByUri" type="tns2:SubterraURI" />
+            <xsd:element name="executed" type="xsd:dateTime" />
+            <xsd:element name="duration" type="xsd:float" />
+            <xsd:element name="defectUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addTestRecordResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="addTestRecordToTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="testRecord" type="tns3:TestRecord" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addTestRecordToTestRunResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="createSummaryDefect">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="defectTemplateUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createSummaryDefectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createSummaryDefectReturn" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="project" type="xsd:string" />
+            <xsd:element name="id" type="xsd:string" />
+            <xsd:element name="template" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTestRunResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createTestRunReturn" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTestRunWithTitle">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="project" type="xsd:string" />
+            <xsd:element name="id" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="template" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createTestRunWithTitleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createTestRunWithTitleReturn" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteAttachmentFromTestRecord">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="fileName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteAttachmentFromTestRecordResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="deleteAttachmentFromTestStep">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="testStepIndex" type="xsd:int" />
+            <xsd:element name="fileName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteAttachmentFromTestStepResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="deleteTestRunAttachment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="fileName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteTestRunAttachmentResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="executeTest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element maxOccurs="unbounded" name="testRecords" type="tns3:TestRecord" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="executeTestResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldKeys">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldKeysResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getDefinedTestRunCustomFieldKeysReturn" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldType">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectID" type="xsd:string" />
+            <xsd:element name="key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldTypeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getDefinedTestRunCustomFieldTypeReturn" type="tns4:CustomFieldType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldTypes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDefinedTestRunCustomFieldTypesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getDefinedTestRunCustomFieldTypesReturn" type="tns4:CustomFieldType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestCaseParameterNames">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testCaseUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestCaseParameterNamesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getTestCaseParameterNamesReturn" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestCaseRecords">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="testCaseUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestCaseRecordsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getTestCaseRecordsReturn" type="tns3:TestRecord" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestParametersLibrary">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestParametersLibraryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestParametersLibraryReturn" type="tns3:ParametersLibrary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunAttachment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="filename" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunAttachmentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunAttachmentReturn" type="tns4:TestRunAttachment" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunAttachments">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunAttachmentsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getTestRunAttachmentsReturn" type="tns4:TestRunAttachment" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="project" type="xsd:string" />
+            <xsd:element name="id" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunByIdReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByIdWithFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="project" type="xsd:string" />
+            <xsd:element name="id" type="xsd:string" />
+            <xsd:element maxOccurs="unbounded" name="keys" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByIdWithFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunByIdWithFieldsReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByUri">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByUriResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunByUriReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByUriWithFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uri" type="tns2:SubterraURI" />
+            <xsd:element maxOccurs="unbounded" name="keys" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunByUriWithFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunByUriWithFieldsReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunCustomFieldType">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunURI" type="tns2:SubterraURI" />
+            <xsd:element name="key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunCustomFieldTypeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestRunCustomFieldTypeReturn" type="tns4:CustomFieldType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunCustomFieldTypes">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunURI" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestRunCustomFieldTypesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getTestRunCustomFieldTypesReturn" type="tns4:CustomFieldType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestSteps">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestStepsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestStepsReturn" type="tns3:TestSteps" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestStepsConfiguration">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestStepsConfigurationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getTestStepsConfigurationReturn" type="tns4:EnumOption" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestsConfiguration">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="projectId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getTestsConfigurationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getTestsConfigurationReturn" type="tns3:TestsConfiguration" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getWikiContentForTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getWikiContentForTestRunResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getWikiContentForTestRunReturn" type="tns2:Text" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removeProjectFromProjectSpan">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uri" type="tns2:SubterraURI" />
+            <xsd:element name="projectId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removeProjectFromProjectSpanResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="searchTestRecords">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element name="limit" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRecordsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRecordsReturn" type="tns3:TestRecord" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplates">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunTemplatesReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesLimited">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element name="resultsLimit" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesLimitedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunTemplatesLimitedReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesWithFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element maxOccurs="unbounded" name="fields" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesWithFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunTemplatesWithFieldsReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesWithFieldsLimited">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element maxOccurs="unbounded" name="fields" type="xsd:string" />
+            <xsd:element name="resultsLimit" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunTemplatesWithFieldsLimitedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunTemplatesWithFieldsLimitedReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRuns">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunsReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsLimited">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element name="resultsLimit" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsLimitedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunsLimitedReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsWithFields">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element maxOccurs="unbounded" name="fields" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsWithFieldsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunsWithFieldsReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsWithFieldsLimited">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="query" type="xsd:string" />
+            <xsd:element name="sort" type="xsd:string" />
+            <xsd:element maxOccurs="unbounded" name="fields" type="xsd:string" />
+            <xsd:element name="resultsLimit" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="searchTestRunsWithFieldsLimitedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="searchTestRunsWithFieldsLimitedReturn" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="setTestSteps">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="workItemURI" type="tns2:SubterraURI" />
+            <xsd:element maxOccurs="unbounded" name="testSteps" type="tns3:TestStep" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="setTestStepsResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="updateSummaryDefect">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="source" type="xsd:string" />
+            <xsd:element name="totalFailures" type="xsd:int" />
+            <xsd:element name="totalErrors" type="xsd:int" />
+            <xsd:element name="totalTests" type="xsd:int" />
+            <xsd:element name="defectTemplateUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateSummaryDefectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="updateSummaryDefectReturn" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTestRecord">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="testResultId" type="xsd:string" />
+            <xsd:element name="testComment" type="tns2:Text" />
+            <xsd:element name="executedByUri" type="tns2:SubterraURI" />
+            <xsd:element name="executed" type="xsd:dateTime" />
+            <xsd:element name="duration" type="xsd:float" />
+            <xsd:element name="defectUri" type="tns2:SubterraURI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTestRecordResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="updateTestRecordAtIndex">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="index" type="xsd:int" />
+            <xsd:element name="testRecord" type="tns3:TestRecord" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTestRecordAtIndexResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="updateTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="content" type="tns3:TestRun" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTestRunResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="updateTestRunAttachment">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="fileName" type="xsd:string" />
+            <xsd:element name="title" type="xsd:string" />
+            <xsd:element name="data" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateTestRunAttachmentResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="updateWikiContentForTestRun">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="testRunUri" type="tns2:SubterraURI" />
+            <xsd:element name="content" type="tns2:Text" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateWikiContentForTestRunResponse">
+        <xsd:complexType />
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/types">
+      <xsd:import namespace="http://ws.polarion.com/TrackerWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/ProjectWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService" />
+      <xsd:simpleType name="SubterraURI">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:complexType name="Text">
+        <xsd:sequence>
+          <xsd:element name="type" type="xsd:string" />
+          <xsd:element name="content" type="xsd:string" />
+          <xsd:element name="contentLossy" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSubterraURI">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SubterraURI" type="tns2:SubterraURI" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfstring">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Location">
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfText">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Text" type="tns2:Text" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="property">
+        <xsd:sequence>
+          <xsd:element name="key" type="xsd:string" />
+          <xsd:element name="value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Properties">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="property" type="tns2:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="Currency">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/ProjectWebService-types">
+      <xsd:import namespace="http://ws.polarion.com/TrackerWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService" />
+      <xsd:complexType name="User">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="description" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="disabledNotifications" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="homePageContent" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="voteURIs" type="tns2:ArrayOfSubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="watcheURIs" type="tns2:ArrayOfSubterraURI" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="Project">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="active" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="description" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="finish" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="lead" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="location" type="tns2:Location" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="lockWorkRecordsDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="projectGroupURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="start" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="trackerPrefix" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/TrackerWebService-types">
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/ProjectWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService" />
+      <xsd:complexType name="TestRunAttachment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="author" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="fileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="length" type="xsd:long" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testRunURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="title" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="updated" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="url" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTestRunAttachment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestRunAttachment" type="tns4:TestRunAttachment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EnumOptionId">
+        <xsd:sequence>
+          <xsd:element name="id" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CustomFieldType">
+        <xsd:sequence>
+          <xsd:element name="defaultValue" nillable="true" type="xsd:anyType" />
+          <xsd:element name="dependsOn" nillable="true" type="xsd:string" />
+          <xsd:element name="description" nillable="true" type="xsd:string" />
+          <xsd:element name="id" nillable="true" type="xsd:string" />
+          <xsd:element name="multi" type="xsd:boolean" />
+          <xsd:element name="name" nillable="true" type="xsd:string" />
+          <xsd:element name="required" type="xsd:boolean" />
+          <xsd:element name="type" nillable="true" type="xsd:QName" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfEnumOptionId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="EnumOptionId" type="tns4:EnumOptionId" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestRunComment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="author" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="childCommentURIs" type="tns2:ArrayOfSubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="parentCommentURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="resolved" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="tags" type="tns4:ArrayOfEnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="text" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="title" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTestRunComment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestRunComment" type="tns4:TestRunComment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImportedComment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="author" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="initials" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModuleComment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="author" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="childCommentURIs" type="tns2:ArrayOfSubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="importedComment" type="tns4:ImportedComment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="parentCommentURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="referredWorkItemURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="resolved" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="tags" type="tns4:ArrayOfEnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="text" type="tns2:Text" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfModuleComment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ModuleComment" type="tns4:ModuleComment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LinkedOslcResource">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="label" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="role" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="uri" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLinkedOslcResource">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LinkedOslcResource" type="tns4:LinkedOslcResource" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Custom">
+        <xsd:sequence>
+          <xsd:element name="key" type="xsd:string" />
+          <xsd:element name="value" nillable="true" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCustom">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Custom" type="tns4:Custom" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Module">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="allowedWITypes" type="tns4:ArrayOfEnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="areLinksFromParentToChild" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="author" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="autoSuspect" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="branchedFrom" type="tns4:Module" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="branchedWithQuery" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="comments" type="tns4:ArrayOfModuleComment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="derivedFields" type="tns2:ArrayOfstring" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="derivedFromURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="derivedFromLinkRole" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="headingSidebarFields" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="homePageContent" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="linkedOslcResources" type="tns4:ArrayOfLinkedOslcResource" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="location" type="tns2:Location" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="moduleAbsoluteLocation" type="tns2:Location" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="moduleFolder" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="moduleLocation" type="tns2:Location" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="moduleName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="project" type="tns5:Project" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="status" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="structureLinkRole" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="title" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="type" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="updated" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="updatedBy" type="tns5:User" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="usesOutlineNumbering" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="variantURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="customFields" type="tns4:ArrayOfCustom" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="EnumOption">
+        <xsd:sequence>
+          <xsd:element name="default" type="xsd:boolean" />
+          <xsd:element name="enumId" nillable="true" type="xsd:string" />
+          <xsd:element name="hidden" type="xsd:boolean" />
+          <xsd:element name="id" nillable="true" type="xsd:string" />
+          <xsd:element name="name" nillable="true" type="xsd:string" />
+          <xsd:element name="phantom" type="xsd:boolean" />
+          <xsd:element name="properties" nillable="true" type="tns2:Properties" />
+          <xsd:element name="sequenceNumber" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PriorityOptionId">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns4:EnumOptionId">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPriorityOptionId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PriorityOptionId" type="tns4:PriorityOptionId" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PriorityOpt">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns4:EnumOption">
+            <xsd:sequence>
+              <xsd:element name="float" type="xsd:float" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="EnumCustomFieldType">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns4:CustomFieldType">
+            <xsd:sequence>
+              <xsd:element name="enumId" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/TestManagementWebService-types">
+      <xsd:import namespace="http://ws.polarion.com/TrackerWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/ProjectWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService" />
+      <xsd:complexType name="Parameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="value" type="xsd:anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Parameter" type="tns3:Parameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestStepResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="attachments" type="tns4:ArrayOfTestRunAttachment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="comment" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="result" type="tns4:EnumOptionId" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTestStepResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestStepResult" type="tns3:TestStepResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="attachments" type="tns4:ArrayOfTestRunAttachment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="comment" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="defectURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="duration" type="xsd:float" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="executed" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="executedByURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="iteration" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="result" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="signed" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testCaseURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testCaseRevision" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testParameters" type="tns3:ArrayOfParameter" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testStepResults" type="tns3:ArrayOfTestStepResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParameterDefinition">
+        <xsd:sequence>
+          <xsd:element name="name" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParametersLibrary">
+        <xsd:sequence>
+          <xsd:element name="parameterDefinitions" nillable="true" type="impl:ArrayOf_tns3_ParameterDefinition" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTestRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestRecord" type="tns3:TestRecord" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfParameterDefinition">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ParameterDefinition" type="tns3:ParameterDefinition" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParametersAndDefinitions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="parameterDefinitions" type="tns3:ArrayOfParameterDefinition" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="parameters" type="tns3:ArrayOfParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestRun">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="attachments" type="tns4:ArrayOfTestRunAttachment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="authorURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="comments" type="tns4:ArrayOfTestRunComment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="document" type="tns4:Module" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="finishedOn" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="groupId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="homePageContent" type="tns2:Text" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="idPrefix" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="isTemplate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="keepInHistory" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="location" type="tns2:Location" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="projectURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="projectSpanURIs" type="tns2:ArrayOfSubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="query" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="records" type="tns3:ArrayOfTestRecord" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="selectTestCasesBy" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="status" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="summaryDefectURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="templateURI" type="tns2:SubterraURI" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="testParameters" type="tns3:ParametersAndDefinitions" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="title" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="type" type="tns4:EnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="updated" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="useReportFromTemplate" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="customFields" type="tns4:ArrayOfCustom" />
+        </xsd:sequence>
+        <xsd:attribute name="uri" type="tns2:SubterraURI" />
+        <xsd:attribute name="unresolvable" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="TestStep">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="values" type="tns2:ArrayOfText" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTestStep">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestStep" type="tns3:TestStep" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestSteps">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="keys" type="tns4:ArrayOfEnumOptionId" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="steps" type="tns3:ArrayOfTestStep" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="property">
+        <xsd:sequence>
+          <xsd:element name="key" type="xsd:string" />
+          <xsd:element name="value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Properties">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="property" type="tns3:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TestsConfiguration">
+        <xsd:sequence>
+          <xsd:element name="defectAutoAssignementEnabled" type="xsd:boolean" />
+          <xsd:element name="defectReuseType" nillable="true" type="xsd:string" />
+          <xsd:element name="defectTemplate" nillable="true" type="xsd:string" />
+          <xsd:element name="defectToTestCaseLinkRoleId" nillable="true" type="xsd:string" />
+          <xsd:element name="defectWorkItemType" nillable="true" type="xsd:string" />
+          <xsd:element name="defectsProject" nillable="true" type="xsd:string" />
+          <xsd:element name="fieldsToCopyFromTestCaseToDefect" nillable="true" type="tns3:Properties" />
+          <xsd:element name="fieldsToCopyFromTestRunToLinkedDefect" nillable="true" type="tns3:Properties" />
+          <xsd:element name="fieldsToCopyFromTestRunToNewDefect" nillable="true" type="tns3:Properties" />
+          <xsd:element name="maxCreatedDefects" nillable="true" type="xsd:int" />
+          <xsd:element name="maxCreatedDefectsPercent" nillable="true" type="xsd:int" />
+          <xsd:element name="resultErrorEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="resultFailedEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="resultPassedEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="retestAllowed" type="xsd:boolean" />
+          <xsd:element name="statusErrorEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="statusFailedEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="statusOkEnumId" nillable="true" type="xsd:string" />
+          <xsd:element name="summaryDefectSeverity" nillable="true" type="xsd:string" />
+          <xsd:element name="testCaseIdCustomField" nillable="true" type="xsd:string" />
+          <xsd:element name="testCaseTemplate" nillable="true" type="xsd:string" />
+          <xsd:element name="testCaseTestCommentFieldId" nillable="true" type="xsd:string" />
+          <xsd:element name="testCaseTestResultFieldId" nillable="true" type="xsd:string" />
+          <xsd:element name="testCaseWorkItemType" nillable="true" type="xsd:string" />
+          <xsd:element name="testRunTemplate" nillable="true" type="xsd:string" />
+          <xsd:element name="testRunsGeneratedIdEnabled" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.polarion.com/TestManagementWebService">
+      <xsd:import namespace="http://ws.polarion.com/TrackerWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/TestManagementWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/ProjectWebService-types" />
+      <xsd:import namespace="http://ws.polarion.com/types" />
+      <xsd:complexType name="ArrayOf_tns3_ParameterDefinition">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns3:ParameterDefinition" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addProjectToProjectSpanRequest">
+    <wsdl:part name="parameters" element="tns1:addProjectToProjectSpan" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentFromTestRecordRequest">
+    <wsdl:part name="parameters" element="tns1:deleteAttachmentFromTestRecord" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByUriWithFieldsRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunByUriWithFields" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesWithFieldsLimitedResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesWithFieldsLimitedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByUriWithFieldsResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunByUriWithFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunAttachmentRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunAttachment" />
+  </wsdl:message>
+  <wsdl:message name="getTestParametersLibraryResponse">
+    <wsdl:part name="parameters" element="tns1:getTestParametersLibraryResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentFromTestRecordResponse">
+    <wsdl:part name="parameters" element="tns1:deleteAttachmentFromTestRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="createTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:createTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="addProjectToProjectSpanResponse">
+    <wsdl:part name="parameters" element="tns1:addProjectToProjectSpanResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplates" />
+  </wsdl:message>
+  <wsdl:message name="createSummaryDefectResponse">
+    <wsdl:part name="parameters" element="tns1:createSummaryDefectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByIdRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunById" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesWithFieldsLimitedRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesWithFieldsLimited" />
+  </wsdl:message>
+  <wsdl:message name="addTestRecordToTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:addTestRecordToTestRun" />
+  </wsdl:message>
+  <wsdl:message name="addTestRecordToTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:addTestRecordToTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRuns" />
+  </wsdl:message>
+  <wsdl:message name="updateSummaryDefectRequest">
+    <wsdl:part name="parameters" element="tns1:updateSummaryDefect" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRunAttachmentResponse">
+    <wsdl:part name="parameters" element="tns1:updateTestRunAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunCustomFieldTypeResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunCustomFieldTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesLimitedResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesLimitedResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsWithFieldsLimitedResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsWithFieldsLimitedResponse" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestRun" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRecordResponse">
+    <wsdl:part name="parameters" element="tns1:updateTestRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestRecordResponse">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunAttachmentResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWikiContentForTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:getWikiContentForTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldKeysRequest">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldKeys" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRecordAtIndexRequest">
+    <wsdl:part name="parameters" element="tns1:updateTestRecordAtIndex" />
+  </wsdl:message>
+  <wsdl:message name="createTestRunWithTitleRequest">
+    <wsdl:part name="parameters" element="tns1:createTestRunWithTitle" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentFromTestStepResponse">
+    <wsdl:part name="parameters" element="tns1:deleteAttachmentFromTestStepResponse" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestStepRequest">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestStep" />
+  </wsdl:message>
+  <wsdl:message name="createTestRunWithTitleResponse">
+    <wsdl:part name="parameters" element="tns1:createTestRunWithTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="executeTestResponse">
+    <wsdl:part name="parameters" element="tns1:executeTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestCaseParameterNamesResponse">
+    <wsdl:part name="parameters" element="tns1:getTestCaseParameterNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldTypeRequest">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldType" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRecordsRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRecords" />
+  </wsdl:message>
+  <wsdl:message name="getTestCaseParameterNamesRequest">
+    <wsdl:part name="parameters" element="tns1:getTestCaseParameterNames" />
+  </wsdl:message>
+  <wsdl:message name="getTestsConfigurationResponse">
+    <wsdl:part name="parameters" element="tns1:getTestsConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestStepsConfigurationResponse">
+    <wsdl:part name="parameters" element="tns1:getTestStepsConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWikiContentForTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:getWikiContentForTestRun" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByIdWithFieldsRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunByIdWithFields" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesWithFieldsResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesWithFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestStepsResponse">
+    <wsdl:part name="parameters" element="tns1:getTestStepsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestStepsConfigurationRequest">
+    <wsdl:part name="parameters" element="tns1:getTestStepsConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsLimitedRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsLimited" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsLimitedResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsLimitedResponse" />
+  </wsdl:message>
+  <wsdl:message name="createSummaryDefectRequest">
+    <wsdl:part name="parameters" element="tns1:createSummaryDefect" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesLimitedRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesLimited" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldTypeResponse">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsWithFieldsResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsWithFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestCaseRecordsResponse">
+    <wsdl:part name="parameters" element="tns1:getTestCaseRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunCustomFieldTypesRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunCustomFieldTypes" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsWithFieldsLimitedRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsWithFieldsLimited" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByUriResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunByUriResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunCustomFieldTypeRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunCustomFieldType" />
+  </wsdl:message>
+  <wsdl:message name="updateWikiContentForTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:updateWikiContentForTestRun" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestCaseRecordsRequest">
+    <wsdl:part name="parameters" element="tns1:getTestCaseRecords" />
+  </wsdl:message>
+  <wsdl:message name="deleteTestRunAttachmentResponse">
+    <wsdl:part name="parameters" element="tns1:deleteTestRunAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunCustomFieldTypesResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunCustomFieldTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateSummaryDefectResponse">
+    <wsdl:part name="parameters" element="tns1:updateSummaryDefectResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRecordRequest">
+    <wsdl:part name="parameters" element="tns1:updateTestRecord" />
+  </wsdl:message>
+  <wsdl:message name="addTestRecordRequest">
+    <wsdl:part name="parameters" element="tns1:addTestRecord" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunAttachmentsRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunAttachments" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunsWithFieldsRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunsWithFields" />
+  </wsdl:message>
+  <wsdl:message name="executeTestRequest">
+    <wsdl:part name="parameters" element="tns1:executeTest" />
+  </wsdl:message>
+  <wsdl:message name="setTestStepsResponse">
+    <wsdl:part name="parameters" element="tns1:setTestStepsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByUriRequest">
+    <wsdl:part name="parameters" element="tns1:getTestRunByUri" />
+  </wsdl:message>
+  <wsdl:message name="createTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:createTestRun" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRecordsResponse">
+    <wsdl:part name="parameters" element="tns1:searchTestRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRecordAtIndexResponse">
+    <wsdl:part name="parameters" element="tns1:updateTestRecordAtIndexResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestParametersLibraryRequest">
+    <wsdl:part name="parameters" element="tns1:getTestParametersLibrary" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByIdResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunAttachmentsResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunAttachmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestStepResponse">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestStepResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldTypesRequest">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldTypes" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRunRequest">
+    <wsdl:part name="parameters" element="tns1:updateTestRun" />
+  </wsdl:message>
+  <wsdl:message name="removeProjectFromProjectSpanRequest">
+    <wsdl:part name="parameters" element="tns1:removeProjectFromProjectSpan" />
+  </wsdl:message>
+  <wsdl:message name="addAttachmentToTestRecordRequest">
+    <wsdl:part name="parameters" element="tns1:addAttachmentToTestRecord" />
+  </wsdl:message>
+  <wsdl:message name="deleteTestRunAttachmentRequest">
+    <wsdl:part name="parameters" element="tns1:deleteTestRunAttachment" />
+  </wsdl:message>
+  <wsdl:message name="getTestStepsRequest">
+    <wsdl:part name="parameters" element="tns1:getTestSteps" />
+  </wsdl:message>
+  <wsdl:message name="searchTestRunTemplatesWithFieldsRequest">
+    <wsdl:part name="parameters" element="tns1:searchTestRunTemplatesWithFields" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:updateTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldKeysResponse">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldKeysResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteAttachmentFromTestStepRequest">
+    <wsdl:part name="parameters" element="tns1:deleteAttachmentFromTestStep" />
+  </wsdl:message>
+  <wsdl:message name="getDefinedTestRunCustomFieldTypesResponse">
+    <wsdl:part name="parameters" element="tns1:getDefinedTestRunCustomFieldTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestsConfigurationRequest">
+    <wsdl:part name="parameters" element="tns1:getTestsConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="updateTestRunAttachmentRequest">
+    <wsdl:part name="parameters" element="tns1:updateTestRunAttachment" />
+  </wsdl:message>
+  <wsdl:message name="removeProjectFromProjectSpanResponse">
+    <wsdl:part name="parameters" element="tns1:removeProjectFromProjectSpanResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateWikiContentForTestRunResponse">
+    <wsdl:part name="parameters" element="tns1:updateWikiContentForTestRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="setTestStepsRequest">
+    <wsdl:part name="parameters" element="tns1:setTestSteps" />
+  </wsdl:message>
+  <wsdl:message name="addTestRecordResponse">
+    <wsdl:part name="parameters" element="tns1:addTestRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTestRunByIdWithFieldsResponse">
+    <wsdl:part name="parameters" element="tns1:getTestRunByIdWithFieldsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TestManagementWebService">
+    <wsdl:operation name="addAttachmentToTestRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds a new Attachment to the specified Test Record. 
+The created attachment can have a different file name than the one given.
+@param testRunUri The testRunUri URI of the Test Run that contains the target Test Record.
+@param index The index of the Test Record in the Test Run.
+@param fileName The Attachment's file name.
+@param title The Attachment's title.
+@param data The Attachment's data.
+@since 3.7.3   </wsdl:documentation>
+      <wsdl:input name="addAttachmentToTestRecordRequest" message="impl:addAttachmentToTestRecordRequest" />
+      <wsdl:output name="addAttachmentToTestRecordResponse" message="impl:addAttachmentToTestRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addAttachmentToTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds a new Attachment to the given Test Run or Test Run Template. 
+@param testRunUri The URI of the target Test Run or Test Run Template.
+@param fileName The Attachment's file name.
+@param title The Attachment's title.
+@param data The Attachment's data.
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="addAttachmentToTestRunRequest" message="impl:addAttachmentToTestRunRequest" />
+      <wsdl:output name="addAttachmentToTestRunResponse" message="impl:addAttachmentToTestRunResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addAttachmentToTestStep">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds a new Attachment to the specified Test Step. 
+The created Attachment can have a different file name from the given one.
+@param testRunUri The testRunUri URI of the Test Run that contains the target Test Step.
+@param index The index of the Test Record in the Test Run that contains the target Test Step.
+@param testStepIndex The index of the Test Step in the Test Record.
+@param fileName The attachment's file name.
+@param title The attachment's title.
+@param data The attachment's data.
+@since 3.7.3   </wsdl:documentation>
+      <wsdl:input name="addAttachmentToTestStepRequest" message="impl:addAttachmentToTestStepRequest" />
+      <wsdl:output name="addAttachmentToTestStepResponse" message="impl:addAttachmentToTestStepResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProjectToProjectSpan">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds a specified Project to the Project Span of the Test Run.
+@param uri The URI of the Test Run. (Not null.)
+@param projectId The Project Id of the Project to be added. (Not null.)
+@since 3.10.1   </wsdl:documentation>
+      <wsdl:input name="addProjectToProjectSpanRequest" message="impl:addProjectToProjectSpanRequest" />
+      <wsdl:output name="addProjectToProjectSpanResponse" message="impl:addProjectToProjectSpanResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addTestRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Add a Test Record to a Test Run.
+@param testRunUri The URI of the Test Run that the Test Record will be added to.
+@param testCaseUri The URI of the executed Test Case.
+@param testResultId The Id of the Test Result. Can be {@code null}.
+@param testComment The comment to be tracked with the Test Record. Can be {@code null}.
+@param executedByUri The URI of the user to be used as the Author of the Test Record. Can be {@code null}.
+@param executed date When the Test Case has been executed. Can be {@code null}.
+@param duration The time it takes to execute the Test Case. A negative value is treated as {@code null}.
+@param defectUri The URI of the Defect Work Item to be linked from created record. Can be {@code null}. 
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="addTestRecordRequest" message="impl:addTestRecordRequest" />
+      <wsdl:output name="addTestRecordResponse" message="impl:addTestRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addTestRecordToTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds the Test Record to the Test Run. If the Test Record to add 
+has a result but does not have the Test Case revision filled in, the added Test Record will automatically 
+set the Test Case revision to the current revision of the Test Case. 
+@param testRunUri The URI of the target Test Run. 
+@param testRecord The Test Record to add.
+@since 3.7.0   </wsdl:documentation>
+      <wsdl:input name="addTestRecordToTestRunRequest" message="impl:addTestRecordToTestRunRequest" />
+      <wsdl:output name="addTestRecordToTestRunResponse" message="impl:addTestRecordToTestRunResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSummaryDefect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Create or return an existing Summary Defect Work Item of a Test Run.
+@param testRunUri The URI of the Test Run to update the summary defect for.
+@param defectTemplateUri The URI of the Defect Work Item template to be used.  The configured template will be used if {@code null}.
+@return The URI of the created or existing Summary Defect Work Item.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="createSummaryDefectRequest" message="impl:createSummaryDefectRequest" />
+      <wsdl:output name="createSummaryDefectResponse" message="impl:createSummaryDefectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Create a new Test Run.
+@param project The Project the Test Run will be created in. 
+@param id The Id of the Test Run to be created.
+@param template The template used to create the Test Run.
+@return The URI of the created Test Run.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="createTestRunRequest" message="impl:createTestRunRequest" />
+      <wsdl:output name="createTestRunResponse" message="impl:createTestRunResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createTestRunWithTitle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Create a new Test Run.
+@param project The Project the Test Run will be created in. 
+@param id The Id of the Test Run to be created in.
+@param title The title of the Test Run to be created. The template title is used when null.
+@param template The template used to create the Test Run.
+@return The URI of the created Test Run.
+@since 3.10.1   </wsdl:documentation>
+      <wsdl:input name="createTestRunWithTitleRequest" message="impl:createTestRunWithTitleRequest" />
+      <wsdl:output name="createTestRunWithTitleResponse" message="impl:createTestRunWithTitleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentFromTestRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Deletes the Test Record Attachment given by the Test Run, the index of the Test Record and the Attachment's file name.
+@param testRunUri The testRunUri URI of the Test Run that contains the target Test Record.
+@param index The index of the Test Record in the Test Run.
+@param fileName The Attachment's file name.
+@since 3.7.3   </wsdl:documentation>
+      <wsdl:input name="deleteAttachmentFromTestRecordRequest" message="impl:deleteAttachmentFromTestRecordRequest" />
+      <wsdl:output name="deleteAttachmentFromTestRecordResponse" message="impl:deleteAttachmentFromTestRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentFromTestStep">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Deletes the Test Step Attachment given by the Test Run, the index of Test Records, the index of Test Steps and the Attachment's file name.
+@param testRunUri The testRunUri URI of the Test Run that contains the target Test Record.
+@param index The index of the Test Record in the Test Run.
+@param testStepIndex The index of the Test Step in the Test Record.
+@param fileName The attachment's file name.
+@since 3.7.3   </wsdl:documentation>
+      <wsdl:input name="deleteAttachmentFromTestStepRequest" message="impl:deleteAttachmentFromTestStepRequest" />
+      <wsdl:output name="deleteAttachmentFromTestStepResponse" message="impl:deleteAttachmentFromTestStepResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTestRunAttachment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Deletes the Test Run Attachment matching the Test Run and Attachment's file name.
+This Method is applicable for Test Run Templates. 
+@param testRunUri The URI of the Test Run or Test Run Template containing the target Attachment. (Not null.)
+@param fileName The file name of Attachment to delete.
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="deleteTestRunAttachmentRequest" message="impl:deleteTestRunAttachmentRequest" />
+      <wsdl:output name="deleteTestRunAttachmentResponse" message="impl:deleteTestRunAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="executeTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Executes Test Cases given by the Test Records within a specified Test Run. This method differs from others within this web service because it can execute multiple Test Cases in a single call.
+It can also create a defect if a Test Case fails. (If configured to do so on the Polarion server.)  
+It replaces having to call multiple web services like addTestRecord(...) or updateTestRecord(...) and the manual creation of a defect.
+Test parameters in the supplied Test Records override any parameters contained within the original planned test records and the Test Run itself.
+If a required parameter is supplied with an empty value, the Method will fail.
+It is not necessary to fill in all the parameters, only those that do not have a value set in the Test Run or planned Test Case, 
+or those that should be changed.
+@param testRunUri The URI of the Test Run. (Not null.)
+@param testRecords An array containing Test Records for executed Test Cases. Submitted Test Records are automatically updated. For example, when a Test Case is planned, paused or created. (Not null.)  
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="executeTestRequest" message="impl:executeTestRequest" />
+      <wsdl:output name="executeTestResponse" message="impl:executeTestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldKeys">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets all custom field keys defined for a Test Run.
+@param projectID The Id of the Project. (If null, the Global context is used.)
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="getDefinedTestRunCustomFieldKeysRequest" message="impl:getDefinedTestRunCustomFieldKeysRequest" />
+      <wsdl:output name="getDefinedTestRunCustomFieldKeysResponse" message="impl:getDefinedTestRunCustomFieldKeysResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets a custom field definition for a Test Run.
+@param projectID The ID of the Project. (If null, the Global context is used.)
+@param key The custom field's key. (Not null.)
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="getDefinedTestRunCustomFieldTypeRequest" message="impl:getDefinedTestRunCustomFieldTypeRequest" />
+      <wsdl:output name="getDefinedTestRunCustomFieldTypeResponse" message="impl:getDefinedTestRunCustomFieldTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets all custom field definitions for a Test Run.
+@param projectID The Id of the Project. (If null, the Global context is used.)
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="getDefinedTestRunCustomFieldTypesRequest" message="impl:getDefinedTestRunCustomFieldTypesRequest" />
+      <wsdl:output name="getDefinedTestRunCustomFieldTypesResponse" message="impl:getDefinedTestRunCustomFieldTypesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestCaseParameterNames">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns an array of test parameter names used in the Test Case.
+@param testCaseUri The URI of the Test Case. (Not null).
+@since 3.17.0   </wsdl:documentation>
+      <wsdl:input name="getTestCaseParameterNamesRequest" message="impl:getTestCaseParameterNamesRequest" />
+      <wsdl:output name="getTestCaseParameterNamesResponse" message="impl:getTestCaseParameterNamesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestCaseRecords">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns the Test Records of a particular Test Case in a Test Run.
+@param testRunUri The URI of the Test Run. (Not null).  		
+@param testCaseUri The URI of the Test Case (Mot null).
+@since 3.17.0   </wsdl:documentation>
+      <wsdl:input name="getTestCaseRecordsRequest" message="impl:getTestCaseRecordsRequest" />
+      <wsdl:output name="getTestCaseRecordsResponse" message="impl:getTestCaseRecordsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestParametersLibrary">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns the Project level test parameter library.
+@param projectId The Id of the Project to get the test parameter library for. (Not null.)
+@since 3.17.0   </wsdl:documentation>
+      <wsdl:input name="getTestParametersLibraryRequest" message="impl:getTestParametersLibraryRequest" />
+      <wsdl:output name="getTestParametersLibraryResponse" message="impl:getTestParametersLibraryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunAttachment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns an Attachment of a given Test Run or Test Run Template. 
+@param testRunUri The URI of the target Test Run or Test Run Template.
+@return the attachment
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="getTestRunAttachmentRequest" message="impl:getTestRunAttachmentRequest" />
+      <wsdl:output name="getTestRunAttachmentResponse" message="impl:getTestRunAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunAttachments">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns the Attachments of a given Test Run or Test Run Template. 
+@param testRunUri The URI of the target Test Run or Test Run Template.
+@return attachments
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="getTestRunAttachmentsRequest" message="impl:getTestRunAttachmentsRequest" />
+      <wsdl:output name="getTestRunAttachmentsResponse" message="impl:getTestRunAttachmentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns a specific Test Run.
+@param project The Id of the Project that contains the Test Run to load.
+@param id The Id of the Test Run to load.
+@return the Test Run.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="getTestRunByIdRequest" message="impl:getTestRunByIdRequest" />
+      <wsdl:output name="getTestRunByIdResponse" message="impl:getTestRunByIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByIdWithFields">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns a specific Test Run that only contains values for the specified list of fields.
+@param project The Id of the Project that contains the Test Run to load. (Not null.)
+@param id The Id of the Test Run to load. (Not null.)
+@param keys The keys of Test Run properties that should be copied from the Test Run. (Not null.)
+@return The Test Run. (Not null.)
+@since 3.17.0   </wsdl:documentation>
+      <wsdl:input name="getTestRunByIdWithFieldsRequest" message="impl:getTestRunByIdWithFieldsRequest" />
+      <wsdl:output name="getTestRunByIdWithFieldsResponse" message="impl:getTestRunByIdWithFieldsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByUri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns a specific Test Run.
+@param uri The URI of the Test Run to load.
+@return The Test Run.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="getTestRunByUriRequest" message="impl:getTestRunByUriRequest" />
+      <wsdl:output name="getTestRunByUriResponse" message="impl:getTestRunByUriResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByUriWithFields">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns a specific Test Run that only contains values for the specified list of fields.
+@param uri The URI of the Test Run to load. (Not null.)
+@param keys The keys of the Test Run properties that should be copied from the Test Run. (Not null.)
+@return the Test Run. (not null)
+@since 3.17.0   </wsdl:documentation>
+      <wsdl:input name="getTestRunByUriWithFieldsRequest" message="impl:getTestRunByUriWithFieldsRequest" />
+      <wsdl:output name="getTestRunByUriWithFieldsResponse" message="impl:getTestRunByUriWithFieldsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunCustomFieldType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets the custom field definitions for a specific Test Run.
+@param testRunURI The URI of the Test Run. (Not null.)
+@param key The custom field's key. (Not null.)
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="getTestRunCustomFieldTypeRequest" message="impl:getTestRunCustomFieldTypeRequest" />
+      <wsdl:output name="getTestRunCustomFieldTypeResponse" message="impl:getTestRunCustomFieldTypeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunCustomFieldTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets all custom field definitions for a specific Test Run.
+@param testRunURI The URI of the Test Run. (Not null.)
+@since 3.10.3   </wsdl:documentation>
+      <wsdl:input name="getTestRunCustomFieldTypesRequest" message="impl:getTestRunCustomFieldTypesRequest" />
+      <wsdl:output name="getTestRunCustomFieldTypesResponse" message="impl:getTestRunCustomFieldTypesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestSteps">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets the Test Steps of the Work Item with the URI.
+@param uri The URI of the Work Item to get.
+@return The Test Steps of the Work Item with the given URI.
+@since 3.7.0   </wsdl:documentation>
+      <wsdl:input name="getTestStepsRequest" message="impl:getTestStepsRequest" />
+      <wsdl:output name="getTestStepsResponse" message="impl:getTestStepsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestStepsConfiguration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Gets the Test Steps custom field configuration. 
+@param projectId The Id of the Project containing the Test Step configuration. 
+@return An EnumOption array containing the configuration for each Test Step column. 
+@since 3.7.0   </wsdl:documentation>
+      <wsdl:input name="getTestStepsConfigurationRequest" message="impl:getTestStepsConfigurationRequest" />
+      <wsdl:output name="getTestStepsConfigurationResponse" message="impl:getTestStepsConfigurationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTestsConfiguration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Get the test management configuration for a specific Project.
+@param projectId The Id of the Project to get the test configuration for.
+@return The configuration.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="getTestsConfigurationRequest" message="impl:getTestsConfigurationRequest" />
+      <wsdl:output name="getTestsConfigurationResponse" message="impl:getTestsConfigurationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getWikiContentForTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Returns the Wiki Page content of Test Run or Test Run Template. 
+@param testRunUri The URI of the target Test Run or Test Run Template.
+@return The Wiki Page content of Test Run or Test Run Template.  
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="getWikiContentForTestRunRequest" message="impl:getWikiContentForTestRunRequest" />
+      <wsdl:output name="getWikiContentForTestRunResponse" message="impl:getWikiContentForTestRunResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="removeProjectFromProjectSpan">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Removes the specified Project from the Project Span of the Test Run.
+@param uri The URI of the Test Run. (Not null.)
+@param projectId The Project Id of the Project to be removed. (Not null).
+@since 3.10.1   </wsdl:documentation>
+      <wsdl:input name="removeProjectFromProjectSpanRequest" message="impl:removeProjectFromProjectSpanRequest" />
+      <wsdl:output name="removeProjectFromProjectSpanResponse" message="impl:removeProjectFromProjectSpanResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRecords">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search for Test Records.
+@param query The query used to find Test Records.
+@param sort The sort field.
+@param limit The maximum number of records to be returned. (-1 for unlimited.) 
+@return the found test records.
+@since 3.6.0
+@deprecated since 3.8.1 with no direct replacement.   </wsdl:documentation>
+      <wsdl:input name="searchTestRecordsRequest" message="impl:searchTestRecordsRequest" />
+      <wsdl:output name="searchTestRecordsResponse" message="impl:searchTestRecordsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplates">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Run templates.
+@param query The query used to find test run templates.
+@param sort The field used to sort the result.
+@return The found Test Run templates.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunTemplatesRequest" message="impl:searchTestRunTemplatesRequest" />
+      <wsdl:output name="searchTestRunTemplatesResponse" message="impl:searchTestRunTemplatesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesLimited">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Run templates.
+@param query The query used to find Test Run templates.
+@param sort The field used to sort the result.
+@param resultsLimit The maximum number of records to be returned. (-1 for unlimited.) 
+@return The found Test Run templates.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunTemplatesLimitedRequest" message="impl:searchTestRunTemplatesLimitedRequest" />
+      <wsdl:output name="searchTestRunTemplatesLimitedResponse" message="impl:searchTestRunTemplatesLimitedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesWithFields">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Run templates.
+@param query The query used to find Test Run templates.
+@param sort The field used to sort the result.
+@param fields The Test Run fields that should be initialized. All other fields will be {@code null}.
+@return The found Test Run templates.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunTemplatesWithFieldsRequest" message="impl:searchTestRunTemplatesWithFieldsRequest" />
+      <wsdl:output name="searchTestRunTemplatesWithFieldsResponse" message="impl:searchTestRunTemplatesWithFieldsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesWithFieldsLimited">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Run templates.
+@param query The query used to find Test Run templates.
+@param sort The field used to sort the result.
+@param fields The Test Run fields that should be initialized. All other fields will be {@code null}.
+@param resultsLimit The maximum number of records to be returned. (-1 for unlimited.) 
+@return The found Test Run templates.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunTemplatesWithFieldsLimitedRequest" message="impl:searchTestRunTemplatesWithFieldsLimitedRequest" />
+      <wsdl:output name="searchTestRunTemplatesWithFieldsLimitedResponse" message="impl:searchTestRunTemplatesWithFieldsLimitedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRuns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Runs.
+@param query The query used to find Test Runs.
+@param sort The field used to sort the result.
+@return The found Test Runs.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunsRequest" message="impl:searchTestRunsRequest" />
+      <wsdl:output name="searchTestRunsResponse" message="impl:searchTestRunsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsLimited">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search test runs.
+@param query The query used to find Test Runs.
+@param sort The field used to sort the result.
+@param resultsLimit The maximum number of records to be returned. (-1 for unlimited.) 
+@return The found test runs.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunsLimitedRequest" message="impl:searchTestRunsLimitedRequest" />
+      <wsdl:output name="searchTestRunsLimitedResponse" message="impl:searchTestRunsLimitedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsWithFields">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Runs.
+@param query The query used to find Test Runs.
+@param sort The field used to sort the result.
+@param fields The Test Run fields that should be initialized. All other fields will be {@code null}.
+@return The found Test Runs.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunsWithFieldsRequest" message="impl:searchTestRunsWithFieldsRequest" />
+      <wsdl:output name="searchTestRunsWithFieldsResponse" message="impl:searchTestRunsWithFieldsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsWithFieldsLimited">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Search Test Runs.
+@param query The query used to find Test Runs.
+@param sort The field used to sort the result.
+@param fields The Test Run fields that should be initialized. All other fields will be {@code null}.
+@param resultsLimit The maximum number of records to be returned. (-1 for unlimited.) 
+@return The found Test Runs.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="searchTestRunsWithFieldsLimitedRequest" message="impl:searchTestRunsWithFieldsLimitedRequest" />
+      <wsdl:output name="searchTestRunsWithFieldsLimitedResponse" message="impl:searchTestRunsWithFieldsLimitedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setTestSteps">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Adds the Test Steps to the Work Item with the given URI. (The add operation). 
+If the Work Item already has Test Steps, they will be completely replaced. (The update operation). 
+If the testSteps parameter is {@code null}, the content of the Test Steps field will be emptied. (The delete operation).
+@param workItemURI The SubterraURI of the item to set the Work Item.
+@param testSteps An array containing an entry for each step.
+@since 3.7.0   </wsdl:documentation>
+      <wsdl:input name="setTestStepsRequest" message="impl:setTestStepsRequest" />
+      <wsdl:output name="setTestStepsResponse" message="impl:setTestStepsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSummaryDefect">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Create or update the Summary Defect Work Item of a Test Run.
+@param testRunUri The URI of the Test Run to update the Summary Defect for.
+@param source The source of the Summary Defect, used to generate the Description content.
+@param totalFailures The amount of total failures in the Test Run. (Used to generate the Description content.)
+@param totalErrors The total number of errors in the Test Run. (Used to generate the Description content.)
+@param totalTests The total number of tests in the Test Run. (Used to generate the Description content.)
+@param defectTemplateUri The URI of the Defect Work Item template to be used. The configured template will be used if {@code null}.
+@return The URI of the created Summary Defect Work Item.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="updateSummaryDefectRequest" message="impl:updateSummaryDefectRequest" />
+      <wsdl:output name="updateSummaryDefectResponse" message="impl:updateSummaryDefectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Update a Test Record.
+@param testRunUri The URI of the Test Run that the Test Record will be updated for.
+@param index The index of the Test Record in the list of all executed Test Run Test Records.
+@param testResultId The Id of the test result. Can be {@code null}.
+@param testComment The comment to be tracked with the Test Record. Can be {@code null}.
+@param executedByUri The URI of the user to be used as the Author of the Test Record. Can be {@code null}.
+@param executed date When the Test Case was executed. Can be {@code null}.
+@param duration The time it takes to execute the Test Case. A negative value is treated as {@code null}.
+@param defectUri The URI of the Defect Work Item to be linked from the created record. Can be {@code null}. 
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="updateTestRecordRequest" message="impl:updateTestRecordRequest" />
+      <wsdl:output name="updateTestRecordResponse" message="impl:updateTestRecordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRecordAtIndex">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Updates or removes the Test Record at a given index in the Test Run. 
+Test parameters should not be entered in the supplied Test Record
+because they are ignored by this method. (This may change in the future.)          
+@param testRunUri The URI of the target Test Run. (Not null). 
+@param index The index of the Test Record in the list of all Test Run Test Records.
+@param testRecord The new Test Record content, or null to remove the Test Record.
+@since 3.7.0   </wsdl:documentation>
+      <wsdl:input name="updateTestRecordAtIndexRequest" message="impl:updateTestRecordAtIndexRequest" />
+      <wsdl:output name="updateTestRecordAtIndexResponse" message="impl:updateTestRecordAtIndexResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Update a Test Run.
+@param content The new Test Run content. The URI of the content must be set, otherwise the call will fail.
+@since 3.6.0   </wsdl:documentation>
+      <wsdl:input name="updateTestRunRequest" message="impl:updateTestRunRequest" />
+      <wsdl:output name="updateTestRunResponse" message="impl:updateTestRunResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRunAttachment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Updates the Test Run Attachment matching the Test Run and Attachment's file name.
+This Method is applicable for Test Run Templates.
+@param testRunUri The URI of the Test Run or Test Run Template containing the target Attachment.
+@param fileName The file name of the Attachment to update.
+@param title The new attachment's title. (If null, the attachment's title is not updated.)
+@param data The new attachment's data. (If null, the attachment's data is not updated.)
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="updateTestRunAttachmentRequest" message="impl:updateTestRunAttachmentRequest" />
+      <wsdl:output name="updateTestRunAttachmentResponse" message="impl:updateTestRunAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateWikiContentForTestRun">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+Updates the Wiki Page content of a given Test Run or Test Run Template. 
+@param testRunUri The URI of the Test Run or Test Run Template.
+@param content The new Wiki Page content of the Test Run or Test Run Template.  
+@since 3.7.1   </wsdl:documentation>
+      <wsdl:input name="updateWikiContentForTestRunRequest" message="impl:updateWikiContentForTestRunRequest" />
+      <wsdl:output name="updateWikiContentForTestRunResponse" message="impl:updateWikiContentForTestRunResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TestManagementWebServiceSoapBinding" type="impl:TestManagementWebService">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addAttachmentToTestRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addAttachmentToTestRecordRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addAttachmentToTestRecordResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAttachmentToTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addAttachmentToTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addAttachmentToTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAttachmentToTestStep">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addAttachmentToTestStepRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addAttachmentToTestStepResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProjectToProjectSpan">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addProjectToProjectSpanRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addProjectToProjectSpanResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTestRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addTestRecordRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addTestRecordResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTestRecordToTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addTestRecordToTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addTestRecordToTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSummaryDefect">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createSummaryDefectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createSummaryDefectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTestRunWithTitle">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createTestRunWithTitleRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createTestRunWithTitleResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentFromTestRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteAttachmentFromTestRecordRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAttachmentFromTestRecordResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentFromTestStep">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteAttachmentFromTestStepRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteAttachmentFromTestStepResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTestRunAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteTestRunAttachmentRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteTestRunAttachmentResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="executeTest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="executeTestRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="executeTestResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldKeys">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDefinedTestRunCustomFieldKeysRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDefinedTestRunCustomFieldKeysResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldType">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDefinedTestRunCustomFieldTypeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDefinedTestRunCustomFieldTypeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDefinedTestRunCustomFieldTypes">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDefinedTestRunCustomFieldTypesRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDefinedTestRunCustomFieldTypesResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestCaseParameterNames">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestCaseParameterNamesRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestCaseParameterNamesResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestCaseRecords">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestCaseRecordsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestCaseRecordsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestParametersLibrary">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestParametersLibraryRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestParametersLibraryResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunAttachmentRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunAttachmentResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunAttachments">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunAttachmentsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunAttachmentsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunById">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunByIdRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunByIdResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByIdWithFields">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunByIdWithFieldsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunByIdWithFieldsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByUri">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunByUriRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunByUriResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunByUriWithFields">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunByUriWithFieldsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunByUriWithFieldsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunCustomFieldType">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunCustomFieldTypeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunCustomFieldTypeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestRunCustomFieldTypes">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestRunCustomFieldTypesRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestRunCustomFieldTypesResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestSteps">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestStepsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestStepsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestStepsConfiguration">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestStepsConfigurationRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestStepsConfigurationResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTestsConfiguration">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getTestsConfigurationRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTestsConfigurationResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWikiContentForTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getWikiContentForTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getWikiContentForTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProjectFromProjectSpan">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="removeProjectFromProjectSpanRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removeProjectFromProjectSpanResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRecords">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRecordsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRecordsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplates">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunTemplatesRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunTemplatesResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesLimited">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunTemplatesLimitedRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunTemplatesLimitedResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesWithFields">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunTemplatesWithFieldsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunTemplatesWithFieldsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunTemplatesWithFieldsLimited">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunTemplatesWithFieldsLimitedRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunTemplatesWithFieldsLimitedResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRuns">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsLimited">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunsLimitedRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunsLimitedResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsWithFields">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunsWithFieldsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunsWithFieldsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchTestRunsWithFieldsLimited">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="searchTestRunsWithFieldsLimitedRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="searchTestRunsWithFieldsLimitedResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTestSteps">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="setTestStepsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setTestStepsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSummaryDefect">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateSummaryDefectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateSummaryDefectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRecord">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateTestRecordRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTestRecordResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRecordAtIndex">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateTestRecordAtIndexRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTestRecordAtIndexResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTestRunAttachment">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateTestRunAttachmentRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateTestRunAttachmentResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateWikiContentForTestRun">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateWikiContentForTestRunRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateWikiContentForTestRunResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestManagementWebServiceService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+      This service provides build related functionality.
+		  </wsdl:documentation>
+    <wsdl:port name="TestManagementWebService" binding="impl:TestManagementWebServiceSoapBinding">
+      <wsdlsoap:address location="https://zkwsvpol01/polarion/ws/services/TestManagementWebService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

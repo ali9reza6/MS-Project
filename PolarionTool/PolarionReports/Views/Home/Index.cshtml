@@ -1,0 +1,72 @@
+﻿@using PolarionReports.Custom_Helpers
+@model PolarionReports.Models.HomeView
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Project TreeView:</h3>
+        <div id="Projectree" style="overflow-y:scroll; ">
+            <div>
+                @Html.EJS().TreeView("ProjectTree").NodeSelected("OnNodeSelected").Fields(ViewBag.fields).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h2>Project Dashboard</h2>
+        <!-- div d1 für Testausgaben -->
+        <div id="d1"></div>
+        <!-- div d2 Output von Navigation View -->
+        <div id="d2"></div>
+        <hr />
+
+        <h3>Help Files</h3>
+        <h4><a target="_blank" href="http://zkwsvpol01/polarion/#/project/Generic/wiki/Polarion%20Descriptions/PH%20C00%20Report%20Tool%20General">Report Tool General</a></h4>
+        <h4><a target="_blank" href="http://zkwsvpol01/polarion/#/project/Generic/wiki/Polarion%20Descriptions/PH%20C03%20Report%20Tool%2010-Check">Report Tool 10-Check</a></h4>
+        <h4><a target="_blank" href="http://zkwsvpol01/polarion/#/project/Generic/wiki/Polarion%20Descriptions/PH%20C01%20Report%20Tool%2020N-Check">Report Tool 20-Check</a></h4>
+        <h4><a target="_blank" href="http://zkwsvpol01/polarion/#/project/Generic/wiki/Polarion%20Descriptions/PH%20C02%20Report%20Tool%2030AN-Check">Report Tool 30A-Check</a></h4>
+
+        <div style="color:red">@Model.ErrorMsg</div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function OnNodeSelected(sender, args) {
+        //define your code
+        console.log("OnNodeSelected");
+        var tree = document.getElementById("ProjectTree").ej2_instances[0];
+        var test = tree.selectedNodes;
+        var project = test[0];
+        console.log(test + " " + project);
+        // document.getElementById("d1").innerHTML = "<h2> ProjectID=" + test + "</h2>";
+        var url1 = '@Url.Content("~/Home/Navigation/")' + project;
+        
+        console.log(url1);
+
+        $.ajax({
+                type: "get",
+                url: url1,
+                success: function (data) {
+                    $('#d2').html(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if (xhr.status == 404) {
+                        alert(thrownError);
+                    }
+                }
+        });
+
+        function resize() {
+            var heights = window.innerHeight;
+            document.getElementById("Projectree").style.height = heights - 200 + "px";
+        }
+
+        resize();
+
+        window.onresize = function () {
+            resize();
+        }
+    }
+</script>
+

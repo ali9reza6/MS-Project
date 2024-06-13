@@ -1,0 +1,200 @@
+﻿<H3>History of the Polarion Tool</H3>
+
+<h4>V0.901 2021-05-18</h4>
+<ul>
+    <li>Fixed bug when exporting plans from Template project</li>
+</ul>
+
+<h4>V0.900 2021-05-06</h4>
+<ul>
+    <li>http calls changed to https</li>
+    <li>All the old server references changed from atibsrvpol01 to zkwsvpol01 (postgres database can still be called at atibsrvpol01)</li>
+    <li>MS-Project to Polarion sync, server side error log implemented in the case the MS-Project file has empty WBS codes</li>
+</ul>
+
+<h4>V0.899 2020-12-07</h4>
+<ul>
+    <li>Percent complete is not overwriten from the project model to the MSP document. This field shouldnt be changed in MSP</li>
+    <li>Polarion status is now written in MSP file, for plans it will be the Polarion plan status and for all other tasks it will be the work-package status</li>
+</ul>
+
+<h4>V0.898 2020-11-12</h4>
+<ul>
+    <li>Seabay API connector library updated to current Polarion server</li>
+    <li>Big projects first sync was giving a Database timeout error, in the "npgsql" connection string keepAlive and ConnectorTimeout were added to resolve the issue</li>
+</ul>
+
+<h4>V0.897 2020-10-30</h4>
+<ul>
+    <li>Postgres SQL database authentication updated to new password </li>
+</ul>
+
+<h4>V0.896 2020-10-28</h4>
+<ul>
+    <li>Server Name changed eusvpol -> atibsrvpol01 </li>
+</ul>
+
+<h4>V0.895 2020-10-16</h4>
+<ul>
+    <li>MS project Sync Tool - Error handling when syncyng MS file that contains non existent WI-IDs</li>
+</ul>
+
+<h4>V0.894 2020-10-15</h4>
+<ul>
+    <li>MS project Sync Tool Restructured, Various Bugs and Features implemented</li>
+    <li> Main: Copy-Cut-Paste founctionality implemented for moving tasks around different plans</li>
+    <li> Start Date and Assigned Role fields correctly synced </li>
+</ul>
+
+<h4>V0.893 2020-07-06</h4>
+<ul>
+    <li>Close Connection in Home Controller implemented</li>
+</ul>
+
+<h4>V0.892 2020-06-09</h4>
+<ul>
+    <li>Change of Wrong Version number</li>
+    <li>Typo correction "Satus" for "Status" in list</li>
+</ul>
+
+<h4>V0.891 2020-05-07</h4>
+<ul>
+    <li>Edited List and List name List: WorkItems with status="dissaproved" and any approvers not waiting</li>
+    <li>Changed Browser Tab Label for the 20-Check</li>
+    <li>New Tooltips for 2 Review Lists</li>
+</ul>
+
+<h4>V0.889 2020-03-27</h4>
+<ul>
+    <li>Diverse Bugs behoben</li>
+    <li>Neue Struktur in Review des 20-Check</li>
+</ul>
+
+<h4>V0.886 2020-03-03</h4>
+<ul>
+    <li>20 & 30 Check: Liste: WorkItems with Approval Status „Disapproved“ mit User erweitert</li>
+    <li>Insert SW_Release Plan erweitert, neues Template "SW_M_SF_Template" </li>
+    <li>BigFix Links korrigiert</li>
+</ul>
+
+<h4>V0.884 2020-01-31</h4>
+<ul>
+    <li>Insert SW_Release Plan korrigiert, neue Templates verwenden (SW_M_IS_Template, SW_M_IF_Template, SW_M_RD_Template)</li>
+</ul>
+
+<h4>V0.883 2020-01-24</h4>
+<ul>
+    <li>Erweiterung Document & Signature Status im 20 und 30 Check laut erweiterter Spec.</li>
+</ul>
+
+<h4>V0.882 2020-01-21</h4>
+<ul>
+    <li>Einfügen von Software Release Plans mit neuen Templates implementiert (Iterations entfernt)</li>
+    <ki>Bug fixing</ki>
+</ul>
+
+<h4>V0.879 2020-01-02</h4>
+<ul>
+    <li>Erweiterung Document & Signature Status im 20 und 30 Check</li>
+</ul>
+
+<h4>V0.878 2019-12-12</h4>
+<ul>
+    <li>MS-Project: Automatisches Anlegen des Wurzelplans</li>
+    <li>WEB-Gannt: Implemetierung Refresh Button</li>
+    <li>Polarion Reports: Bug Fixing</li>
+</ul>
+
+<h4>V0.877 2019-12-02 Impact Analyze</h4>
+<ul>
+    <li>last testresult bei Testcases anzeigen - Tooltip zeigt alle Testergebnisse</li>
+</ul>
+
+<h4>V0.876 2019-11-26 Bug fixing</h4>
+<ul>
+    <li>Wiki Templates werden jetzt mit den Plantemplets auch erstellt</li>
+    <li>Verfication Section Check 20 und 30 korrigiert (Check nur für HW/SW und nicht Project)</li>
+    <li>Child Erkennung verbessert</li>
+</ul>
+
+<h4>V0.875 2019-11-19 Planning tools:</h4>
+<ul>
+    <li>New Function: Insert Plantemplates in Project</li>
+    <li>Insert Plans from Project: use new Plantemplates</li>
+    <li>Document & Signature Status: collapse list</li>
+</ul>
+
+<h4>V0.874 2019-11-19 Bug Fixing: Connection pool Postgres DB </h4>
+
+<h4>V0.873 2019-11-13 Document & Signature Status in 20 & 30 Check implementiert</h4>
+
+<h4>V0.872 2019-11-11 MS-Project Bug fixing</h4>
+
+<h4>V0.871 2019-11-06</h4>
+<ul>
+    <li>Gantt-Web Diagramm Einlesen von Plan Dependencies</li>
+    <li>MS-Project individueller Wurzelplan (zB.: Dateiname=Exxxxx(PM-Template)) </li>
+</ul>
+
+<h4>V0.870 2019-11-05 Datenbankfehler bei Workitem-Approvals: C_PK in Polarion Datenbank hat ungültigen Eintrag - Fehlerbehandlung verbessert</h4>
+
+<h4>V0.869 2019-11-04 Erste Version Web Gantt-Chart mit Plänen und Workpackages</h4>
+
+<h4>V0.868 2019-10-31 Änderungen für MS-Project Addin (Error Handling)</h4>
+
+<h4>V0.867 2019-10-15 Bugfix Polarion Datenbank enthält ungultige Verweise in Tabelle "Comments" auf "User"-Tabelle </h4>
+
+<h4>V0.866 2019-10-01 Preview auf Gantt-Chart (Batchupdate)</h4>
+
+<h4>V0.865 2019-09-29 Preview auf Gantt-Chart Aufruf mit zB: http://wnpc00075/Gantt/Plan/E18008/SW_Release_Plan</h4>
+
+<h4>V0.864 2019-09-18 Plan tempaltes angepasst, Preview auf Gannt-Chart</h4>
+
+<h4>V0.863 2019-09-13 30AN-Check Verification - Listen wie in 20N</h4>
+
+<h4>V0.862 2019-09-11 20N-Check Verification</h4>
+<p>
+    Neue Listen in der Section Linkage to Test Cases:
+    <ul>
+        <li>Unlinked (Element) Requirements</li>
+        <li>Incorrectly linked (Element) Requirements </li>
+        <li>Linked (Element) Requirements </li>
+        <li>(Element) Requirements with missing Verification Properties </li>
+    </ul>
+</p>
+<h4>V0.861 2019-08-05 Impact Analyze:</h4>
+<p>Es können nun auch Customer-Requirements analysiert werden. Es werden alle verknüpften Requirements der 20-Documente angezeigt</p>
+
+<h4>V0.860 2019-08-02 20-Check:</h4>
+<p>
+    Bug Impact Analyze: Link zu StartingPoint korrigiert.<br />
+    BreakDown Analyse entfernt und 20Check an 30N Check angepasst
+</p>
+
+<h4>V0.859 2019-07-31 MS-Project API</h4>
+<p>Bug gehoben, die Datumwerte aus MS-Project werden nun in den Pläne und Workitems gesetzt. </p>
+
+<h4>V0.858 2019-07-29 MS-Project API </h4>
+<p>
+    Polarion Username und password werden verschlüsselt übertragen<br />
+    Der Status aus den Workitems (open, inprogress, closed) wir farblich in MS-Project abgebildet und in einem Custom Field angezeigt
+</p>
+
+<h4>V0.857 2019-07-26 Version 0.1 der MS-Project Api's</h4>
+
+<h4>V0.856 2019-07-22 New URL parameter for document filter</h4>
+<p>Example: if you like only to check the 20a document use the URL: http://wntopol/check20/project/E18010/20a</p>
+
+<h4>V0.855 2019-07-16 Impact Analyse: Original "Starting Point" is now a hyperlink</h4>
+
+<h4>V0.850 2019-05-09</h4>
+<p>10-Check erstellt</p>
+
+<h4>V0.805 2018-11-07</h4>
+<p>Sortierung der Liste in Clarification: Clarification role = later am Ende der Liste mit anderer Farbe </p>
+<p>Umgestaltung der Liste: Workitems with ESE Allocation error</p>
+
+<h4>V0.804 2018-11-07</h4>
+<p>Aufteilung der Liste ESE/HW in 2 neuen Listen (Link with Checklist)</p>
+
+

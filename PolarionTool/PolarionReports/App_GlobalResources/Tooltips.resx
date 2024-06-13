@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CoverageReport" xml:space="preserve">
+    <value>The Coverage Report checks linkage to all associated documents</value>
+  </data>
+  <data name="ESEAndNotHWSWMech" xml:space="preserve">
+    <value>Incorrect Requirement Allocation for architecturally significant requirements
+Required action: correct Requirement Allocation: “ARCH” + “HW” / “SW” / “Mech”</value>
+  </data>
+  <data name="FunctionalRequirements" xml:space="preserve">
+    <value>Functional requirements define functions of a system or its component.</value>
+  </data>
+  <data name="FunctionalRequirementsWithInvalidRequirementAllocation" xml:space="preserve">
+    <value>Invalid Requirement Allocation for functional requirements
+Required action: either correct Requirement Allocation (HW / SW / Mech) or define the requirement as non-functional</value>
+  </data>
+  <data name="IncorrectlyLinked30ElementRequirements" xml:space="preserve">
+    <value>Interface Element Requirements linked to Components or non-Interface Element Requirements linked to Interfaces
+Required action: correct invalid links</value>
+  </data>
+  <data name="IncorrectlyLinked30iElementRequirements" xml:space="preserve">
+    <value>Element Requirements linked to incorrect Interface Requirements
+Required action: check prefixes or correct invalid links</value>
+  </data>
+  <data name="IncorrectlyLinked40SWElementRequirements" xml:space="preserve">
+    <value>Element Requirements referenced or linked to incorrect Software Requirements
+Required action: check prefixes or correct invalid links</value>
+  </data>
+  <data name="IncorrectlyLinkedElement40HWRequirements" xml:space="preserve">
+    <value>Element Requirements referenced or linked to incorrect Hardware Requirements
+Required action: check prefixes or correct invalid links</value>
+  </data>
+  <data name="IncorrectlyLinkedElementRequirements" xml:space="preserve">
+    <value>Element Requirements linked to incorrect Customer Requirements
+Required action: check prefixes or correct invalid links</value>
+  </data>
+  <data name="InterfaceAndNotHWSWMech" xml:space="preserve">
+    <value>Incorrect Interface Requirement Allocation
+Required action: correct Requirement Allocation: “Interface” + “HW” / “SW” / “Mech”</value>
+  </data>
+  <data name="LinkageTo30ElementArchitecture" xml:space="preserve">
+    <value>HW Element Requirements must be linked to 30  Element Architecture AND/OR to 50 Hardware Architectural Design, if available.
+ SW Element Requirements must be linked to the Hardware Architecture (30 Element Architecture OR 50 Hardware Architectural Design) AND to 50 Software Architectural Design).
+ Mech Element Requirements must be linked to 30  Element Architecture.
+ Element Requirements referenced in 30 Element Architecture are ignored by the Report</value>
+  </data>
+  <data name="LinkageTo30InterfaceRequirements" xml:space="preserve">
+    <value>All HW and/or SW Interface and all HW&amp;SW Element Requirements must be referenced or linked to the Interface Requirements</value>
+  </data>
+  <data name="LinkageTo40HardwareRequirements" xml:space="preserve">
+    <value>All HW Element Requirements must be referenced or linked to the Hardware Requirements</value>
+  </data>
+  <data name="LinkageTo40SoftwareRequirements" xml:space="preserve">
+    <value>All SW Element Requirements must be referenced or linked to the Software Requirements</value>
+  </data>
+  <data name="LinkageToCustomerRequirements" xml:space="preserve">
+    <value>All Element Requirements must be linked to the Customer Requirements</value>
+  </data>
+  <data name="Linked30ElementRequirements" xml:space="preserve">
+    <value>Element Requirements correctly linked to Element Requirements</value>
+  </data>
+  <data name="Linked30iElementRequirements" xml:space="preserve">
+    <value>Element Requirements correctly linked to Interface Requirements</value>
+  </data>
+  <data name="Linked40HWElementRequirements" xml:space="preserve">
+    <value>Element Requirements correctly referenced or linked to Hardware Requirements</value>
+  </data>
+  <data name="Linked40SWElementRequirements" xml:space="preserve">
+    <value>Element Requirements correctly referenced or linked to Software Requirements</value>
+  </data>
+  <data name="LinkedElementRequirements" xml:space="preserve">
+    <value>Element Requirements correctly linked to Customer Requirements</value>
+  </data>
+  <data name="MissingHyperlinks" xml:space="preserve">
+    <value>Requirements with document name(s) specified in “Referred Documents” but without any hyperlink(s).
+Required action: locate the document(s) and define hyperlink(s)</value>
+  </data>
+  <data name="MissingReferredDocuments" xml:space="preserve">
+    <value>Required action: If Element Requirements refer to documents, the document name(s) shall be entered in “Referred Documents” and the hyperlink to the document(s) shall be included with the requirement</value>
+  </data>
+  <data name="RejectedWorkitems" xml:space="preserve">
+    <value>For information
+Required action: If not already done, communicate rejected requirements to the Customer</value>
+  </data>
+  <data name="RequirementAllocation" xml:space="preserve">
+    <value>The Requirement Allocation shall be correctly defined for all Element Requirements</value>
+  </data>
+  <data name="RequirementStatus" xml:space="preserve">
+    <value>The Requirement Status should be “Approved”, “Rejected”, “Deferred” or any Status referring to implementation or verification</value>
+  </data>
+  <data name="SpecialReports" xml:space="preserve">
+    <value>This report section includes other noticeable requirements</value>
+  </data>
+  <data name="StatusConsitencyReport" xml:space="preserve">
+    <value>The Status Report lists noticeable requirements, checks the Requirement Allocation as well as the Functional Requirement setting.</value>
+  </data>
+  <data name="Unlinked30ElementRequirements" xml:space="preserve">
+    <value>Element Requirements not linked to the Element Architecture
+Required action: define missing links</value>
+  </data>
+  <data name="Unlinked30iElementRequirements" xml:space="preserve">
+    <value>Element Requirements not linked to Interface Requirements
+Required action: define missing links</value>
+  </data>
+  <data name="Unlinked40HWElementRequirements" xml:space="preserve">
+    <value>Element Requirements not referenced or linked to Hardware Requirements
+Required action: define missing links</value>
+  </data>
+  <data name="Unlinked40SWElementRequirements" xml:space="preserve">
+    <value>Element Requirements not referenced or linked to Software Requirements
+Required action: define missing links</value>
+  </data>
+  <data name="UnlinkedElementRequirements" xml:space="preserve">
+    <value>Element Requirements not linked to Customer Requirements
+Required action: define missing links</value>
+  </data>
+  <data name="WorkitemsInClarification" xml:space="preserve">
+    <value>Requirements in Status “In Clarification”
+Required action: make sure that these requirements get clarified and reviewed in time before implementation starts</value>
+  </data>
+  <data name="WorkitemsInReview" xml:space="preserve">
+    <value>Requirements in Status “In Review”
+Required action: make sure that the review will be completed and set the Requirement Status accordingly</value>
+  </data>
+  <data name="WorkitemsWithCustomerAction" xml:space="preserve">
+    <value>Requirements with content in “Customer Action”; action list for the Customer
+Required action: track these issues the Customer is responsible for</value>
+  </data>
+  <data name="WorkitemsWithESEAndHW" xml:space="preserve">
+    <value>Architecturally significant HW Element Requirements
+Required action: include these requirements in the “Checklist Review HW Architectural Design”</value>
+  </data>
+  <data name="WorkitemsWithESEAndSW" xml:space="preserve">
+    <value>Architecturally significant SW Element Requirements
+Required action: consider these requirements when designing the Software Architecture</value>
+  </data>
+  <data name="WorkItemsWithoutAllocation" xml:space="preserve">
+    <value>Element Requirements without any Requirement Allocation
+Required action: define Requirement Allocation</value>
+  </data>
+  <data name="WorkitemsWithPrioritization" xml:space="preserve">
+    <value>Required action: If the Prioritization is “Should Have”, it should be checked that the requirement text also includes “should have”.</value>
+  </data>
+  <data name="WorkitemsWithStatusDraft" xml:space="preserve">
+    <value>Requirements in Status “Draft”
+Required action: set Status to “Review”, define Approver(s) and get the requirements reviewed and approved</value>
+  </data>
+  <data name="WorkitemsWithSupplierAction" xml:space="preserve">
+    <value>Requirements with content in “Supplier Action”; action list for ZKW-WN
+Required action: track these issues the Supplier is responsible for</value>
+  </data>
+  <data name="WorkItemsWithTBD" xml:space="preserve">
+    <value>Required action: If a requirement includes “TBD” in the requirement text, the Status should be set to “In Clarification”. Make sure that these requirements get clarified and reviewed in time before implementation starts</value>
+  </data>
+  <data name="DeferredWorkitems" xml:space="preserve">
+    <value>Requirements in Status “Deferred”
+Required action: Requirements have been postponed for later implementation. Check if these requirements should be planned for implementation at this time</value>
+  </data>
+  <data name="ReferredDocuments" xml:space="preserve">
+    <value>Requirements with content in “Referred Documents” and defined hyperlink(s)
+Required action: These applicable documents shall be considered for implementation; individual requirements may be extracted from these documents, if necessary</value>
+  </data>
+  <data name="WorkitemInBin" xml:space="preserve">
+    <value>For information
+Required action: Go to Recycle Bin and delete the listed requirements</value>
+  </data>
+  <data name="A30AssociatedAdditionalRequirements" xml:space="preserve">
+    <value>Additional Requirements defined in the Element Architecture document correctly linked to Components and Interfaces</value>
+  </data>
+  <data name="A30ComponentsWithoutLinkedRequirements" xml:space="preserve">
+    <value>Components in 30 Element Architecture without any requirements (neither linked nor additionally specified
+Required action: check if additional requirements should be defined</value>
+  </data>
+  <data name="A30CoverageReport" xml:space="preserve">
+    <value>The Coverage Report checks linkage to all documents related to the Element Architecture document</value>
+  </data>
+  <data name="A30DeferredWorkitems" xml:space="preserve">
+    <value>Requirements in Status “Deferred”
+Required action: Requirements have been postponed for later implementation. Check if these requirements should be planned for implementation at this time</value>
+  </data>
+  <data name="A30ESEAndNotHWSWMech" xml:space="preserve">
+    <value>Incorrect Requirement Allocation for architecturally significant requirements
+Required action: correct Requirement Allocation: “ARCH” + “HW” / “SW” / “Mech”</value>
+  </data>
+  <data name="A30IncorrectlyAssociatedAdditionalRequirements" xml:space="preserve">
+    <value>Interface Requirements linked to Component or non-Interface Requirements linked to Interface
+Required action:
+1) correct invalid associations or links or
+2) correct Requirement Allocation</value>
+  </data>
+  <data name="A30IncorrectlyAssociatedAdditionalRequirements50HW" xml:space="preserve">
+    <value>Interface Requirements linked to Component or non-Interface Requirements linked to Interface.
+Required action: 
+1) Correct invalid links or 
+2) Correct Requirement Allocation</value>
+  </data>
+  <data name="A30IncorrectlyAssociatedAdditionalRequirements50SW" xml:space="preserve">
+    <value>Interface Requirements linked to Component or non-Interface Requirements linked to Interface.
+Required action:
+1) correct invalid links or
+2) correct Requirement Allocation</value>
+  </data>
+  <data name="A30InterfaceAndNotHWSWMech" xml:space="preserve">
+    <value>Incorrect Interface Requirement Allocation
+Required action: correct Requirement Allocation: “Interface” + “HW” / “SW” / “Mech”</value>
+  </data>
+  <data name="A30InterfacesNotReferenced" xml:space="preserve">
+    <value>Interfaces not referenced in 30 Interface Requirements
+Required action: Include missing Interfaces defined in the Element Architecture in 30 Interface Requirements</value>
+  </data>
+  <data name="A30InterfacesWithoutLinkedRequirements" xml:space="preserve">
+    <value>Interfaces without linked requirements</value>
+  </data>
+  <data name="A30LinkageTo30InterfaceRequirements" xml:space="preserve">
+    <value>Interfaces and Components may be referenced in the Interface Requirements to be further detailed</value>
+  </data>
+  <data name="A30LinkageTo40HardwareRequirements" xml:space="preserve">
+    <value>Additional HW Requirements defined in the Element Architecture document must be referenced or linked to the Hardware Requirements</value>
+  </data>
+  <data name="A30LinkageTo40SoftwareRequirements" xml:space="preserve">
+    <value>Additional SW Requirements defined in the Element Architecture document must be referenced or linked to the Software Requirements</value>
+  </data>
+  <data name="A30LinkageTo50HWArchitecturalDesign" xml:space="preserve">
+    <value>All additional HW Requirements defined in the Element Architecture document must be correctly associated (indented or linked) with Components or Interfaces (either within the Element Architecture Document and/or to a HW Architectural Design document)</value>
+  </data>
+  <data name="A30LinkageTo50SWArchitecturalDesign" xml:space="preserve">
+    <value>All additional SW Requirements defined in the Element Architecture document must be correctly associated (indented or linked) with Components or Interfaces (either within the Element Architecture Document and/or to the SW Architectural Design document)</value>
+  </data>
+  <data name="A30LinkageWithin30ElementArchitecture" xml:space="preserve">
+    <value>All additional Requirements defined in the Element Architecture document must be correctly associated (indented or linked) with Components or Interfaces (either within the Element Architecture Document and/or to any other Architectural Design document)</value>
+  </data>
+  <data name="A30LinkedAdditionalHardwareRequirements" xml:space="preserve">
+    <value>Additional HW Requirements defined in the Element Architecture document correctly referenced or linked to the Hardware Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalHardwareRequirements50HW" xml:space="preserve">
+    <value>Additional HW Requirements defined in the Element Architecture document correctly linked to Components and Interfaces in 50 HW Architectural Design</value>
+  </data>
+  <data name="A30LinkedAdditionalInterfaceRequirement" xml:space="preserve">
+    <value>Additional Interface Requirements correctly referenced or linked to the Interface Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>Additional interface requirements referenced or linked to 30 Interface Requirements must have Allocation "Interface" &amp; "HW |SW | (HW &amp; SW)
+Required action:
+1) Correct the Requirement Allocation OR
+2) Do not reference the requirement in 30 Interface Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalRequirementsWithInvalidAllocation40HW" xml:space="preserve">
+    <value>Additional HW Requirements referenced or linked to 40 Hardware Requirements must include Requirement Allocation "HW"
+1) Correct the Requirement Allocation OR
+2) Do not reference the requirement in the Hardware Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalRequirementsWithInvalidAllocation40SW" xml:space="preserve">
+    <value>Additional SW Requirements referenced or linked to 40 Software Requirements must include Requirement Allocation "SW"
+1) Correct the Requirement Allocation OR
+2) Do not reference the requirement in the Software Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalRequirementsWithInvalidAllocation50HW" xml:space="preserve">
+    <value>Additional HW requirements linked to 50 HW Architectural Design must include Allocation "HW"
+1) Correct the Requirement Allocation OR
+2) Remove link to the HW Architectural Design</value>
+  </data>
+  <data name="A30LinkedAdditionalRequirementsWithInvalidAllocation50SW" xml:space="preserve">
+    <value>Additional SW requirements linked to 50 SW Architectural Design must include Allocation "SW"
+1) Correct the Requirement Allocation OR
+2) Remove link to the SW Architectural Design</value>
+  </data>
+  <data name="A30LinkedAdditionalSoftwareRequirements" xml:space="preserve">
+    <value>Additional SW Requirements defined in the Element Architecture document correctly referenced or linked to the Software Requirements</value>
+  </data>
+  <data name="A30LinkedAdditionalSoftwareRequirements50SW" xml:space="preserve">
+    <value>Additional SW Requirements defined in the Element Architecture document correctly linked to Components and Interfaces defined in 50 SW Architectural Design</value>
+  </data>
+  <data name="A30RejectedWorkitems" xml:space="preserve">
+    <value>For information only</value>
+  </data>
+  <data name="A30RequirementAllocation" xml:space="preserve">
+    <value>The Requirement Allocation shall be correctly defined for all Additional Requirements (Valid Requirement Allocation: HW, SW, Mech)</value>
+  </data>
+  <data name="A30RequirementStatus" xml:space="preserve">
+    <value>The Requirement Status should be “Approved”, “Rejected”, “Deferred” or any Status referring to implementation or verification</value>
+  </data>
+  <data name="A30SpecialReports" xml:space="preserve">
+    <value>This report section includes other noticeable requirements and additional warnings</value>
+  </data>
+  <data name="A30StatusConsitencyReport" xml:space="preserve">
+    <value>The Status Report lists noticeable requirements, checks the Requirement Allocation and provides addition information and warnings</value>
+  </data>
+  <data name="A30UnassociatedAdditionalRequirements" xml:space="preserve">
+    <value>Additional Requirements not associated (indented or linked) with any Component or Interface 
+Required action:
+1) Indent requirement for associating it with the related Component or Interface AND/OR
+2) Link the requirement to a Component or Interface identified in the Element Architecture AND/OR
+3) Link the requirement to a Component or Interface identified in a level 50 document (Architectural Design document)
+Remark: Additional components may be associated/linked with multiple Components or Interfaces in different Architectural Design documents; however, Interface Requirements may only be linked to Interfaces and non-Interface Requirements to Components</value>
+  </data>
+  <data name="A30UnlinkedAdditionalHardwareRequirements" xml:space="preserve">
+    <value>Additional HW Requirements defined in the Element Architecture document not referenced or linked to the Hardware Requirements
+Required action:
+1) Include reference to the Additional HW Requirements in the Hardware Requirements document AND/OR
+2) Link additional HW Requirements to the Hardware Requirements document</value>
+  </data>
+  <data name="A30UnlinkedAdditionalInterfaceRequirements" xml:space="preserve">
+    <value>Interfaces neither referenced in the "Internal Interface Requirements" nor in the "External Interface Requirements"</value>
+  </data>
+  <data name="A30UnlinkedAdditionalSoftwareRequirements" xml:space="preserve">
+    <value>Additional SW Requirements defined in the Element Architecture document not referenced or linked to the Software Requirements
+Required action:
+1) Include reference to the Additional SW Requirements in the Software Requirements document AND/OR
+2) Link additional SW Requirements to the Software Requirements document</value>
+  </data>
+  <data name="A30WorkitemsInClarification" xml:space="preserve">
+    <value>Requirements in Status “In Clarification”
+Required action: make sure that these requirements get clarified and reviewed in time before implementation starts</value>
+  </data>
+  <data name="A30WorkitemsWithESEAndHW" xml:space="preserve">
+    <value>Architecturally significant HW Element Requirements
+Required action:
+1) include these requirements in the “Checklist Review HW Architectural Design”
+2) Consider these requirements when designing the Hardware Architecture</value>
+  </data>
+  <data name="A30WorkitemsWithESEAndSW" xml:space="preserve">
+    <value>Architecturally significant SW Element Requirements
+Required action: consider these requirements when designing the Software Architecture</value>
+  </data>
+  <data name="A30WorkItemsWithInvalidAllocation" xml:space="preserve">
+    <value>Requirements with invalid Allocation:
+-          Invalid Allocation
+-          Incorrect interface allocation
+-          Incorrect ARCH allocation
+
+Required action: Correct allocation
+-          Valid Allocation: “HW” | “SW” | “Mech”
+-          Interface: „Interface“ + „HW“ | „SW“ | „Mech“
+-          ARCH:  „ARCH“ + „HW“ | „SW“ | „Mech“</value>
+  </data>
+  <data name="A30WorkItemsWithoutAllocation" xml:space="preserve">
+    <value>Additional Requirements without any Requirement Allocation
+Required action: define Requirement Allocation</value>
+  </data>
+  <data name="A30WorkitemsWithPrioritizationShouldHave" xml:space="preserve">
+    <value>Required action: If the Prioritization is “Should Have”, it should be checked that the requirement text also includes “should have”</value>
+  </data>
+  <data name="A30WorkitemsWithStatusDraft" xml:space="preserve">
+    <value>Requirements in Status “Draft”
+Required action: Define Approver(s) and get the requirements reviewed and approved</value>
+  </data>
+  <data name="A30WorkItemsWithTBD" xml:space="preserve">
+    <value>Required action: If a requirement includes “TBD” in the requirement text, the Status should be set to “In Clarification”. Make sure that these requirements get clarified and reviewed in time before implementation starts</value>
+  </data>
+  <data name="ReviewApprovedWorkItemsWithoutApprovers" xml:space="preserve">
+    <value>Approved, implemented or verified requirements without any Approvers should never exist! 
+Required action: Check the requirement history for retrieving the name(s) of the Approvers, add the Approvers, if applicable</value>
+  </data>
+  <data name="ReviewRejectedWorkItemsWithApprovers" xml:space="preserve">
+    <value>Rejected requirements; especially in Document View this may be easily overlooked. If the Approval State is still “Waiting”, Approvers may review a rejected requirement by mistake.
+Required action:  It is recommended to remove Approvers from rejected requirements to prevent unnecessary effort</value>
+  </data>
+  <data name="ReviewStatus" xml:space="preserve">
+    <value>This Report section provides a complete overview on the Review Status of a requirement specification document</value>
+  </data>
+  <data name="ReviewWorkItemsApprovalStateDisapproved" xml:space="preserve">
+    <value>Negative approval feedback; in that case, a Disapproval Comment is mandatory. Mind that there are two separate workflows for “Approval Status” and “Requirement Status”.
+
+Required action:
+Disapproved requirements must be processed (according to the Disapproval Comment):
+·         Requirement may be set to Requirement Status = ‘Disapproved’ to be able to edit it (the Approval Status is not changed by this Requirement Status change). If the requirement has been modified based on the Disapproval Comment, it may be set to “In Review” again (by this action, the Approval Status of all Approvers is automatically set to “Waiting” again)
+·         Requirement may be set to “Clarification” (at least one ‘Clarification Role’ must be specified and an explanatory “Internal Comments” is required)
+·         Requirement may be set to “Rejected”. A ‘Resolution” must be specified, an explanatory “Internal Comments” is required, and all Approvers shall be set to “Waiting”</value>
+  </data>
+  <data name="ReviewWorkItemsInClarification" xml:space="preserve">
+    <value>Requirements that could not been reviewed because of missing information or definition
+Required action:
+1)	Try to add missing information or definition to get the requirement reviewed
+2)	Use requirement lists for individual Clarification Roles, if appropriate 
+3) Set Clarification Role = "Later" if clarification is up to other project members (and not to the Requirements Engineer)</value>
+  </data>
+  <data name="ReviewWorkItemsInClarificationAll" xml:space="preserve">
+    <value>List of all requirements with any “Clarification Role”
+Required action:
+See tooltip for “WorkItems in Clarification”</value>
+  </data>
+  <data name="ReviewWorkItemsInClarificationRole" xml:space="preserve">
+    <value>List of all requirements with Clarification Role “N.N. Mind that individual requirement lists are offered for any Clarification Role combination.
+Required action:
+1)	Try to add missing information or definition to get the requirement reviewed
+2)	Requirements must be fully clarified if it is included in an upcoming development step</value>
+  </data>
+  <data name="ReviewWorkItemsReadyToBeApproved" xml:space="preserve">
+    <value>Requirements with Approval State = “Approved”
+Required action: Set Requirement Status to “Approved”</value>
+  </data>
+  <data name="ReviewWorkItemsStatusApproved" xml:space="preserve">
+    <value>Successfully reviewed and approved requirements</value>
+  </data>
+  <data name="ReviewWorkItemsStatusDisapproved" xml:space="preserve">
+    <value>Due to a previous negative approval feedback, requirements have been set to Requirement Status “Disapproved” (to be able to edit them). The Approval Status has not been changed by setting Requirement Status = “Disapproved”. With Disapprovals, a Disapproval Comment is mandatory. Mind that there are two separate workflows for “Approval Status” and “Requirement Status”.
+
+Required action:
+Disapproved requirements must be processed (according to the Disapproval Comment):
+·         If a requirement has been modified based on the Disapproval Comment, it may be set to “In Review” again (by this action, the Approval Status of all Approvers is automatically set to “Waiting” again)
+·         Requirement may be set to “Clarification” (at least one ‘Clarification Role’ must be specified and an explanatory “Internal Comments” is required)
+·         Requirement may be set to “Rejected”. A ‘Resolution” must be specified, an explanatory “Internal Comments” is required, and all Approvers shall be set to “Waiting”</value>
+  </data>
+  <data name="ReviewWorkItemsStatusDisapprovedNN" xml:space="preserve">
+    <value>Requirements disapproved by a particular Approver
+Required actions: Refer to tooltip for WorkItems with Requirement Status ‘Disapproved’</value>
+  </data>
+  <data name="ReviewWorkItemsStatusInReviewWithoutApprovers" xml:space="preserve">
+    <value>Requirements “in Review” without any Approvers
+Required action: Assign Approver(s) to get the requirements reviewed.</value>
+  </data>
+  <data name="ReviewWorkItemsWaitingForApproval" xml:space="preserve">
+    <value>Requirements in Approval State = “Waiting”. Click to open separate lists for individual Approvers</value>
+  </data>
+  <data name="ReviewWorkItemsWaitingForApprovalAll" xml:space="preserve">
+    <value>Requirements waiting for Approval</value>
+  </data>
+  <data name="ReviewWorkItemsWaitingForApprovalNN" xml:space="preserve">
+    <value>Requirements waiting for Approval by N.N.
+Required action: Remind the Approver to complete the requirements review, if necessary</value>
+  </data>
+  <data name="ReviewWorkItemsWithoutClarificationRole" xml:space="preserve">
+    <value>Requirements with Status “In Clarification” but without a Clarification Role
+Required action:
+1)	Define Clarification Role(s)
+2)	Specify in “Internal Comments” what needs to be clarified, if applicable</value>
+  </data>
+  <data name="ReviewWorkitemApprovalStateWaitingStatusNotInReview" xml:space="preserve">
+    <value>Requirements with Approvers in Approval State “Waiting” but not in Status “In Review”
+Required action: Set requirements to “In Review”</value>
+  </data>
+  <data name="ReviewWorkitemsApprovalStateApprovedStatusWrong" xml:space="preserve">
+    <value>Approved requirements in Status “Draft”, “In Clarification” or “Disapproved”; that is, requirements have been approved, although they were not in Status “In Review”
+Required action:
+1.	Check requirements whether Approval is still valid
+2.	Set Status to “Approved” if Approval was valid
+3.	Set Status to “In Review” and set Approvers</value>
+  </data>
+  <data name="C20LinkageWithinElementRequirements" xml:space="preserve">
+    <value>High-level requirements must be further detailed, unless a different document is specified in “break down in”. Break down requirements, added by engineers, are indented (multiple indentation is allowed) and linked to "10 Additional Requirements</value>
+  </data>
+  <data name="C20HighLevelElementRequirementsWithoutBreakDown" xml:space="preserve">
+    <value>High-level Element requirements without any break down requirements specified by technical engineers. 
+Required action: Specify break down requirements, indent and link to "10 Additional Requirements</value>
+  </data>
+  <data name="C20BreakDown30InterfaceRequirements" xml:space="preserve">
+    <value>Listed Element Requirements are further specified in 30 Interface Requirements</value>
+  </data>
+  <data name="C20BreakDown40HWRequirements" xml:space="preserve">
+    <value>Listed Element Requirements are further specified in 40 HW Requirements</value>
+  </data>
+  <data name="C20BreakDown40SWRequirements" xml:space="preserve">
+    <value>Listed Element Requirements are further specified in 40 SW Requirements</value>
+  </data>
+  <data name="C20IncorrectlySoftwareElementRequirements" xml:space="preserve">
+    <value>Interface SW Element Requirements linked to Components or non-Interface SW Element Requirements linked to Interfaces. 
+Required action: "correct invalid links"</value>
+  </data>
+  <data name="C20Linkage50SWArchitecturalDesign" xml:space="preserve">
+    <value>SW Element Requirements must be linked to "50 SW Architectural Design"</value>
+  </data>
+  <data name="C20LinkedSoftwareElementRequirements" xml:space="preserve">
+    <value>SW Element Requirements correctly linked to SW Architectural Design</value>
+  </data>
+  <data name="C20UnlinkedSoftwareElementRequirements" xml:space="preserve">
+    <value>Software Element Requirements not linked to SW Architectural Design. 
+Required action: link SW requirements to components/interfaces in "50 SW Architectural Design"</value>
+  </data>
+  <data name="C20BreakDown" xml:space="preserve">
+    <value>High-level requirements must be further detailed, unless a different document is specified in “Break down”.
+"Break down = "" ": Break down is specified in the 20 Element Requirements by ZKW (link to 10 Additional Requirements)
+"Break down = 20": Break down is specified in the 20 Element Requirements by the Customer (no links to 10 Additional Requirements)
+"Break down = 30I": Break down is specified in the 30 Interface Requirements
+"Break down = 40 SW": Break down is specified in 40 Software Requirements
+"Break down = 40 HW": Break down is specified in 40 Hardware Requirements</value>
+  </data>
+  <data name="C20HighLevelElementRequirementsWithBreakDownRequirementsByCustomer" xml:space="preserve">
+    <value>High-level Element Requirements with "Break down = 20" and break down requirements correctly specified by Customer.
+Required action: Verify that detailed specification is complete</value>
+  </data>
+  <data name="C20HighLevelElementRequirementsWithBreakDownRequirementsByZKW" xml:space="preserve">
+    <value>High-level Element Requirements with "Break down = " "" and break down requirements correctly specified ZKW.
+Required action: Verify that detailed specification is complete</value>
+  </data>
+  <data name="C20HighLevelHWRequirementsToBeSpecifiedInHWRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>High-level HW Element Requirements with "Break down = 40 HW" (to be specified in the Hardware Requirements) with invalid Allocation.
+Required action: modify Allocation or redefine "Break down"</value>
+  </data>
+  <data name="C20HighLevelHWRequirementsToBeSpecifiedInSWRequirements" xml:space="preserve">
+    <value>High-level Hardware Element Requirements with "Break down = 40 SW" (to be specified in 40 SW Requirements).
+Required action: Set "Break down" to "40 HW " (to be specified in 40 HW Requirements) or modify Allocation</value>
+  </data>
+  <data name="C20HighLevelRequirementsToBeFurtherSpecifiedByZKWWithoutAnyBreakDownRequirements" xml:space="preserve">
+    <value>High-level Element Requirements with "Break down" = "" (to be specified by ZKW) without any break down requirements by technical engineers.
+Required action: Specify break down requirements and link to 10 Additional Requirements</value>
+  </data>
+  <data name="C20HighLevelRequirementsToBeSpecifiedByCustomerWithoutAnyBreakDownRequirements" xml:space="preserve">
+    <value>High-level Element Requirements with "Break down = 20" (to be specified Customer) without any Child Requirements.
+Required action: Set "Break down" to " " (to be specified by ZKW) or indent existing child requirements, if applicable</value>
+  </data>
+  <data name="C20HighLevelRequirementsWithBreakDownRequirementsErroneouslySpecifiedByZKW" xml:space="preserve">
+    <value>High-level Element Requirements with "Break down = 20" (to be specified by Customer) but with Child Requirements by ZKW.
+Required action: Set "Break down" to " " (to be specified by ZKW) or resolve conflict otherwise</value>
+  </data>
+  <data name="C20HighLevelSWHWMechRequirementsToBeSpecifiedInTheInterfaceRequirementsWithÍnvalidAllocation" xml:space="preserve">
+    <value>High-level HW/SW or Mech Element Requirements with "Break down = 30I" (to be specified in the Interface Requirements) with invalid Allocation.
+Required action: modify Allocation or redefine "Break down"</value>
+  </data>
+  <data name="C20HighLevelSWRequirementsToBeSpecifiedInHWRequirements" xml:space="preserve">
+    <value>High-level Software Element Requirements with "Break down = 40 HW" (to be specified in 40 HW Requirements).
+Required action: Set "Break down" to "40 SW " (to be specified in 40 SW Requirements)  or modify Allocation</value>
+  </data>
+  <data name="C20HighLevelSWRequirementsToBeSpecifiedInSWRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>High-level SW Element Requirements with "Break down = 40 SW" (to be specified in the Software Requirements) with invalid Allocation.
+Required action: modify Allocation or redefine "Break down"</value>
+  </data>
+  <data name="C20LinkedElementRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>Requirements linked to the Element Architecture with Allocation other than "HW", "SW" or "Mech"</value>
+  </data>
+  <data name="C20IncorrectlyLinkedHardwareElementRequirements" xml:space="preserve">
+    <value>Interface HW Element Requirements linked to Components or non-Interface HW Element Requirements linked to Interfaces. 
+Required action: "correct invalid links"</value>
+  </data>
+  <data name="C20Linkage50HWArchitecturalDesign" xml:space="preserve">
+    <value>HW Element Requirements must be linked to 30  Element Architecture AND/OR to 50 Hardware Architectural Design, if available.
+ SW Element Requirements must be linked to 30 Element Architecture OR 50 Hardware Architectural Design.</value>
+  </data>
+  <data name="C20LinkedHardwareElementRequirements" xml:space="preserve">
+    <value>HW Element Requirements correctly linked to HW Architectural Design</value>
+  </data>
+  <data name="C20LinkedHardwareElementRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>Requirements linked with 50 Hardware Architectural Design with Allocation other than "HW"</value>
+  </data>
+  <data name="C20LinkedSoftwareElementRequirementsWithInvalidAllocation" xml:space="preserve">
+    <value>Requirements linked with 50 Software Architectural Design with Allocation other than "SW"</value>
+  </data>
+  <data name="C20UnlinkedHardwareElementRequirements" xml:space="preserve">
+    <value>Hardware Element Requirements not linked to HW Architectural Design. 
+Required action: link HW requirements to components/interfaces in the HW Architectural Design</value>
+  </data>
+  <data name="ReviewWorkItemsNotInClarificationWithClarificationRole" xml:space="preserve">
+    <value>Requirements with Status other than "In Clarification" with Clarification Role.
+Required action: It is recommended to remove Clarification Roles if not needed anymore</value>
+  </data>
+  <data name="ReviewWorkItemsWithClarificationRoleCustomer" xml:space="preserve">
+    <value>Requirements with Clarification Role ="Customer" (only).
+Required action: These requirements are marked to be especially communicated to the Customer</value>
+  </data>
+  <data name="C20HwEseRequirementsLinkedToChecklist" xml:space="preserve">
+    <value>„Architecturally significant HW Element Requirements linked to Checklist”</value>
+  </data>
+  <data name="C20HwEseRequirementsNotLinkedToChecklist" xml:space="preserve">
+    <value>„Architecturally significant HW Element Requirements not linked to Checklist”
+             Required actions: 
+               1) Include corresponding test cases in 30 Review Architectural Design (folder: Verification), if required
+               2) Link requirements to corresponding test case in 30 Review Architectural Design”</value>
+  </data>
+  <data name="C20LinkageToArchitectureChecklist" xml:space="preserve">
+    <value>ARCH with HW must be linked to Checklist in "30 Review Architectural Design" Document</value>
+  </data>
+  <data name="C20TestcasesLinkedToElementRequirements" xml:space="preserve">
+    <value>Testcases linked to ARCH Element Requirements</value>
+  </data>
+  <data name="C20TestcasesNotLinkedToElementRequirements" xml:space="preserve">
+    <value>Testcases not linked to ARCH Element Requirements
+Required action:
+1) Link testcase to the corresponding ARCH Element Requirement
+2) Delete testcase</value>
+  </data>
+  <data name="A30nterfacesWithoutConnectedComponents" xml:space="preserve">
+    <value>Interfaces without any Components connected
+Required action: Link Component(s) the Interface is connected to. Interface "connects to" Component(s). A Wiki may be used for visualizing the relationships in the document</value>
+  </data>
+  <data name="A30InterfacesWithoutConnectedComponents" xml:space="preserve">
+    <value>Interfaces without any Components connected
+Required action: Link Component(s) the Interface is connected to. Interface "connects to" Component(s). A Wiki may be used for visualizing the relationships in the document</value>
+  </data>
+  <data name="A30HighLevelRequirementsWithoutAnyBreakDownRequirements" xml:space="preserve">
+    <value>High-level requirements without any child requirements
+Required action: Specify detailed requirements and indent them (to create a parent/child relationship to the high-level requirement)</value>
+  </data>
+  <data name="A30UnreferencedInterfaces" xml:space="preserve">
+    <value>Interfaces neither referenced in the "Internal Interface Requirements" nor in the "External Interface Requirements"</value>
+  </data>
+  <data name="A30AllocInvalid" xml:space="preserve">
+    <value>Requirements with invalid Allocation:
+-          Invalid Allocation
+-          Incorrect interface allocation
+-          Incorrect ARCH allocation
+
+Required action: Correct allocation
+-          Valid Allocation: “HW” | “SW” | “Mech”
+-          Interface: „Interface“ + „HW“ | „SW“ | „Mech“
+-          ARCH:  „ARCH“ + „HW“ | „SW“ | „Mech“
+-          ARCH: "ARCH" + "HW" + "SE"</value>
+  </data>
+  <data name="C20AllocInvalid" xml:space="preserve">
+    <value>Requirements with invalid Allocation:
+-          Invalid Allocation
+-          Incorrect interface allocation
+-          Incorrect ARCH allocation
+
+Required action: Correct allocation
+-          Valid Allocation: “HW” | “SW” | “Mech”
+-          Interface: „Interface“ + „HW“ | „SW“ | „Mech“
+-          ARCH:  „ARCH“ + „HW“ | „SW“ | „Mech“
+-          ARCH: "ARCH" + "HW" + "SE"
+</value>
+  </data>
+  <data name="I_RequirementsAffectedByCR" xml:space="preserve">
+    <value>List of requirements possibly affected by the CR.
+Required action: Analyze potential impact on linked WorkItems using the "Impact Analysis" Tool</value>
+  </data>
+  <data name="I_RequirenentsIncorrectlyLinkedToCR" xml:space="preserve">
+    <value>List of requirements incorrectly linked to CR.
+Required action: Fix link direction</value>
+  </data>
+  <data name="C20CybersecurityRelevant" xml:space="preserve">
+    <value>Requirements with CS-Classification = "relevant"</value>
+  </data>
+  <data name="C20SafetyRelevant" xml:space="preserve">
+    <value>Requirements with ASIL classification other than "QM"</value>
+  </data>
+  <data name="ReviewReadyForReview" xml:space="preserve">
+    <value>List of requirements ready to be reviewed (Clarification role = "To_Review")
+Required action:
+- Check requirements
+- Check Workitem properties
+- Check traceability
+- Initiate review</value>
+  </data>
+  <data name="C10AcceptedCustomerRequirements" xml:space="preserve">
+    <value>Accepted Customer Requirements</value>
+  </data>
+  <data name="C10CustomerRequirementsInClarification" xml:space="preserve">
+    <value>Customer Requirements which cannot be assessed because of missing information, definition or decision
+Required action:
+1) Try to add missing information or definition to get the requirement assessed
+2) Use requirement lists for individual Clarification Roles, if appropriate
+3) Set Clarification Role = "Later" if clarification is up to other project members (and not to the Requirements Engineer)</value>
+  </data>
+  <data name="C10CustomerRequirementsInClarificationWithoutClarificationRole" xml:space="preserve">
+    <value>Customer Requirements with Status "In Clarification" but without any information who is required to obtain the missing information or definition
+Required actions:
+1) Define Clarification Role(s)
+2) Specify in "Internal Comments" what needs to be clarified, if applicable</value>
+  </data>
+  <data name="C10CustomerRequirementsWithClarificationRoleCustomer" xml:space="preserve">
+    <value>Customer Requirements with Clarification Role = “Customer” (only)
+Required action: These requirements are marked to be especially communicated to the Customer</value>
+  </data>
+  <data name="C10CustomerRequirementsWithCustomerAction" xml:space="preserve">
+    <value>Customer Requirements with content in "Customer Action": action list for the Customer
+Required action: Track these issues the Customer is responsible for</value>
+  </data>
+  <data name="C10CustomerRequirementsWithStatusNo" xml:space="preserve">
+    <value>Customer Requirements with Status = No requirement
+Required action: These requirements have not been accepted; typically, these requirements are out of scope</value>
+  </data>
+  <data name="C10CustomerRequirementsWithStatusOpen" xml:space="preserve">
+    <value>Customer Requirements which have not been assessed yet
+Required action: Initiate a review of the Customer Requirements for determining its Status</value>
+  </data>
+  <data name="C10CustomerRequirementsWithSupplierAction" xml:space="preserve">
+    <value>Customer Requirements with content in "Supplier Action": action list for ZKW-WN
+Required action: Track these issues the Supplier is responsible for</value>
+  </data>
+  <data name="C10CyberSecurityRelatedCustomerRequirements" xml:space="preserve">
+    <value>For information
+Customer Requirements related to CyberSecurity</value>
+  </data>
+  <data name="C10DeletedCustomerRequirements" xml:space="preserve">
+    <value>For information
+Required action: Go to Recycle Bin and delete the listed requirements</value>
+  </data>
+  <data name="C10IncorrectlyLinkedCustomerRequirements" xml:space="preserve">
+    <value>Customer Requirements linked to incorrect Element Requirements
+Required action: Check subprefixes or correct link</value>
+  </data>
+  <data name="C10LinkageTo20ElementRequirements" xml:space="preserve">
+    <value>All Customer Requirements must be linked to the Element Requirements (according to subindexes, if applicable)</value>
+  </data>
+  <data name="C10LinkedCustomerRequirements" xml:space="preserve">
+    <value>Customer Requirements correctly linked to the Element Requirements</value>
+  </data>
+  <data name="C10PartlyAcceptedCustomerRequirements" xml:space="preserve">
+    <value>Only partially accepted Customer Requirements (for details refer to "Internal Comments")</value>
+  </data>
+  <data name="C10PartlyAcceptedCustomerRequirementsWithoutComment" xml:space="preserve">
+    <value>Customer Requirements which have only been partially accepted without explanatory  information 
+Required action: Provide information for each partially accepted Customer Requirement which part of it has not been accepted and state a reason in the "Internal Comments" field</value>
+  </data>
+  <data name="C10RejectedCustomerRequirements" xml:space="preserve">
+    <value>For information
+Required action: If not already done, communicate rejected Customer Requirements (or Requirements with Status "No requirement") to the Customer</value>
+  </data>
+  <data name="C10RejectedCustomerRequirementsWithoutComment" xml:space="preserve">
+    <value>Rejected Customer Requirements without  explanatory  information 
+Required action: Provide information for each rejected Customer Requirement as to why it has been rejected</value>
+  </data>
+  <data name="C10ReviewElicitationStatus" xml:space="preserve">
+    <value>This Report section provides a complete overview on the Review &amp; Eliciation Status of a Customer Requirements socument</value>
+  </data>
+  <data name="C10SafetyRelatedCustomerRequirements" xml:space="preserve">
+    <value>For information
+Customer Requirements related to CyberSecurity</value>
+  </data>
+  <data name="C10UnlinkedCustomerRequirements" xml:space="preserve">
+    <value>Customer Requirements not linked to Element Requirements
+Required action: Link Customer Requirements to Element Requirements observing subindexes, if applicable</value>
+  </data>
+  <data name="C10SpecialReports" xml:space="preserve">
+    <value>This Report section includes other noticeable Customer Requirements</value>
+  </data>
+  <data name="C10CustomerRequirementsWithStatusMaybeAccepted" xml:space="preserve">
+    <value>Customer Requirements which have not been assessed/decided yet. Required action: Make a decision whether the requirement is accepted; assess the requirement)</value>
+  </data>
+  <data name="C20HighLevelRequirementsWithoutAnyBreakDownRequirements" xml:space="preserve">
+    <value>High-level requirements without any child requirements
+Required action: Specify detailed requirements and indent them (to create a parent/child relationship to the high-level requirement)</value>
+  </data>
+  <data name="C20ElementRequirementsWithMissingVerificationProperties" xml:space="preserve">
+    <value>(Element) Requirements with missing WorkItem Properties:
+- Verification Discipline
+- Verification Method
+Required action: Define missing  WorkItem Properties</value>
+  </data>
+  <data name="C20IncorrectlyLinkedElementRequirements" xml:space="preserve">
+    <value>(Element) Requirements incorrectly linked to test cases
+Required action: Correct link direction to test cases</value>
+  </data>
+  <data name="C20LinkedElementRequirements" xml:space="preserve">
+    <value>(Element) Requirements correctly linked to test cases</value>
+  </data>
+  <data name="C20UnlinkedElementRequirements" xml:space="preserve">
+    <value>(Element) Requirements must be linked to at least one test case, if applicable</value>
+  </data>
+  <data name="C20LinkageToTestCases" xml:space="preserve">
+    <value>(Element) Requirements must be linked to at least one test case, if applicable</value>
+  </data>
+  <data name="C20Verification" xml:space="preserve">
+    <value>"Verification Method" and "Verification Discipline" shall be defined for all (Element) Requirements</value>
+  </data>
+  <data name="DocSignatureStatus" xml:space="preserve">
+    <value>Specification documents shall be signed (approved). After approval, the document status shall be set to "Approved" or "Accepted" (Element Requirements)</value>
+  </data>
+  <data name="ReviewWorkItemsApprovalStateDisapprovedNN" xml:space="preserve">
+    <value>Requirements disapproved by a particular Approver
+Required actions: Refer to tooltip for “WorkItems with Approval Status ‘Disapproved’</value>
+  </data>
+  <data name="ReviewRejectedWorkItemsWithoutApprovers" xml:space="preserve">
+    <value>Rejected requirements without Approvers:
+- Previously, Approvers were deleted, if requirements had been rejected for avoiding unnecessary unintentional reviews.
+- Currently, the following rule applies: If the reject of a requirement has (potential) impact on linked WorkItems (e.g. test cases or child requirements), additional Approvers of (potentially) affected disciplines shall be assigned, if necessary; the Approval Status of all Approvers shall be set to “Waiting” (Review with Impact Analysis is required).
+Required action:
+Check if the reject of any listed requirement may have (potential) impact on linked WorkItems. In this case, assign affected Approvers (their Approval Status is “Waiting” by default).</value>
+  </data>
+  <data name="ReviewWorkitemApproversNotWaiting" xml:space="preserve">
+    <value>Rejected requirements with Approval Status not “Waiting”: At least one Approver has reviewed the requirement and has changed the Approval Status. If the requirement has been disapproved, the requirement will also be listed in “Review results/WorkItems with Approval Status “Disapproved””.
+Required action:
+·         Approval Status = “Approved”: No action required; the Approver has confirmed that the rejected requirements has been reviewed and impacts have been analyzed
+·         Approval Status = “Disapproved”: Check the Disapproval comment. If the reason for disapproval is valid, process the requirement accordingly (e.g. “Reject is not correct, the requirement should be accepted…”, etc.).
+If the Disapproval reason is invalid, reply to the Disapproval comment, restore the Approval Status to “Waiting” and talk to the Approver how to handle rejected requirements (Impact Analysis, etc.)</value>
+  </data>
+</root>

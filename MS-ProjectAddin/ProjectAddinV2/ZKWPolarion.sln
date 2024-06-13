@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKW.Polarion.AddIn", "ZKW.Polarion.AddIn\ZKW.Polarion.AddIn.csproj", "{DF1E3935-6745-40DA-818B-6FD1E9A06B6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKW.TestApi", "ZKW.TestApi\ZKW.TestApi.csproj", "{B4B5A566-EAE5-41D8-8FA0-A0CA05F7E1FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKW.Tools", "ZKW.Tools\ZKW.Tools.csproj", "{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF1E3935-6745-40DA-818B-6FD1E9A06B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1E3935-6745-40DA-818B-6FD1E9A06B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1E3935-6745-40DA-818B-6FD1E9A06B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1E3935-6745-40DA-818B-6FD1E9A06B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B5A566-EAE5-41D8-8FA0-A0CA05F7E1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B5A566-EAE5-41D8-8FA0-A0CA05F7E1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B5A566-EAE5-41D8-8FA0-A0CA05F7E1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B5A566-EAE5-41D8-8FA0-A0CA05F7E1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C512230A-21A7-41AC-BCA9-2B2EA0791E67}
+	EndGlobalSection
+EndGlobal

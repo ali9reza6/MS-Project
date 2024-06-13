@@ -1,0 +1,9 @@
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\bin\Debug\netstandard2.0\ZKW.Shared.deps.json
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\bin\Debug\netstandard2.0\ZKW.Shared.dll
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\bin\Debug\netstandard2.0\ZKW.Shared.pdb
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.csprojAssemblyReference.cache
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.csproj.CoreCompileInputs.cache
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.AssemblyInfoInputs.cache
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.AssemblyInfo.cs
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.dll
+C:\Projekte\ZKW\ZKWPolarion\ZKW.Shared\obj\Debug\netstandard2.0\ZKW.Shared.pdb

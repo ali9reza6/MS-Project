@@ -1,0 +1,34 @@
+﻿@model PolarionReports.Models.NavigationView
+
+@if (Model.Project == null)
+{
+    <h3>Please select a Project, not a folder</h3>
+}
+else
+{
+    <h2>@Model.Project.Name</h2>
+    <h3>Available Reports</h3>
+    <h4><a target="_blank" href="@Model.LinkCheck10" ,>10-Check </a></h4>
+    <h4><a target="_blank" href="@Model.LinkCheck20N" ,>20-Check </a></h4>
+    <h4><a target="_blank" href="@Model.LinkCheck30N" ,>30A-Check</a></h4>
+    <h4><a target="_blank" href="@Model.LinkImpact">Impact Analysis</a></h4>
+
+    <hr />
+
+    <!--
+    <h3>Legacy Reports:</h3>
+    <h4><a target="_blank" href="@Model.LinkCheck20" ,>20-Check </a></h4>
+    <h4><a target="_blank" href="@Model.LinkCheck30" ,>30A-Check</a></h4>
+
+    <hr />
+    -->
+
+    <h3>Planning Tools</h3>
+    <h4><a target="_blank" href="@Model.PlantemplateInsert" ,>Insert Plan Templates in Project: @Model.Project.Id <span style="color:red"> | Admin rights required!</span></a></h4>
+    <h4><a target="_blank" href="@Model.PlanInsert" ,>Insert SW Release Plan in Project: @Model.Project.Id</a></h4>
+    <h4><a target="_blank" href="@Model.PlanInsertFromTemplate" ,>Insert Plans from Template Project in Project: @Model.Project.Id</a></h4>
+    <h4><a target="_blank" href="@Model.PlanTreeSort" ,>Set SW Release Plan Order: @Model.Project.Id</a></h4>
+    <h4><a target="_blank" href="@Model.GanttSW" ,>Open Gantt-chart SW Release Plan: @Model.Project.Id</a></h4>
+
+    
+}

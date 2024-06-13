@@ -1,0 +1,6 @@
+C:\Projekte\ProjectAddinV2\ZKW.Tools\bin\Debug\ZKW.Tools.dll
+C:\Projekte\ProjectAddinV2\ZKW.Tools\bin\Debug\ZKW.Tools.pdb
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Debug\ZKW.Tools.dll
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Debug\ZKW.Tools.pdb
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Debug\ZKW.Tools.csprojAssemblyReference.cache
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Debug\ZKW.Tools.csproj.CoreCompileInputs.cache

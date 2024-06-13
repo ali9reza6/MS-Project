@@ -1,0 +1,44 @@
+﻿@model PolarionReports.Models.ImpactProjectViewModel
+@using PolarionReports.Custom_Helpers
+
+<h3>Project: @Model.projectDB.Name</h3>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "impactForm" }))
+{
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            <span style="font-weight:700">CR, CustRequ, Requ, Feature or WP: @Model.projectDB.c_trackerprefix -</span>
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.AnalyseWorkitemId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AnalyseWorkitemId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    @Html.HiddenFor(m => m.ProjectID, new { id="ProjectID"})
+    @Html.HiddenFor(m => m.projectDB.c_trackerprefix, new { id="ProjectTrackerId" })
+
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-4">
+            @Html.EJS().Button("btConfirm").Content("Start Impact Analyse").CssClass("e-success").Disabled(false).Render()
+        </div>
+    </div>
+</div>
+}
+
+@if (!Model.ErrorMsg.Contains("OK"))
+{
+    <div id="ErrorMsg">
+        <h3 style="color:red">@Model.ErrorMsg</h3>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.getElementById("btConfirm").addEventListener('click', function () {
+            console.log("OK Button clicked");
+            document.getElementById("impactForm").submit();
+        });
+    </script>
+}

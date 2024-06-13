@@ -1,0 +1,54 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Projekte\\ZKW\\ZKWPolarion\\ZKW.Shared\\ZKW.Shared.csproj": {}
+  },
+  "projects": {
+    "C:\\Projekte\\ZKW\\ZKWPolarion\\ZKW.Shared\\ZKW.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projekte\\ZKW\\ZKWPolarion\\ZKW.Shared\\ZKW.Shared.csproj",
+        "projectName": "ZKW.Shared",
+        "projectPath": "C:\\Projekte\\ZKW\\ZKWPolarion\\ZKW.Shared\\ZKW.Shared.csproj",
+        "packagesPath": "C:\\Users\\andi\\.nuget\\packages\\",
+        "outputPath": "C:\\Projekte\\ZKW\\ZKWPolarion\\ZKW.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\andi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard1.6"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard1.6": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard1.6": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[1.6.1, )",
+              "autoReferenced": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

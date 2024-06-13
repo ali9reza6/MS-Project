@@ -1,0 +1,134 @@
+﻿@model PolarionReports.Models.PlanViewModel
+
+<h4>TreeSort Project: @Model.ProjectId</h4>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Project Plans</h4>
+        <div id="tree1" style="overflow-y:scroll; height:500px">
+            <div>
+                @Html.EJS().TreeView("PlanTree").AllowDragAndDrop(true).NodeDropped("OnNodeDropped").NodeSelected("OnProjSelected").Fields(Model.PlanFields).Render()
+            </div>
+        </div>
+        <p></p>
+        <!-- div d1 für Testausgaben -->
+        <div id="d1"></div>
+        <!-- div d2 Output von Navigation View -->
+        <div id="d2"></div>
+    </div>
+
+    <div class="col-md-6">
+        
+        @Html.HiddenFor(m => m.ProjectId)
+
+        <div class="row" style="margin:10px">
+            @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin:10px">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-4">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin:10px">
+            <div class="col-md-offset-2 col-md-4">
+                @Html.EJS().Button("btConfirm2").Content("Update Plan Sortorder").CssClass("e-success").Disabled(false).Render()
+            </div>
+        </div>
+
+        <div class="row" style="margin:10px">
+            <div id="ErrorMsg">
+                <h3 style="color:red">@Model.ErrorMsg</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <p id="Message" style="color:red"></p>
+</div>
+
+<div class="row">
+    <p id="p1" style="color:green"></p>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("btConfirm2").addEventListener('click', function () {
+            document.body.style.cursor = 'wait';
+            document.getElementById("p1").innerHTML = "Update Sortorder started";
+            console.log("OK Button clicked");
+            var username = document.getElementById("Username");
+            var password = document.getElementById("Password");
+
+            if (username.value == null || username.value == "") {
+                document.getElementById("Message").innerHTML = "Username required";
+                return;
+            }
+
+            if (password.value == null || password.value == "") {
+                document.getElementById("Message").innerHTML = "Password required";
+                return;
+            }
+
+            var projectId = document.getElementById("ProjectId");
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+            var url1 = '/api/PlanSortApi';
+            var postdata = JSON.stringify({ Username: username.value, Password: password.value, ProjectId: projectId.value, TreesortList: tree.treeData } )
+            $.ajax({
+                type: "POST",
+                url: url1,
+                contentType: "application/json; charset=utf-8",
+                dataType: 'JSON',
+                data: postdata,
+                traditional: true,
+                success: function () {
+                    document.body.style.cursor = 'default';
+                    console.log("success");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    document.body.style.cursor = 'default';
+                    if (xhr.status == 200) {
+                        document.getElementById("p1").innerHTML = "Sortorder sucessfull changed";
+                    }
+                    if (xhr.status == 404) {
+                        alert(thrownError);
+                    }
+                }
+            });
+
+        });
+
+        function OnProjSelected(sender, args) {
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+            console.log("OnProjSelected");
+
+        }
+
+        function OnNodeDropped(sender, args) {
+            console.log("OnNodeDropped");
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+        }
+
+        function resize() {
+            var heights = window.innerHeight;
+            document.getElementById("tree1").style.height = heights - 280 + "px";
+        }
+
+        window.onresize = function () {
+            resize();
+        }
+
+        $(document).ready(function () {
+            resize();
+            OnProjSelected();
+        });
+    </script>
+}

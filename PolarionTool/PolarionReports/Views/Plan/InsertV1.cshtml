@@ -1,0 +1,198 @@
+﻿
+@model PolarionReports.Models.PlanViewModel
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h3>Insert Plan @Model.Project.Name</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h4>Template Plans:</h4>
+        <div id="tree1" style="overflow-y:scroll; height:500px">
+            <div>
+                @Html.EJS().TreeView("TempTree").NodeSelected("OnTempSelected").Fields(Model.TempFields).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <p>Button Area</p>
+        <div style="margin-top:10px">
+            @Html.EJS().Button("btDelete").Content("Delete Plan").Disabled(true).IsPrimary(true).Render()
+        </div>
+
+        <div style="margin-top:10px">
+            @Html.EJS().Button("btInsert").Content("Insert Plan").Disabled(true).CssClass("e-success").Render()
+        </div>
+
+        <div style="margin-top:10px">
+            @Html.EJS().Button("bt2").Content("Update Milestone").Disabled(true).Render()
+        </div>
+
+    </div>   
+        
+    <div class="col-md-6" >
+        <h4>Project Plans</h4>
+        <div id="tree2" style="overflow-y:scroll; height:500px">
+            <div>
+                @Html.EJS().TreeView("PlanTree").NodeSelected("OnProjSelected").Fields(Model.PlanFields).Render()
+            </div>
+        </div>
+        <p></p>
+        <!-- div d1 für Testausgaben -->
+        <div id="d1"></div>
+        <!-- div d2 Output von Navigation View -->
+        <div id="d2"></div>
+    </div>
+</div>
+<div  class="row">
+    <p id="Message" style="color:red"></p>
+</div>
+
+@section Scripts {
+    <script>
+        var PlanPK;
+        var PlanId;
+        var PlanName;
+        var PlanStatus;
+        var PlanType;
+        var PlanLevel;
+
+        var TempPK;
+        var TempId;
+        var TempName;
+        var TempStatus;
+        var TempType;
+        var TempLevel;
+
+        document.getElementById("btDelete").addEventListener('click', function () {
+
+            console.log("btDelete clicked");
+        });
+
+        document.getElementById("btInsert").addEventListener('click', function () {
+            console.log("btInsert clicked");
+            var url1 = '@Url.Content("~/PolarionPlan/Insert/")' + TempPK + "/" + PlanPK;
+        
+            console.log(url1);
+
+            window.location = url1;
+        });
+
+        document.getElementById("bt2").addEventListener('click', function () {
+            console.log("bt2 clicked");
+            
+        });
+
+        function OnTempSelected(sender, args) {
+        //define your code
+
+            var tree = document.getElementById("TempTree").ej2_instances[0];
+            var test = tree.selectedNodes;
+            var data = tree.treeData;
+            var plan = test[0];
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].PK == plan) {
+                    TempPK = data[i].PK;
+                    TempId = data[i].Id;
+                    TempName = data[i].Name;
+                    TempStatus = data[i].Status;
+                    TempType = data[i].Type;
+                    TempLevel = data[i].Level;
+                    break;
+                }
+            }
+            console.log(TempId + " / " + TempName + " / " + TempStatus);
+            CheckInsertButton();
+            // var node = tree.FindNodeById(plan);
+            // node.UnSelect();
+        }
+
+        function OnProjSelected(sender, args) {
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+            var test = tree.selectedNodes;
+            var data = tree.treeData;
+            var plan = test[0]
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].PK == plan) {
+                    PlanPK = data[i].PK;
+                    PlanId = data[i].Id;
+                    PlanName = data[i].Name;
+                    PlanStatus = data[i].Status;
+                    PlanType = data[i].Type;
+                    PlanLevel = data[i].Level;
+                    break;
+                }
+            }
+            console.log(PlanId + " / " + PlanName + " / " + PlanStatus);
+            var bt = document.getElementById("btDelete").ej2_instances[0];
+            if (PlanStatus == "open") {
+                bt.disabled = true;
+            }
+            else {
+                bt.disabled = true;
+            }
+            CheckInsertButton();
+        }
+
+        function CheckInsertButton() {
+            var bt = document.getElementById("btInsert").ej2_instances[0];
+            if (TempLevel == "0") {
+                $('#Message').html("You can not insert a Top Level Plan");
+                bt.disabled = true;
+                return;
+            }
+            if (TempType == "M") {
+                $('#Message').html("You can not insert a Milestone Plan");
+                bt.disabled = true;
+                return;
+            }
+            if (PlanType == "M") {
+                $('#Message').html("You can not insert a new Plan under a Milestone");
+                bt.disabled = true;
+                return;
+            }
+            if (PlanType == "I") {
+                $('#Message').html("You can not insert a new Plan under a Iteration Plan");
+                bt.disabled = true;
+                return;
+            }
+            if (TempType == "I" && PlanType == "R" && PlanLevel == "0") {
+                $('#Message').html("You can not insert a Iteration Plan under Level 0 Relaese Plan (Main Node)");
+                bt.disabled = true;
+                return;
+            }
+            if (TempType == "R" && PlanType == "R" && PlanLevel != "0") {
+                $('#Message').html("You can insert a Relase Plan only under Level 0 Release Plan (Main Node)");
+                bt.disabled = true;
+                return;
+            }
+            if (TempType == "R" && PlanType == "R" && PlanLevel == "0") {
+                $('#Message').html("");
+                bt.disabled = false;
+                return;
+            }
+            if (TempType == "I" && PlanType == "R" && PlanLevel != "0") {
+                $('#Message').html("");
+                bt.disabled = false;
+                return;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }
+
+        function resize() {
+            var heights = window.innerHeight;
+            document.getElementById("tree1").style.height = heights - 280 + "px";
+            document.getElementById("tree2").style.height = heights - 280 + "px";
+        }
+
+        resize();
+
+        window.onresize = function () {
+            resize();
+        }
+    </script>
+}

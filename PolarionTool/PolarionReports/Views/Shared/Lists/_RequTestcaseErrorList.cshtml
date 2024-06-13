@@ -1,0 +1,56 @@
+﻿@model PolarionReports.Models.Lists.RequTestcaseErrorListViewModel
+
+<div>
+    @if (Model.Table.Count > 0)
+    {
+        string collapseStatus;
+        if (Model.Table.Count < Model.ExpandLevel)
+        {
+            collapseStatus = "panel-collapse in";
+        }
+        else
+        {
+            collapseStatus = "panel-collapse collapse";
+        }
+        <h4><a style="color:@Model.Color" data-toggle="collapse" href="@("#"+Model.Id)"><span data-toogle="tooltip" title="@Model.Tooltip">@Model.Table.Count.ToString() @Model.Titel</span></a>@Model.PolarionTableLink</h4>
+        <div id="@(Model.Id)" class="@collapseStatus">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Internal Comments</th>
+                    <th>Allocation</th>
+                    <th>Verification Method</th>
+                    <th>Verification Discipline</th>
+                    <th>doc prefix-TC-ID</th>
+                    <th>Error</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.Table)
+                {
+                    <tr>
+                        <td width="110px"><a target="_blank" href="@Model.PolarionLink@item.Requirement.Id" ,>@item.Requirement.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Requirement.Title)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.Requirement.InternalComments">@Html.DisplayFor(modelItem => item.Requirement.InternalComments20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Requirement.Alloc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.VerificationMethod)</td>
+                        <td>@Html.DisplayFor(modelItem => item.VerificationDiscipline)</td>
+
+                        <td>
+                            @foreach (var testcase in item.Testcases)
+                            {
+                                <a target="_blank" data-toggle="tooltip" title="@testcase.Title" href="@testcase.PolarionDocumentLink">@testcase.DocPrefix: @testcase.Id</a><br>
+                            }
+                        </td>
+
+                        <td>@Html.DisplayFor(modelItem => item.Error)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Requirement.Status)</td>
+                        <td><a target="_blank" href="@Model.PolarionDocumentLink@item.Requirement.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

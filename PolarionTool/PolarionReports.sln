@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolarionReports", "PolarionReports\PolarionReports.csproj", "{AAFD8213-4E96-4D42-BD0D-B31A94250C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net.seabay.polarion.WSConnector", "WSConnector\net.seabay.polarion.WSConnector.csproj", "{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKW.Tools", "ZKW.Tools\ZKW.Tools.csproj", "{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|x64.Build.0 = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Debug|x86.Build.0 = Debug|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|x64.ActiveCfg = Release|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|x64.Build.0 = Release|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|x86.ActiveCfg = Release|Any CPU
+		{AAFD8213-4E96-4D42-BD0D-B31A94250C30}.Release|x86.Build.0 = Release|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|x64.ActiveCfg = Debug|x64
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|x64.Build.0 = Debug|x64
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Debug|x86.Build.0 = Debug|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|x64.ActiveCfg = Release|x64
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|x64.Build.0 = Release|x64
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|x86.ActiveCfg = Release|Any CPU
+		{1ED6B39F-E2DD-4EE4-BA25-0F97E88F9EC7}.Release|x86.Build.0 = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|x64.Build.0 = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Debug|x86.Build.0 = Debug|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|x64.ActiveCfg = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|x64.Build.0 = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|x86.ActiveCfg = Release|Any CPU
+		{F6C2C2FB-1EA7-4CCA-A9FB-804D4EF71BBF}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {568B7E7C-519B-4B13-B1BF-E958305B233A}
+	EndGlobalSection
+EndGlobal

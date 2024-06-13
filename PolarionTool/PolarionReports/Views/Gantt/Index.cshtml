@@ -1,0 +1,109 @@
+﻿@model PolarionReports.Models.GanttViewModel
+<h3>Edit Gantt Diagram Project: @Model.Project, Baseplan: @Model.Baseplan</h3>
+
+<div>
+    @Html.EJS().Gantt("Gantt").DataSource(DataManager => { DataManager.Url(Model.DataUrl).BatchUrl("/Gantt/Batchsave").Adaptor("UrlAdaptor"); }).Height("800px").TaskFields(ts => ts.Id("TaskId").ParentID("ParentId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress").Dependency("Dependency").BaselineStartDate("BaselineStartDate").BaselineEndDate("BaselineEndDate")).EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true)).EnableContextMenu(true).EndEdit("GanttEditEnd").AllowUnscheduledTasks(true).RenderBaseline(true).Render()
+</div>
+
+<br />
+
+<div class="col-md-offset-2 col-md-1" style="margin:10px">
+    @Html.EJS().Button("btDay").Content("Days").CssClass("e-success").Disabled(false).Render()
+</div>
+<div class="col-md-offset-3 col-md-1" style="margin:10px">
+    @Html.EJS().Button("btWeek").Content("Weeks").CssClass("e-success").Disabled(false).Render()
+</div>
+<div class="col-md-offset-4 col-md-1" style="margin:10px">
+    @Html.EJS().Button("btMonth").Content("Months").CssClass("e-success").Disabled(false).Render()
+</div>
+
+<div class="col-md-offset-4 col-md-1" style="margin:10px">
+    @Html.EJS().Button("login").Content("login").CssClass("e-success").Disabled(false).Render()
+</div>
+
+<div>
+    @Html.EJS().Dialog("prompt_dialog").Visible(true).Header("Polarion Login").Visible(true).Close("dialogClose").Open("dialogOpen").Content("<table class='Table'><tbody><tr><td>User Name:</td></tr><tr><td><span class='e-input-group'><input type='text' id='username' name='Required' class='e-input'></span></td></tr><tr><td>Password:</td></tr><tr><td><span class='e-input-group'><input type='password' id='password' name='Required' class='e-input'></span></td></tr></tbody></table>").ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Buttons(ViewBag.promptbutton).Render()
+</div>
+
+
+
+@section Scripts {
+
+<script>
+    function dialogOpen() {
+        dconsole.log("Dialog Open");
+    }
+
+    function dialogClose() {
+        console.log("Dialog Close");
+        var us1 = document.getElementById('username');
+        console.log(us1.value);
+        var pw1 = document.getElementById('password');
+        console.log(pw1.value);
+
+        var strUrl = "/GanttTest/SaveUserPassword/" + us1.value + "/" + encodeURIComponent(pw1.value);
+        console.log(strUrl);
+
+
+
+        var url1 = '@Url.Action("SaveUserPassword", "GanttTest")' + '?user=' + encodeURIComponent(us1.value) + "&password=" + encodeURIComponent(pw1.value) ;
+
+        console.log(url1);
+
+        $.ajax({
+                type: "get",
+                url: url1,
+                success: function (data) {
+                    console.log("success");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if (xhr.status == 404) {
+                        alert(thrownError);
+                    }
+                }
+        });
+    }
+
+    function promptBtnClick() {
+        console.log("promptBtnClick");
+        var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
+        dialogObj.hide();
+    }
+
+    document.getElementById('login').addEventListener('click', function () {
+        console.log("Login Click");
+        var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
+        dialogObj.show();
+    });
+
+    document.getElementById("btDay").addEventListener('click', function () {
+        console.log("btDay Button clicked");
+        var myGantt = document.getElementById("Gantt").ej2_instances[0];
+        myGantt.timelineSettings.topTier.unit = "Week";
+        myGantt.timelineSettings.bottomTier.unit = "Day";
+    });
+
+    document.getElementById("btWeek").addEventListener('click', function () {
+        console.log("btWeek Button clicked");
+        var myGantt = document.getElementById("Gantt").ej2_instances[0];
+        myGantt.timelineSettings.topTier.unit = "Month";
+        myGantt.timelineSettings.bottomTier.unit = "Week";
+    });
+
+    document.getElementById("btMonth").addEventListener('click', function () {
+        console.log("btMonth Button clicked");
+        var myGantt = document.getElementById("Gantt").ej2_instances[0];
+        myGantt.timelineSettings.topTier.unit = "Year";
+        myGantt.timelineSettings.bottomTier.unit = "Month";
+    });
+
+
+    function GanttEditEnd(sender, args) {
+        var myGantt = document.getElementById("Gantt").ej2_instances[0];
+
+        console.log("GanttEditEnd called");
+    }
+
+</script>
+
+}

@@ -1,0 +1,406 @@
+﻿@model PolarionReports.Models.Impact.ImpactWorkitemViewModel
+@using PolarionReports.Custom_Helpers
+
+@{
+    ViewBag.Title = "Analyze";
+}
+
+<h2>Impact Analysis: @Model.ProjectDB.Name</h2>
+
+@if (Model.WorkitemsToAnalyse.Count > 0)
+{
+    int c = 1;
+    string startingPointHref = "";
+    foreach (var wAnalyze in Model.WorkitemsToAnalyse)
+    {
+        if (wAnalyze.WorkitemStartingPoint != null)
+        {
+            if (@wAnalyze.WorkitemStartingPoint.Type == "changerequest")
+            {
+                startingPointHref = "/Impact/Workitem/" + wAnalyze.WorkitemStartingPoint.Id;
+            }
+            else
+            {
+                startingPointHref = @Model.ProjectDB.Id + "?workitems=" + @wAnalyze.WorkitemStartingPoint.Id + "&workitemStartingPoint=" + @wAnalyze.WorkitemStartingPoint.Id;
+            }
+            // Impact/Analyze/E18008?workitems=E18008-13913&workitemStartingPoint=E18008-13913
+            <a target="_blank" href="@startingPointHref">
+                <p>Original starting point: <span style="color:blue">@wAnalyze.WorkitemStartingPoint.TypeDisplay @wAnalyze.WorkitemStartingPoint.Id: @wAnalyze.WorkitemStartingPoint.Title</span></p>
+            </a>
+        }
+
+        Model.WorkitemView.Heading = wAnalyze.Workitem.TypeDisplay;
+        if (wAnalyze.OriginalDocument.DocName != null)
+        {
+            Model.WorkitemView.Document = wAnalyze.OriginalDocument.DocName.OriginalDocumentname;
+        }
+        Model.WorkitemView.workitem = wAnalyze.Workitem;
+        Model.WorkitemView.PolarionLink = Model.Polarionlink;
+        Model.WorkitemView.PolarionDocumentLink = wAnalyze.OriginalDocument.PolarionDocumentLink;
+        Html.RenderPartial("Element/_Workitem", Model.WorkitemView);
+
+        <!-- 10 Section -->
+        if (wAnalyze.Docs10.Count > 0)
+        {
+            <h3>@wAnalyze.GetCounterLinkedCustomerRequirements Customer requirements</h3>
+            foreach (var Analyze10 in wAnalyze.Docs10)
+            {
+                if (Analyze10.LinkedCustomerRequirements.Count > 0)
+                {
+                    Model.CustRequList.Titel = Analyze10.Doc10.Doc.C_id;
+                    Model.CustRequList.Tooltip = Analyze10.TooltipLinkedCustomerRequirements;
+                    Model.CustRequList.Color = "blue";
+                    Model.CustRequList.Id = "a" + c.ToString() + Analyze10.Doc10.Doc.C_pk;
+                    Model.CustRequList.PolarionLink = Model.Polarionlink;
+                    Model.CustRequList.PolarionDocumentLink = Analyze10.Doc10.Doc.PolarionDocumentLink;
+                    Model.CustRequList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze10.Doc10.PolarionTableLinkFromWorkitems(Analyze10.LinkedCustomerRequirements));
+                    Model.CustRequList.Table = Analyze10.LinkedCustomerRequirements;
+                    Html.RenderPartial("ImpactLists/_CustRequ", Model.CustRequList);
+                }
+            }
+        }
+
+        <!-- Childs -->
+        if (wAnalyze.ChildDocs.Count > 0)
+        {
+            <h3>
+                @wAnalyze.GetCounterChildRequirements Child requirements
+                @Custom_Helper_Class.AnalyzeList("/Impact/Analyze/" + Model.ProjectDB.Id, wAnalyze.GetAllChilds, "", wAnalyze.WorkitemStartingPoint.Id, "childs")
+            </h3>
+            foreach (var child in wAnalyze.ChildDocs)
+            {
+                if (child.Childs.Count > 0)
+                {
+                    Model.RequAnalyzeList.ProjectID = Model.ProjectDB.Id;
+                    Model.RequAnalyzeList.StartingPoint = wAnalyze.WorkitemStartingPoint.Id;
+                    Model.RequAnalyzeList.Titel = child.ChildDocument.Doc.C_id;
+                    Model.RequAnalyzeList.Tooltip = "";
+                    Model.RequAnalyzeList.Color = "blue";
+                    Model.RequAnalyzeList.Id = "a1" + c.ToString() + child.ChildDocument.Doc.C_pk;
+                    Model.RequAnalyzeList.PolarionLink = Model.Polarionlink;
+                    Model.RequAnalyzeList.PolarionDocumentLink = child.ChildDocument.Doc.PolarionDocumentLink;
+                    Model.RequAnalyzeList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(child.ChildDocument.PolarionTableLinkFromWorkitems(child.Childs));
+                    Model.RequAnalyzeList.Table = child.Childs;
+                    Model.RequAnalyzeList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_RequAnalyze", Model.RequAnalyzeList);
+                }
+            }
+        }
+
+        <!-- 20 Section -->
+        if (wAnalyze.Docs20.Count > 0)
+        {
+            <h3>
+                @wAnalyze.GetCounterLinkedElementRequirements Element Requirements
+                @Custom_Helper_Class.AnalyzeList("/Impact/Analyze/" + Model.ProjectDB.Id, wAnalyze.GetAllElementRequirements, "", wAnalyze.WorkitemStartingPoint.Id, "ereq")
+            </h3>
+
+            foreach (var Analyze20 in wAnalyze.Docs20)
+            {
+
+                if (Analyze20.ElemetRequirements.Count > 0)
+                {
+                    Model.RequList.ProjectID = Model.ProjectDB.Id;
+                    Model.RequList.StartingPoint = wAnalyze.WorkitemStartingPoint.Id;
+                    Model.RequList.Titel = @Analyze20.Doc20.Doc.C_id;
+                    Model.RequList.Tooltip = "";
+                    Model.RequList.Color = "blue";
+                    Model.RequList.Id = "g" + c.ToString() + Analyze20.Doc20.Doc.C_pk;
+                    Model.RequList.PolarionLink = Model.Polarionlink;
+                    Model.RequList.PolarionDocumentLink = Analyze20.Doc20.Doc.PolarionDocumentLink;
+                    Model.RequList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze20.Doc20.PolarionTableLinkFromWorkitems(Analyze20.ElemetRequirements));
+                    Model.RequList.Table = Analyze20.ElemetRequirements;
+                    Model.RequList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_Requ", Model.RequList);
+                }
+
+            }
+        }
+
+        <!-- Element Architecture -->
+        if (wAnalyze.Docs30.Count > 0)
+        {
+            if (wAnalyze.GetCounterComponents > 0)
+            {
+                <h3>@wAnalyze.GetCounterComponents Components</h3>
+            }
+            if (wAnalyze.GetCounterInterfaces > 0)
+            {
+                <h3>@wAnalyze.GetCounterInterfaces Interfaces</h3>
+            }
+            foreach (var Analyze30 in wAnalyze.Docs30)
+            {
+                if (Analyze30.Interfaces.Count > 0)
+                {
+                    Model.CIList.Titel = Analyze30.Doc30.Doc.C_id;
+                    Model.CIList.Tooltip = "";
+                    Model.CIList.Color = "blue";
+                    Model.CIList.Id = "e" + c.ToString() + Analyze30.Doc30.Doc.C_pk;
+                    Model.CIList.PolarionLink = Model.Polarionlink;
+                    Model.CIList.PolarionDocumentLink = Analyze30.Doc30.Doc.PolarionDocumentLink;
+                    Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze30.Doc30.PolarionTableLinkFromWorkitems(Analyze30.Interfaces));
+                    Model.CIList.Table = Analyze30.Interfaces;
+                    Model.CIList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                }
+
+                if (Analyze30.Components.Count > 0)
+                {
+                    Model.CIList.Titel = Analyze30.Doc30.Doc.C_id;
+                    Model.CIList.Tooltip = "";
+                    Model.CIList.Color = "blue";
+                    Model.CIList.Id = "f" + c.ToString() + Analyze30.Doc30.Doc.C_pk;
+                    Model.CIList.PolarionLink = Model.Polarionlink;
+                    Model.CIList.PolarionDocumentLink = Analyze30.Doc30.Doc.PolarionDocumentLink;
+                    Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze30.Doc30.PolarionTableLinkFromWorkitems(Analyze30.Components));
+                    Model.CIList.Table = Analyze30.Components;
+                    Model.CIList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                }
+            }
+        }
+
+        <!-- Interface Requirements -->
+        if (wAnalyze.Docs30i.Count > 0)
+        {
+            <h3>@wAnalyze.GetCounterInterfaceRequirements Interface Requirements</h3>
+            foreach (var Analyze30i in wAnalyze.Docs30i)
+            {
+                if (Analyze30i.InterfaceRequirements.Count > 0)
+                {
+                    Model.RequList.Titel = @Analyze30i.Doc30i.Doc.C_id;
+                    Model.RequList.Tooltip = "";
+                    Model.RequList.Color = "blue";
+                    Model.RequList.Id = "g" + c.ToString() + Analyze30i.Doc30i.Doc.C_pk;
+                    Model.RequList.PolarionLink = Model.Polarionlink;
+                    Model.RequList.PolarionDocumentLink = Analyze30i.Doc30i.Doc.PolarionDocumentLink;
+                    Model.RequList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze30i.Doc30i.PolarionTableLinkFromWorkitems(Analyze30i.InterfaceRequirements));
+                    Model.RequList.Table = Analyze30i.InterfaceRequirements;
+                    Model.RequList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_Requ", Model.RequList);
+                }
+            }
+        }
+
+        <!-- Software requirements (level 40) -->
+        if (wAnalyze.Docs40sw.Count > 0)
+        {
+            <h3>@wAnalyze.GetCounter40SoftwareRequirements Software Requirements</h3>
+            foreach (var Analyze40sw in wAnalyze.Docs40sw)
+            {
+                if (Analyze40sw.SoftwareRequirements.Count > 0)
+                {
+                    Model.RequList.Titel = @Analyze40sw.Doc40sw.Doc.C_id;
+                    Model.RequList.Tooltip = "";
+                    Model.RequList.Color = "blue";
+                    Model.RequList.Id = "h" + c.ToString() + Analyze40sw.Doc40sw.Doc.C_pk;
+                    Model.RequList.PolarionLink = Model.Polarionlink;
+                    Model.RequList.PolarionDocumentLink = Analyze40sw.Doc40sw.Doc.PolarionDocumentLink;
+                    Model.RequList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze40sw.Doc40sw.PolarionTableLinkFromWorkitems(Analyze40sw.SoftwareRequirements));
+                    Model.RequList.Table = Analyze40sw.SoftwareRequirements;
+                    Model.RequList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_Requ", Model.RequList);
+                }
+            }
+        }
+
+        <!-- Software Architectural Design (level 50) -->
+        if (wAnalyze.Docs50sw.Count > 0)
+        {
+            if (wAnalyze.GetCounter50SWInterfaces > 0)
+            {
+                <h3>@wAnalyze.GetCounter50SWInterfaces Software Interfaces</h3>
+                foreach (var Analyze50sw in wAnalyze.Docs50sw)
+                {
+                    if (Analyze50sw.Interfaces.Count > 0)
+                    {
+                        Model.CIList.Titel = @Analyze50sw.Doc50sw.Doc.C_id;
+                        Model.CIList.Tooltip = "";
+                        Model.CIList.Color = "blue";
+                        Model.CIList.Id = "i" + c.ToString() + Analyze50sw.Doc50sw.Doc.C_pk;
+                        Model.CIList.PolarionLink = Model.Polarionlink;
+                        Model.CIList.PolarionDocumentLink = Analyze50sw.Doc50sw.Doc.PolarionDocumentLink;
+                        Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze50sw.Doc50sw.PolarionTableLinkFromWorkitems(Analyze50sw.Interfaces));
+                        Model.CIList.Table = Analyze50sw.Interfaces;
+                        Model.CIList.ExpandLevel = 3;
+                        Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                    }
+                }
+            }
+
+            if (wAnalyze.GetCounter50SWComponent > 0)
+            {
+                <h3>@wAnalyze.GetCounter50SWComponent Software Components</h3>
+                foreach (var Analyze50sw in wAnalyze.Docs50sw)
+                {
+                    if (Analyze50sw.Components.Count > 0)
+                    {
+                        Model.CIList.Titel = Analyze50sw.Doc50sw.Doc.C_id;
+                        Model.CIList.Tooltip = "";
+                        Model.CIList.Color = "blue";
+                        Model.CIList.Id = "j" + c.ToString() + Analyze50sw.Doc50sw.Doc.C_pk;
+                        Model.CIList.PolarionLink = Model.Polarionlink;
+                        Model.CIList.PolarionDocumentLink = Analyze50sw.Doc50sw.Doc.PolarionDocumentLink;
+                        Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze50sw.Doc50sw.PolarionTableLinkFromWorkitems(Analyze50sw.Components));
+                        Model.CIList.Table = Analyze50sw.Components;
+                        Model.CIList.ExpandLevel = 3;
+                        Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                    }
+                }
+            }
+        }
+
+        <!-- Hardware requirements (level 40) -->
+        if (wAnalyze.Docs40hw.Count > 0)
+        {
+            <h3>@wAnalyze.GetCounter40HardwareRequirements Hardware requirements</h3>
+            foreach (var Analyze40hw in wAnalyze.Docs40hw)
+            {
+                if (Analyze40hw.HardwareRequrirements.Count > 0)
+                {
+                    Model.RequList.Titel = Analyze40hw.Doc40hw.Doc.C_id;
+                    Model.RequList.Tooltip = "";
+                    Model.RequList.Color = "blue";
+                    Model.RequList.Id = "k" + c.ToString() + Analyze40hw.Doc40hw.Doc.C_pk;
+                    Model.RequList.PolarionLink = Model.Polarionlink;
+                    Model.RequList.PolarionDocumentLink = Analyze40hw.Doc40hw.Doc.PolarionDocumentLink;
+                    Model.RequList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze40hw.Doc40hw.PolarionTableLinkFromWorkitems(Analyze40hw.HardwareRequrirements));
+                    Model.RequList.Table = Analyze40hw.HardwareRequrirements;
+                    Model.RequList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_Requ", Model.RequList);
+                }
+            }
+        }
+
+        <!-- Hardware Architectural Design (level 50) -->
+        if (wAnalyze.Docs50hw.Count > 0)
+        {
+            if (wAnalyze.GetCounter50HWInterfaces > 0)
+            {
+                <h3>@wAnalyze.GetCounter50HWInterfaces Hardware Interfaces</h3>
+                foreach (var Analyze50hw in wAnalyze.Docs50hw)
+                {
+                    <h3 style="color:blue">Doc: @Analyze50hw.Doc50hw.Doc.C_id</h3>
+                    if (Analyze50hw.Interfaces.Count > 0)
+                    {
+                        Model.CIList.Titel = Analyze50hw.Doc50hw.Doc.C_id;
+                        Model.CIList.Tooltip = "";
+                        Model.CIList.Color = "blue";
+                        Model.CIList.Id = "l" + c.ToString() + Analyze50hw.Doc50hw.Doc.C_pk;
+                        Model.CIList.PolarionLink = Model.Polarionlink;
+                        Model.CIList.PolarionDocumentLink = Analyze50hw.Doc50hw.Doc.PolarionDocumentLink;
+                        Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze50hw.Doc50hw.PolarionTableLinkFromWorkitems(Analyze50hw.Interfaces));
+                        Model.CIList.Table = Analyze50hw.Interfaces;
+                        Model.CIList.ExpandLevel = 3;
+                        Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                    }
+                }
+            }
+
+            if (wAnalyze.GetCounter50HWComponent > 0)
+            {
+                <h3>@wAnalyze.GetCounter50HWComponent Hardware Components</h3>
+                foreach (var Analyze50hw in wAnalyze.Docs50hw)
+                {
+                    if (Analyze50hw.Components.Count > 0)
+                    {
+                        Model.CIList.Titel = Analyze50hw.Doc50hw.Doc.C_id;
+                        Model.CIList.Tooltip = "";
+                        Model.CIList.Color = "blue";
+                        Model.CIList.Id = "m" + c.ToString() + Analyze50hw.Doc50hw.Doc.C_pk;
+                        Model.CIList.PolarionLink = Model.Polarionlink;
+                        Model.CIList.PolarionDocumentLink = Analyze50hw.Doc50hw.Doc.PolarionDocumentLink;
+                        Model.CIList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Analyze50hw.Doc50hw.PolarionTableLinkFromWorkitems(Analyze50hw.Components));
+                        Model.CIList.Table = Analyze50hw.Components;
+                        Model.CIList.ExpandLevel = 3;
+                        Html.RenderPartial("ImpactLists/_CI", Model.CIList);
+                    }
+                }
+            }
+
+        }
+
+        if (wAnalyze.Testcases.Count > 0)
+        {
+            <h3>@wAnalyze.GetCounterTestCases Test cases</h3>
+            foreach (var AnalyzeTestcase in wAnalyze.Testcases)
+            {
+                if (AnalyzeTestcase.Testcases.Count > 0)
+                {
+                    Model.TCList.Titel = AnalyzeTestcase.TestcaseDocument.Doc.C_id;
+                    Model.TCList.Tooltip = "";
+                    Model.TCList.Color = "blue";
+                    Model.TCList.Id = "n" + c.ToString() + AnalyzeTestcase.TestcaseDocument.Doc.C_pk;
+                    Model.TCList.PolarionLink = Model.Polarionlink;
+                    Model.TCList.PolarionDocumentLink = AnalyzeTestcase.TestcaseDocument.Doc.PolarionDocumentLink;
+                    Model.TCList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(AnalyzeTestcase.TestcaseDocument.PolarionTableLinkFromWorkitems(AnalyzeTestcase.Testcases));
+                    Model.TCList.Table = AnalyzeTestcase.Testcases;
+                    Model.TCList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_TC", Model.TCList);
+                }
+            }
+        }
+
+        if (wAnalyze.Features.Count > 0)
+        {
+            <h3>
+                @wAnalyze.GetCounterFeatures Features
+                @Custom_Helper_Class.AnalyzeList("/Impact/Analyze/" + Model.ProjectDB.Id, wAnalyze.GetAllFeatures, "", wAnalyze.WorkitemStartingPoint.Id, "features")
+            </h3>
+            foreach (var AnalyzeFeature in wAnalyze.Features)
+            {
+                if (AnalyzeFeature.Features.Count > 0)
+                {
+                    Model.FeatureList.ProjectID = Model.ProjectDB.Id;
+                    Model.FeatureList.StartingPoint = wAnalyze.WorkitemStartingPoint.Id;
+                    Model.FeatureList.Titel = AnalyzeFeature.FeatureDocument.Doc.C_id;
+                    Model.FeatureList.Tooltip = "";
+                    Model.FeatureList.Color = "blue";
+                    Model.FeatureList.Id = "o" + c.ToString() + AnalyzeFeature.FeatureDocument.Doc.C_pk;
+                    Model.FeatureList.PolarionLink = Model.Polarionlink;
+                    Model.FeatureList.PolarionDocumentLink = AnalyzeFeature.FeatureDocument.Doc.PolarionDocumentLink;
+                    Model.FeatureList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(AnalyzeFeature.FeatureDocument.PolarionTableLinkFromWorkitems(AnalyzeFeature.Features));
+                    Model.FeatureList.Table = AnalyzeFeature.Features;
+                    Model.FeatureList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_Feature", Model.FeatureList);
+                }
+            }
+        }
+
+        if (wAnalyze.WorkPackages.Count > 0)
+        {
+            <h3>
+                @wAnalyze.GetCounterWorkpackages Workpackages
+                @Custom_Helper_Class.AnalyzeList("/Impact/Analyze/" + Model.ProjectDB.Id, wAnalyze.GetAllWP, "", wAnalyze.WorkitemStartingPoint.Id, "wp")
+            </h3>
+            foreach (var AnalyzeWorkPackage in wAnalyze.WorkPackages)
+            {
+                if (AnalyzeWorkPackage.WorkPackages.Count > 0)
+                {
+                    Model.WPList.ProjectID = Model.ProjectDB.Id;
+                    Model.WPList.StartingPoint = wAnalyze.WorkitemStartingPoint.Id;
+                    Model.WPList.Titel = AnalyzeWorkPackage.WorkPackageDocument.Doc.C_id;
+                    Model.WPList.Tooltip = "";
+                    Model.WPList.Color = "blue";
+                    Model.WPList.Id = "p" + c.ToString() + AnalyzeWorkPackage.WorkPackageDocument.Doc.C_pk;
+                    Model.WPList.PolarionLink = Model.Polarionlink;
+                    Model.WPList.PolarionDocumentLink = AnalyzeWorkPackage.WorkPackageDocument.Doc.PolarionDocumentLink;
+                    Model.WPList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(AnalyzeWorkPackage.WorkPackageDocument.PolarionTableLinkFromWorkitems(AnalyzeWorkPackage.WorkPackages));
+                    Model.WPList.Table = AnalyzeWorkPackage.WorkPackages;
+                    Model.WPList.ExpandLevel = 3;
+                    Html.RenderPartial("ImpactLists/_WP", Model.WPList);
+                }
+            }
+        }
+
+        <hr />
+        <div style="border-top:solid;"></div>
+        <hr />
+        c++;
+    }
+}
+else
+{
+
+}
+

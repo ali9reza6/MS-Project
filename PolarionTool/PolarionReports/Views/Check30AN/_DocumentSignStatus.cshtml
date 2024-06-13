@@ -1,0 +1,93 @@
+﻿@model PolarionReports.Models.Check30NListsViewModel
+@using PolarionReports.Models
+@using PolarionReports.Custom_Helpers
+
+<!-- ---------------------------- -->
+<!-- Document & Signature Section -->
+<!-- ---------------------------- -->
+<div>
+    <h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip.DocSignatureStatus">Document & Signature Status </span></h3>
+
+    <h4 style="color:@Model.Document.DocSignatureStatus.Line1Color">@Model.Document.DocSignatureStatus.Line1Text</h4>
+
+    @if (Model.Document.DocSignatureStatus.ActualDocSignatureList.Count > 0)
+    {
+        <h5><a style="color:@Model.Document.DocSignatureStatus.Line2Color" data-toggle="collapse" href="@("#st1"+Model.Document.C_pk)">@Model.Document.DocSignatureStatus.Line2Text</a></h5>
+
+        <div id="@("st1"+Model.Document.C_pk)" class="panel-collapse in">
+            <table class="table">
+                <tr>
+                    <th>Verdict</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Comments</th>
+                </tr>
+                @foreach (var dss in Model.Document.DocSignatureStatus.ActualDocSignatureList)
+                {
+                    var datestring = dss.c_verdicttime.ToShortDateString();
+                    if (datestring == "01.01.0001") { datestring = ""; }
+                    <tr style="color:@dss.Color">
+                        <td>@dss.c_verdict</td>
+                        <td>@dss.c_name</td>
+                        <td>@datestring</td>
+                        <td>@dss.c_text</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    @if (Model.Document.DocSignatureStatus.LastAcceptDocSignatureList.Count > 0)
+    {
+        <h5><a style="color:royalblue" data-toggle="collapse" href="@("#st2"+Model.Document.C_pk)">Last Accepted: @Model.Document.DocSignatureStatus.LastAcceptedDate.ToShortDateString()</a></h5>
+
+        <div id="@("st2"+Model.Document.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>Verdict</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Comments</th>
+                </tr>
+                @foreach (var dss in Model.Document.DocSignatureStatus.LastAcceptDocSignatureList)
+                {
+                    var datestring = dss.c_verdicttime.ToShortDateString();
+                    if (datestring == "01.01.0001") { datestring = ""; }
+                    <tr style="color:@dss.Color">
+                        <td>@dss.c_verdict</td>
+                        <td>@dss.c_name</td>
+                        <td>@datestring</td>
+                        <td>@dss.c_text</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+
+    @if (Model.Document.DocSignatureStatus.LastApprovDocSignatureList.Count > 0)
+    {
+        <h5><a style="color:royalblue" data-toggle="collapse" href="@("#st3"+Model.Document.C_pk)">Last Approval: @Model.Document.DocSignatureStatus.LastApprovelDate.ToShortDateString()</a></h5>
+
+        <div id="@("st3"+Model.Document.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>Verdict</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Comments</th>
+                </tr>
+                @foreach (var dss in Model.Document.DocSignatureStatus.LastApprovDocSignatureList)
+                {
+                    var datestring = dss.c_verdicttime.ToShortDateString();
+                    if (datestring == "01.01.0001") { datestring = ""; }
+                    <tr style="color:@dss.Color">
+                        <td>@dss.c_verdict</td>
+                        <td>@dss.c_name</td>
+                        <td>@datestring</td>
+                        <td>@dss.c_text</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

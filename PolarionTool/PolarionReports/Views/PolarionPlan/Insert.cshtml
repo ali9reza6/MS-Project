@@ -1,0 +1,86 @@
+﻿@model PolarionReports.Models.PolarionPlanInsertViewModel
+
+@if (Model.Ready)
+{
+    <h3>Plan insert sucessfull!</h3>
+}
+else
+{
+
+<h3>Insert selected template plans in project: @Model.TargetProject.Name</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Template Plans:</h4>
+        <div class="pre-scrollable" style="min-height:500px">
+            @Html.EJS().TreeView("TempTree").Fields(Model.TemplateFields).Render()
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        @using (Html.BeginForm())
+        {
+            <h4>Confirm or cancel the requested inserts</h4>
+            <h4>under the node ID:@Model.TargetPlan.Plandb.Id Name: @Model.TargetPlan.Plandb.Name</h4>
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NewPlanName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.NewPlanName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.NewPlanName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-4">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(m => m.TargetPlanPK)
+                @Html.HiddenFor(m => m.TemplatePlanPK)
+
+                <input type="hidden" name="@Html.NameFor(m => m.TargetPlan)" value="@Model.TargetPlan" />
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-4">
+                        <input type="submit" value="Insert Plan" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="ErrorMsg">
+            <h3 style="color:red">@Model.ErrorMsg</h3>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+<script>
+    document.getElementById("btInsert").addEventListener('click', function () {
+
+        console.log("btInsert clicked");
+
+    });
+
+    document.getElementById("btCancel").addEventListener('click', function () {
+        console.log("btCancel clicked");
+    });
+
+</script>
+}
+
+

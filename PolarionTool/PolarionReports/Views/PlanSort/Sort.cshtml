@@ -1,0 +1,16 @@
+﻿@model PolarionReports.Models.PlanSortViewModel
+
+<h4>Pläne sortieren Project: @Model.ProjectId baseplan: @Model.BasePlan</h4>
+
+<div>
+    @Html.EJS().TreeGrid("tg").DataSource((IEnumerable<object>)Model.Plans).Columns(col =>
+{
+    col.Field("TaskId").HeaderText("Task Id").Width(50).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+    col.Field("ParentId").HeaderText("Parent Id").Width(50).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+    col.Field("TaskName").HeaderText("TaskName").Width(180).Add();
+    col.Field("Sortorder").HeaderText("Sortorder").Width(50).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+
+}).Height("500px").IdMapping("TaskId").ParentIdMapping("ParentId").Render()
+</div>
+
+

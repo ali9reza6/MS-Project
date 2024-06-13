@@ -1,0 +1,40 @@
+﻿@model PolarionReports.Models.Lists.CustReqErrViewModel
+
+<div>
+    @if (Model.Table.Count > 0)
+    {
+        <h4><a style="color:@Model.Color" data-toggle="collapse" href="@("#"+Model.Id)"><span data-toogle="tooltip" title="@Model.Tooltip">@Model.Table.Count.ToString() @Model.Titel</span></a>@Model.PolarionTableLink</h4>
+        <div id="@(Model.Id)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Internal Comments</th>
+                    <th>C/S</th>
+                    <th>Error</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.Table)
+                {
+                    <tr>
+                        <td width="110px"><a target="_blank" href="@Model.PolarionLink@item.Workitem.Id" ,>@item.Workitem.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Workitem.Title)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.Workitem.InternalComments">@Html.DisplayFor(modelItem => item.Workitem.InternalComments20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Workitem.TextCS)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ErrorMsg)
+                            @if (item.LinkedWorkitem.C_pk > 0)
+                            {
+                                <br /><a target="_blank" href="@item.PolarionLink">@item.IdLinkedWorkitem</a>
+                            }
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Workitem.Status)</td>
+                        <td><a target="_blank" href="@Model.PolarionDocumentLink@item.Workitem.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

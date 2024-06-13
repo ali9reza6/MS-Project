@@ -1,0 +1,14 @@
+﻿@model PolarionReports.Models.TestViewModel
+@{
+    ViewBag.Title = "Workitem";
+}
+
+<h2>Workitem</h2>
+<p>@Model.Message</p>
+<p>
+    @{
+        Html.RenderPartial("WorkitemCF");
+        Html.RenderPartial("WorkitemCF");
+        Html.RenderPartial("WorkitemCF");
+    }
+</p>

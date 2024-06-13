@@ -1,0 +1,40 @@
+﻿@model PolarionReports.Models.CheckViewModel
+
+@{
+    ViewBag.Title = "Coverage Report";
+}
+
+<h2>Coverage Report Demo Checks 20 Uplinks</h2>
+
+<p>@Model.Projectname</p>
+<p>Gefundene Uplinks: @Model.UplinkCounter.ToString()</p>
+
+<p>@Model.Errorname</p>
+
+<table class="table">
+    <tr>
+        <th>
+            WorkitemID
+        </th>
+        <th>
+            Workitem Title
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ErrorList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            <a href="@Model.PolarionLink@item.Id",>@item.Id</a>
+        </td>
+    </tr>
+}
+
+</table>
+

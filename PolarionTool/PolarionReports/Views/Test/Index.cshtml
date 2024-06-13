@@ -1,0 +1,18 @@
+﻿@model PolarionReports.Models.TestViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h4>Test <span id="tt1">Tooltip</span></h4>
+
+<h4>Test2 <span data-toggle="tooltip" data-html="true" data-placement="bottom" title="<h1><strong>HTML</strong> inside <code>the</code> <em>tooltip</em></h1>"> Tooltip2</span></h4>
+
+@section Scripts {
+<script>
+    $(document).ready(function(){
+        $("#tt1").tooltip({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>tooltip</em></h1>", html: true, placement: "bottom"});
+    });
+</script>
+}

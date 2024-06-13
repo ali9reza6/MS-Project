@@ -1,0 +1,252 @@
+﻿
+@model PolarionReports.Models.PlanViewModel
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h3>Insert Software Release Plan in @Model.Project.Name</h3>
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        <h4>Project Plans</h4>
+        <div id="tree2" style="overflow-y:scroll; height:500px">
+            <div>
+                @Html.EJS().TreeView("PlanTree").NodeSelected("OnProjSelected").Fields(Model.PlanFields).Render()
+            </div>
+        </div>
+        <p></p>
+        <!-- div d1 für Testausgaben -->
+        <div id="d1"></div>
+        <!-- div d2 Output von Navigation View -->
+        <div id="d2"></div>
+    </div>
+    <div class="col-md-8">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "planForm" }))
+        {
+        <h4>Please Confirm the requested insert:</h4>
+        <h4 id="InsertActionText" style="color:green"></h4>
+        <h4> </h4>
+
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewPlanName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.NewPlanName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NewPlanName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-5">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.TargetPlanPK)
+            @Html.HiddenFor(m => m.TemplatePlanPK)
+            @Html.HiddenFor(m => m.ProjectId)
+
+            <input id="TargetPlanPK" type="hidden" name="@Html.NameFor(m => m.TargetPlanPK)" value="@Model.TargetPlanPK" />
+            <input id="InsertAction" type="hidden" name="@Html.NameFor(m => m.InsertAction)" value="@Model.InsertAction" />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    @Html.EJS().Button("btConfirm2").Content("Insert Plan").CssClass("e-success").Disabled(true).Render()
+                </div>
+            </div>
+        </div>
+        }
+        <div id="ErrorMsg">
+            <h3 style="color:red">@Model.ErrorMsg</h3>
+        </div>
+
+    </div>
+</div>
+
+<div  class="row">
+    <p id="Message" style="color:red"></p>
+</div>
+
+@section Scripts {
+    <script>
+        var PlanPK;
+        var PlanId;
+        var PlanName;
+        var PlanStatus;
+        var PlanType;
+        var PlanLevel;
+
+        var TempPK;
+        var TempId;
+        var TempName;
+        var TempStatus;
+        var TempType;
+        var TempLevel;
+
+        document.getElementById("btConfirm2").addEventListener('click', function () {
+            console.log("OK Button clicked");
+            document.getElementById("planForm").submit();
+        });
+
+        function OnProjSelected(sender, args) {
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+            var test = tree.selectedNodes;
+            var data = tree.treeData;
+            var plan = test[0]
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].PK == plan) {
+                    PlanPK = data[i].PK;
+                    PlanId = data[i].Id;
+                    PlanName = data[i].Name;
+                    PlanStatus = data[i].Status;
+                    PlanType = data[i].Type;
+                    PlanLevel = data[i].Level;
+                    document.getElementById("TargetPlanPK").value = PlanPK;
+                    break;
+                }
+            }
+            console.log(PlanId + " / " + PlanName + " / " + PlanStatus);
+
+            if (!IsTemplate()) {
+                $('#Message').html("You must first import the Template Plan");
+                var mybtConfirm2 = document.getElementById("btConfirm2").ej2_instances[0];
+                mybtConfirm2.content = "Insert Template Plan Structure";
+                mybtConfirm2.disabled = false;
+                $('#InsertActionText').html("Insert Template Plan in Project");
+                document.getElementById("InsertAction").value = "InsertTemplate";
+                document.getElementById("NewPlanName").value = "Template";
+            }
+            else {
+                CheckInsertButton();
+            }
+        }
+
+        function CheckInsertButton() {
+
+            var mybtConfirm2 = document.getElementById("btConfirm2").ej2_instances[0];
+
+            if (PlanId == "Template") {
+                $('#Message').html("You can not insert a new Plan under the Template Plan");
+                $('#InsertActionText').html("");
+                mybtConfirm2.content = "See Error Message";
+                mybtConfirm2.disabled = true;
+                return;
+            }
+
+            if (PlanId.indexOf("Template") != -1) {
+                $('#Message').html("You can not insert a new Plan under the Template Plans");
+                $('#InsertActionText').html("");
+                mybtConfirm2.content = "See Error Message";
+                mybtConfirm2.disabled = true;
+                return;
+            }
+
+            if (PlanType == "M") {
+                if (PlanStatus == "open") {
+                    $('#Message').html("");
+                    $('#InsertActionText').html("Update Milestone - not implemented now");
+                    mybtConfirm2.content = "See Error Message";
+                    mybtConfirm2.disabled = true;
+                }
+                else {
+                    $('#Message').html("Milestone Status = " + PlanType.Status + " you can only update open Milestones!");
+                    $('#InsertActionText').html("");
+                    mybtConfirm2.content = "See Error Message";
+                    mybtConfirm2.disabled = true;
+                }
+                return;
+            }
+
+            if (PlanType == "I") {
+                $('#Message').html("You can not insert a new Plan under a Iteration Plan");
+                $('#InsertActionText').html("");
+                mybtConfirm2.content = "See Error Message";
+                mybtConfirm2.disabled = true;
+                return;
+            }
+            if (PlanType == "R" && PlanLevel == "0") {
+                $('#Message').html("");
+                mybtConfirm2.content = "Insert New Relase Plan Structure";
+                mybtConfirm2.disabled = false;
+                $('#InsertActionText').html("Insert Relase Plan in Project");
+                document.getElementById("InsertAction").value = "InsertRelease";
+                document.getElementById("NewPlanName").value = GetReleasePlanName();
+                return;
+            }
+            if (PlanType == "R" && PlanLevel != "0") {
+                $('#Message').html("You cannot insert a new plan under a sub release node ");
+                mybtConfirm2.content = "Please select the base node";
+                mybtConfirm2.disabled = true;
+                $('#InsertActionText').html("Recursive Plan insert not allowed");
+                document.getElementById("InsertAction").value = "";
+                document.getElementById("NewPlanName").value = PlanId;
+                return;
+            }
+        }
+
+        function IsTemplate() {
+            var tree = document.getElementById("PlanTree").ej2_instances[0];
+            var data = tree.treeData;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Id == "Template") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function GetIterationSuffix() {
+            // Alle Sub Iteration durchlaufen 
+            return "A";
+        }
+
+        function GetReleasePlanName() {
+            // Alle Sub Release unter Head-Node untersuchen
+            var tree1 = document.getElementById("PlanTree").ej2_instances[0];
+            var data1 = tree1.treeData;
+            var highestNumber = 1;
+            for (var i = 0; i < data1.length; i++) {
+                if (data1[i].Type == "R") {
+                    var last2 = data1[i].Name.slice(-2);
+                    var actnumber = parseInt(last2); 
+                    if (actnumber > highestNumber)
+                    {
+                        highestNumber = actnumber
+                    }
+                }
+            }
+            highestNumber++;
+            var str = highestNumber.toString();
+            return "SW_" + str.padStart(2, "0");
+        }
+
+
+        function resize() {
+            var heights = window.innerHeight;
+            document.getElementById("tree2").style.height = heights - 280 + "px";
+        }
+
+
+        window.onresize = function () {
+            resize();
+        }
+
+        $(document).ready(function () {
+            resize();
+            OnProjSelected();
+        });
+    </script>
+}

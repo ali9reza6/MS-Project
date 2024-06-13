@@ -1,0 +1,41 @@
+﻿@model PolarionReports.Models.Lists.CIViewModel
+
+<div>
+    @if (Model.Table.Count > 0)
+    {
+        string collapseStatus;
+        if (Model.Table.Count < Model.ExpandLevel)
+        {
+            collapseStatus = "panel-collapse in";
+        }
+        else
+        {
+            collapseStatus = "panel-collapse collapse";
+        }
+        <h4><a style="color:@Model.Color" data-toggle="collapse" href="@("#"+Model.Id)"><span data-toogle="tooltip" title="@Model.Tooltip">@Model.Table.Count.ToString() @Model.Titel</span></a>@Model.PolarionTableLink</h4>
+        <div id="@(Model.Id)" class="@collapseStatus">
+            <table class="table">
+                <tr>
+                    <th>C/I-ID</th>
+                    <th>C/I-Title</th>
+                    <th>doc prefix</th>
+                    <th>C/I-Status</th>
+                    <th>Planned In</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.Table)
+                {
+                    <tr>
+                        <td width="110px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DocPrefix)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td></td>
+                        <td><a target="_blank" href="@Model.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

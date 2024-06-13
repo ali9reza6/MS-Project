@@ -1,0 +1,35 @@
+﻿@model PolarionReports.Models.WorkitemView
+
+<h3 style="color:maroon"><strong>@Model.Heading</strong></h3>
+<h4 style="color:maroon">@Model.Document</h4>
+<table class="table"  style="border-style:solid; border-width:4px; border-color:maroon">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Internal Comments</th>
+        <th>Allocation</th>
+        <th>L/F/C/S</th>
+        <th>Status</th>
+        <th>Link</th>
+    </tr>
+
+    <tr>
+        <td width="105px"><a target="_blank" href="@Model.PolarionLink@Model.workitem.Id" ,>@Model.workitem.Id</a></td>
+        <td>@Html.DisplayFor(modelItem => Model.workitem.Title)</td>
+        <td><a href="#" data-toggle="tooltip" title="@Model.workitem.InternalComments">@Html.DisplayFor(modelItem => Model.workitem.InternalComments20)</a></td>
+        <td>@Html.DisplayFor(modelItem => Model.workitem.Alloc)</td>
+        <td>@Html.DisplayFor(modelItem => Model.workitem.TextLF) / @Html.DisplayFor(modelItem => Model.workitem.TextCS)</td>
+        <td>@Html.DisplayFor(modelItem => Model.workitem.Status)</td>
+        <td>
+            @if (Model.PolarionDocumentLink == null)
+            {
+                <span>NoDoc</span>
+            }
+            else
+            {
+                <a target="_blank" href="@Model.PolarionDocumentLink@Model.workitem.Id" ,>Open</a>
+            }
+        </td>
+    </tr>
+    
+</table>

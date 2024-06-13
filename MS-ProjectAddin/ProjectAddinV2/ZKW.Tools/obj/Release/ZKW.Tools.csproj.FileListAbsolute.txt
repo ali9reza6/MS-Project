@@ -1,0 +1,12 @@
+C:\Projekte\ProjectAddinV2\ZKW.Tools\bin\Release\ZKW.Tools.dll
+C:\Projekte\ProjectAddinV2\ZKW.Tools\bin\Release\ZKW.Tools.pdb
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.csprojAssemblyReference.cache
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.csproj.CoreCompileInputs.cache
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.dll
+C:\Projekte\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.pdb
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\bin\Release\ZKW.Tools.dll
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\bin\Release\ZKW.Tools.pdb
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.csprojAssemblyReference.cache
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.csproj.CoreCompileInputs.cache
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.dll
+C:\Users\lawnzaal\Desktop\Projects_Repo\MS-ProjectAddin\ProjectAddinV2\ZKW.Tools\obj\Release\ZKW.Tools.pdb

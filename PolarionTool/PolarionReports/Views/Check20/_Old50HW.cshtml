@@ -1,0 +1,94 @@
+﻿@model PolarionReports.Models.Check20ViewModel
+@using PolarionReports.Custom_Helpers
+
+@foreach (var doc in Model.Documents)
+{
+    Model.ActualDocument = doc;
+    <!-- ************************************** -->
+    <!-- Linkage to 50 HW Architectural Design  -->
+    <!-- ************************************** -->
+    <h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip20.C20Linkage50HWArchitecturalDesign">Linkage to 50 HW Architectural Design </span></h3>
+
+    <!-- Unlinked Hardware Element Requirements -->
+    <div>
+        @if (doc.UnlinkedHardwareElementRequirements.Count > 0)
+        {
+            <h4><a style="color:red" data-toggle="collapse" href="@("#f1" + doc.C_pk)"><span data-toggle="tooltip" title="@Model.Tooltip20.C20UnlinkedHardwareElementRequirements">@doc.UnlinkedHardwareElementRequirements.Count.ToString() Unlinked Hardware Element Requirements</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.UnlinkedHardwareElementRequirements))</h4>
+            <div id="@("f1" + doc.C_pk)" class="panel-collapse collapse">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Internal Comments</th>
+                        <th>Allocation</th>
+                        <th>L/F</th>
+                        <th>Status</th>
+                        <th>Link</th>
+                    </tr>
+
+                    @foreach (var item in doc.UnlinkedHardwareElementRequirements)
+                    {
+                        <tr>
+                            <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                            <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                            <td><a target="_blank" href="@doc.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>
+
+    <!-- Incorrectly linked Hardware Element Requirements -->
+    <div>
+        @if (doc.IncorrectlyLinkedHardwareElementRequirements.Count > 0)
+        {
+            Model.TableLinkError.Titel = "Incorrectly linked Hardware Element Requirements";
+            Model.TableLinkError.Id = "f2" + doc.C_pk;
+            Model.TableLinkError.Color = "red";
+            Model.TableLinkError.Tooltip = Model.Tooltip20.C20IncorrectlyLinkedHardwareElementRequirements;
+            Model.TableLinkError.PolarionLink = Model.PolarionLink;
+            Model.TableLinkError.PolarionDocumentLink = doc.PolarionDocumentLink;
+            Model.TableLinkError.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.IncorrectlyLinkedHardwareElementRequirements));
+            Model.TableLinkError.Table = doc.IncorrectlyLinkedHardwareElementRequirements;
+            Html.RenderPartial("_TableLinkError", Model.TableLinkError);
+        }
+    </div>
+
+    <!-- Linked Hardware Element Requirements with invalid Allocation -->
+    <div>
+        @if (doc.LinkedHardwareElementRequirementsWithInvalidAllocation.Count > 0)
+        {
+            Model.TableLinkError.Titel = "Linked Hardware Element Requirements with invalid Allocation";
+            Model.TableLinkError.Id = "f3" + doc.C_pk;
+            Model.TableLinkError.Color = "red";
+            Model.TableLinkError.Tooltip = Model.Tooltip20.C20LinkedHardwareElementRequirementsWithInvalidAllocation;
+            Model.TableLinkError.PolarionLink = Model.PolarionLink;
+            Model.TableLinkError.PolarionDocumentLink = doc.PolarionDocumentLink;
+            Model.TableLinkError.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.LinkedHardwareElementRequirementsWithInvalidAllocation));
+            Model.TableLinkError.Table = doc.LinkedHardwareElementRequirementsWithInvalidAllocation;
+            Html.RenderPartial("_TableLink", Model.TableLinkError);
+        }
+    </div>
+
+    <!-- Linked Hardware Element Requirements -->
+    <div>
+        @if (doc.LinkedHardwareElementRequirements.Count > 0)
+        {
+            Model.TableLinkError.Titel = "Linked Hardware Element Requirements";
+            Model.TableLinkError.Id = "f4" + doc.C_pk;
+            Model.TableLinkError.Color = "green";
+            Model.TableLinkError.Tooltip = Model.Tooltip20.C20LinkedHardwareElementRequirements;
+            Model.TableLinkError.PolarionLink = Model.PolarionLink;
+            Model.TableLinkError.PolarionDocumentLink = doc.PolarionDocumentLink;
+            Model.TableLinkError.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.LinkedHardwareElementRequirements));
+            Model.TableLinkError.Table = doc.LinkedHardwareElementRequirements;
+            Html.RenderPartial("_TableLink", Model.TableLinkError);
+        }
+    </div>
+    <hr />
+}

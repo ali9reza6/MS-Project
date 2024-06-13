@@ -1,0 +1,58 @@
+﻿@model PolarionReports.Models.Check20ViewModel
+@using PolarionReports.Custom_Helpers
+
+<div>
+    @if (Model.ActualDocument.TestcasesNotLinkedToElementRequirements.Count > 0)
+    {
+        <h4><a style="color:red" data-toggle="collapse" href="@("#cr1"+Model.ActualDocument.C_pk)"><span data-toogle="tooltip" title="@Model.Tooltip20.C20TestcasesNotLinkedToElementRequirements">@Model.ActualDocument.TestcasesNotLinkedToElementRequirements.Count.ToString() Testcases not linked to Element Requirements </span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.Checklist.PolarionTableLinkFromWorkitems(Model.ActualDocument.TestcasesNotLinkedToElementRequirements))</h4>
+        <div id="@("cr1"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.TestcasesNotLinkedToElementRequirements)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionChecklistLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+
+<div>
+    @if (Model.ActualDocument.TestcasesLinkedToElementRequirements.Count > 0)
+    {
+        <h4><a style="color:green" data-toggle="collapse" href="@("#cr2"+Model.ActualDocument.C_pk)"><span data-toogle="tooltip" title="@Model.Tooltip20.UnlinkedElementRequirements">@Model.ActualDocument.TestcasesLinkedToElementRequirements.Count.ToString() Testcases linked to Element Requirements </span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.Checklist.PolarionTableLinkFromWorkitems(Model.ActualDocument.TestcasesLinkedToElementRequirements))</h4>
+        <div id="@("cr2"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Req. Link</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.TestcasesLinkedToElementRequirements)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Workitem.Id" ,>@item.Workitem.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Workitem.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Workitem.Status)</td>
+                        <td><a target="_blank" href="@item.PolarionLink">@item.LinkedWorkitem.Id</a></td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionChecklistLink@item.Workitem.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

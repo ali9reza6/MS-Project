@@ -1,0 +1,107 @@
+﻿@model PolarionReports.Models.CheckViewModel
+@using PolarionReports.Custom_Helpers
+@{
+    ViewBag.Title = "Test";
+}
+
+@foreach (var doc in Model.Documents)
+{
+    if (doc.Review.WorkitemReviewWaitings.Count > 0)
+    {
+        <h4><a style="color:darkblue" data-toggle="collapse" href="@("#rev5" + doc.C_pk)"><span data-toggle="tooltip" title="not defined">@doc.Review.WorkitemReviewWaitings.Count.ToString() WorkItems waiting for Approval</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.Review.WorkitemReviewWaitings))</h4>
+        <div id="@("rev5" + doc.C_pk)" class="panel-collapse collapse">
+            <h4 style="margin-left:15px"><a style="color:darkblue" data-toggle="collapse" href="@("#rev6" + doc.C_pk)"><span data-toggle="tooltip" title="not defined">@doc.Review.WorkitemReviewWaitings.Count.ToString() All</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(doc.Review.WorkitemReviewWaitings))</h4>
+            <div style="margin-left:15px" id="@("rev7" + doc.C_pk)" class="panel-collapse collapse">
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Internal Comments</th>
+                        <th>Allocation</th>
+                        <th>Approval Comments</th>
+                        <th>Status</th>
+                        <th>Link</th>
+                    </tr>
+
+                    @foreach (var item in doc.Review.WorkitemReviewWaitings)
+                    {
+                        <tr>
+                            <td width="105px">
+                                <a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                <a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Alloc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TextLF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                <a target="_blank" href="@doc.PolarionDocumentLink@item.Id" ,>Open</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+            @foreach (var item in doc.Review.ApproverWaitings)
+            {
+                <h4 style="margin-left:15px"><a style="color:darkblue" data-toggle="collapse" href="@("#rev6" + item.Index + doc.C_pk)"><span data-toggle="tooltip" title="not defined">@item.WorkitemApproverPerUser.Count.ToString() @item.User.Name</span></a>@Custom_Helper_Class.PolarionTable(doc.PolarionTableLinkFromWorkitems(item.WorkitemApproverPerUser))</h4>
+                <div style="margin-left:15px" id="@("rev6" + item.Index + doc.C_pk)" class="panel-collapse collapse">
+                    <table class="table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Internal Comments</th>
+                            <th>Allocation</th>
+                            <th>L/F</th>
+                            <th>Status</th>
+                            <th>Link</th>
+                        </tr>
+
+                        @foreach (var item2 in item.WorkitemApproverPerUser)
+                        {
+                            <tr>
+                                <td width="105px">
+                                    <a target="_blank" href="@Model.PolarionLink@item2.Id" ,>@item2.Id</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.Title)
+                                </td>
+                                <td>
+                                    <a href="#" data-toggle="tooltip" title="@item2.InternalComments">@Html.DisplayFor(modelItem => item2.InternalComments20)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.Alloc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.TextLF)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item2.Status)
+                                </td>
+                                <td>
+                                    <a target="_blank" href="@doc.PolarionDocumentLink@item2.Id" ,>Open</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+            }
+
+        </div>
+    }
+
+}
+

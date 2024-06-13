@@ -1,0 +1,35 @@
+﻿@model PolarionReports.Models.TableLink
+
+<h4><a style="color:@Model.Color" data-toggle="collapse" href="@("#"+Model.Id)"><span data-toggle="tooltip" title="@Model.Tooltip">@Model.Table.Count.ToString() @Model.Titel</span></a>@Model.PolarionTableLink</h4>
+<div id="@(Model.Id)" class="panel-collapse collapse">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Internal Comments</th>
+            <th>Allocation</th>
+            <th>C/I</th>
+            <th>Status</th>
+            <th>Link</th>
+        </tr>
+
+        @foreach (var item in Model.Table)
+        {
+            <tr>
+                <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Workitem.Id" ,>@item.Workitem.Id</a></td>
+                <td>@Html.DisplayFor(modelItem => item.Workitem.Title)</td>
+                <td><a href="#" data-toggle="tooltip" title="@item.Workitem.InternalComments">@Html.DisplayFor(modelItem => item.Workitem.InternalComments20)</a></td>
+                <td>@Html.DisplayFor(modelItem => item.Workitem.Alloc)</td>
+                <td>
+                    @foreach (var link in item.LinkedWorkitems)
+                    {
+                        <a target="_blank" data-toggle="tooltip" title="@link.Title" href="@link.PolarionDocumentLink">@link.LinkDisplay</a><br>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Workitem.StatusDisplay)</td>
+                <td><a target="_blank" href="@Model.PolarionDocumentLink@item.Workitem.Id" ,>Open</a></td>
+            </tr>
+        }
+
+    </table>
+</div>

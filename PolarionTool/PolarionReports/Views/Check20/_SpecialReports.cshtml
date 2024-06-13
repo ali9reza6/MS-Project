@@ -1,0 +1,182 @@
+﻿@model PolarionReports.Models.Check20ViewModel
+@using PolarionReports.Custom_Helpers
+
+<!-- *************** -->
+<!-- Special reports -->
+<!-- *************** -->
+<h3 style="color:royalblue"><span data-toggle="tooltip" title="@Model.Tooltip20.SpecialReports">Special reports </span></h3>
+
+<!-- referred documents -->
+<div>
+    @if (Model.ActualDocument.Hyperlinks.Count > 0)
+    {
+        <h4><a style="color:green" data-toggle="collapse" href="@("#t3"+Model.ActualDocument.C_pk)"><span data-toggle="tooltip" title="@Model.Tooltip20.ReferredDocuments">@Model.ActualDocument.Hyperlinks.Count.ToString() referred documents </span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.Hyperlinks))</h4>
+        <div id="@("t3"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Referred</th>
+                    <th>Internal Comments</th>
+                    <th>Allocation</th>
+                    <th>L/F</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.Hyperlinks)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title) <br />
+                            @foreach (var hl in item.Hyperlinks)
+                            {
+                                <a target="_blank" href="@hl.URL">@Html.DisplayFor(m => hl.URL30)<span>...</span></a>
+                                <br />
+                            }
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.ReferredDoc)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+
+<!-- Workitems with Customer Action -->
+<div>
+    @if (Model.ActualDocument.SpecialReportCustomerAction.Count > 0)
+    {
+        <h4><a style="color:orange" data-toggle="collapse" href="@("#t1"+Model.ActualDocument.C_pk)"><span data-toggle="tooltip" title="@Model.Tooltip20.WorkitemsWithCustomerAction">@Model.ActualDocument.SpecialReportCustomerAction.Count.ToString() Workitems with Customer Action</span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.SpecialReportCustomerAction))</h4>
+        <div id="@("t1"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Internal Comments</th>
+                    <th>CustAction</th>
+                    <th>Allocation</th>
+                    <th>L/F</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.SpecialReportCustomerAction)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.CustomerAction">@Html.DisplayFor(modelItem => item.CustomerAction20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+
+<!-- Workitems with Supplier Action -->
+<div>
+    @if (Model.ActualDocument.SpecialReportSupplierAction.Count > 0)
+    {
+        <h4><a style="color:orange" data-toggle="collapse" href="@("#t2"+Model.ActualDocument.C_pk)"><span data-toggle="tooltip" title="@Model.Tooltip20.WorkitemsWithSupplierAction">@Model.ActualDocument.SpecialReportSupplierAction.Count.ToString() Workitems with Supplier Action</span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.SpecialReportSupplierAction))</h4>
+        <div id="@("t2"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Internal Comments</th>
+                    <th>SuppAction</th>
+                    <th>Allocation</th>
+                    <th>L/F</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.SpecialReportSupplierAction)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.SupplierAction">@Html.DisplayFor(modelItem => item.SupplierAction20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+
+<!-- Workitems with ESE and SW -->
+<div>
+    @if (Model.ActualDocument.SpecialReportESESW.Count > 0)
+    {
+        <h4><a style="color:royalblue" data-toggle="collapse" href="@("#u"+Model.ActualDocument.C_pk)"><span data-toggle="tooltip" title="@Model.Tooltip20.WorkitemsWithESEAndSW">@Model.ActualDocument.SpecialReportESESW.Count.ToString() Workitems with ARCH and SW</span></a>@Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.SpecialReportESESW))</h4>
+        <div id="@("u"+Model.ActualDocument.C_pk)" class="panel-collapse collapse">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Internal Comments</th>
+                    <th>Allocation</th>
+                    <th>L/F</th>
+                    <th>Status</th>
+                    <th>Link</th>
+                </tr>
+
+                @foreach (var item in Model.ActualDocument.SpecialReportESESW)
+                {
+                    <tr>
+                        <td width="105px"><a target="_blank" href="@Model.PolarionLink@item.Id" ,>@item.Id</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td><a href="#" data-toggle="tooltip" title="@item.InternalComments">@Html.DisplayFor(modelItem => item.InternalComments20)</a></td>
+                        <td>@Html.DisplayFor(modelItem => item.Alloc)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TextLF)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td><a target="_blank" href="@Model.ActualDocument.PolarionDocumentLink@item.Id" ,>Open</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>
+
+@if (Model.ActualDocument.SafetyRelevant.Count > 0)
+{
+    Model.RequirementList.Titel = "Safety-relevant Workitems";
+    Model.RequirementList.Tooltip = Model.Tooltip20.C20SafetyRelevant;
+    Model.RequirementList.Color = "royalblue";
+    Model.RequirementList.Id = "SR1" + Model.ActualDocument.C_pk;
+    Model.RequirementList.PolarionLink = Model.PolarionLink;
+    Model.RequirementList.PolarionDocumentLink = Model.ActualDocument.PolarionDocumentLink;
+    Model.RequirementList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.SafetyRelevant));
+    Model.RequirementList.Table = Model.ActualDocument.SafetyRelevant;
+    Html.RenderPartial("Lists/_Requ", Model.RequirementList);
+}
+
+@if (Model.ActualDocument.CybersecurityRelevant.Count > 0)
+{
+    Model.RequirementList.Titel = "Cybersecurity-relevant Workitems";
+    Model.RequirementList.Tooltip = Model.Tooltip20.C20SafetyRelevant;
+    Model.RequirementList.Color = "royalblue";
+    Model.RequirementList.Id = "CS1" + Model.ActualDocument.C_pk;
+    Model.RequirementList.PolarionLink = Model.PolarionLink;
+    Model.RequirementList.PolarionDocumentLink = Model.ActualDocument.PolarionDocumentLink;
+    Model.RequirementList.PolarionTableLink = (HtmlString)Custom_Helper_Class.PolarionTable(Model.ActualDocument.PolarionTableLinkFromWorkitems(Model.ActualDocument.CybersecurityRelevant));
+    Model.RequirementList.Table = Model.ActualDocument.CybersecurityRelevant;
+    Html.RenderPartial("Lists/_Requ", Model.RequirementList);
+}
